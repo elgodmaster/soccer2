@@ -1,0 +1,305 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SFBrowser_en\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-06 13:53+0100\n"
+"PO-Revision-Date: 2010-11-06 14:06+0100\n"
+"Last-Translator: Ron Valstar <poedit@ronvalstar.nl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\gmg\\greentoday\\web\\wp-content\\plugins\\sfbrowser\\lang\n"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:3
+msgid "sfb"
+msgstr "SFBrowser"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:6
+msgid "ok"
+msgstr "Ok"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:7
+msgid "cancel"
+msgstr "Cancel"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:8
+msgid "reset"
+msgstr "Reset"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:9
+msgid "select"
+msgstr "Select"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:10
+msgid "choose"
+msgstr "Choose"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:11
+msgid "del"
+msgstr "Delete"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:12
+msgid "view"
+msgstr "View"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:13
+msgid "deselect"
+msgstr "Deselect"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:14
+msgid "close"
+msgstr "Close"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:15
+msgid "reload"
+msgstr "Reload"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:16
+msgid "upload"
+msgstr "Upload"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:17
+msgid "changed"
+msgstr "Changed"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:19
+msgid "show"
+msgstr "Show"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:20
+msgid "load"
+msgstr "Load"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:21
+msgid "save"
+msgstr "Save"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:22
+msgid "saveas"
+msgstr "Save as"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:23
+msgid "loading"
+msgstr "Loading"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:24
+msgid "rename"
+msgstr "Rename"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:26
+msgid "folder"
+msgstr "Folder"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:27
+msgid "newfolder"
+msgstr "New Folder"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:29
+msgid "file"
+msgstr "File"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:30
+msgid "type"
+msgstr "Type"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:31
+msgid "name"
+msgstr "Name"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:32
+msgid "size"
+msgstr "Size"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:33
+msgid "filetype"
+msgstr "Filetype"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:34
+msgid "filename"
+msgstr "Filename"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:35
+msgid "filesize"
+msgstr "Filesize"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:36
+msgid "date"
+msgstr "Date"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:37
+msgid "dimensions"
+msgstr "Dimensions"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:38
+msgid "title"
+msgstr "Title"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:39
+msgid "thumbnail"
+msgstr "Tumbnail"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:41
+msgid "dragMe"
+msgstr "Drag me"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:44
+msgid "fileUploaded"
+msgstr "File uploaded"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:45
+msgid "fileDeleted"
+msgstr "File deleted"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:46
+msgid "fileNotdeleted"
+msgstr "File could not be deleted"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:47
+msgid "fileNotselected"
+msgstr "No file selected"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:48
+msgid "fileExistsOverwrite"
+msgstr "The file already exists, overwrite?"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:49
+msgid "fileExistsrenamed"
+msgstr "The file already exists, it has been uploaded and appended with a number."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:50
+msgid "fileRenamed"
+msgstr "Rename succesfull"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:51
+msgid "fileUploadCancel"
+msgstr "Cancel upload"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:52
+msgid "fileTooBig"
+msgstr "The file '#1' exceeds the maximum upload size of #2. Either compress the file, or upload through FTP."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:54
+msgid "duplicate"
+msgstr "Duplicate"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:55
+msgid "fileDuplicated"
+msgstr "Duplication succesful"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:56
+msgid "fileNotduplicated"
+msgstr "Duplication failed"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:59
+msgid "folderCreated"
+msgstr "Folder created"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:60
+msgid "folderFailed"
+msgstr "Unable to create folder"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:61
+msgid "folderDeleted"
+msgstr "Folder deleted"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:62
+msgid "folderNotdeleted"
+msgstr "The folder could not be deleted, make sure that is is empty."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:63
+msgid "confirmDelete"
+msgstr "Delete this file?"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:64
+msgid "confirmDeletef"
+msgstr "Delete this folder?"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:67
+msgid "filenameInvalid"
+msgstr "This is not a valid filename."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:68
+msgid "filenameNoext"
+msgstr "You may not change extensions.l"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:69
+msgid "filenameNochange"
+msgstr "No changes made."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:70
+msgid "filenameNothing"
+msgstr "You cannot rename something to nothing."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:71
+msgid "filenameSucces"
+msgstr "Rename succesful"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:72
+msgid "filenameFailed"
+msgstr "Rename failed."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:73
+msgid "filenameExists"
+msgstr "The filename already exists."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:76
+msgid "uploadErr"
+msgstr "No errror code available"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:77
+msgid "uploadErr1"
+msgstr "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:78
+msgid "uploadErr2"
+msgstr "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:79
+msgid "uploadErr3"
+msgstr "The uploaded file was only partially uploaded"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:80
+msgid "uploadErr4"
+msgstr "No file was uploaded."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:81
+msgid "uploadErr6"
+msgstr "Missing a temporary folder"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:82
+msgid "uploadErr7"
+msgstr "Failed to write file to disk"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:83
+msgid "uploadErr8"
+msgstr "File upload stopped by extension"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:84
+msgid "uploadNotallowed"
+msgstr "The filetype '#1' is not allowed."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:87
+msgid "previewPart"
+msgstr "Shows the first #1 bytes"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:88
+msgid "previewText"
+msgstr "- loading text -"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:89
+msgid "previewContents"
+msgstr "File contents',"
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:90
+msgid "getfirefox"
+msgstr "Everything works fine, things just look better in <a href=\"http://www.getfirefox.com\">Firefox</a>."
+
+#: C:\wamp\www\gmg\greentoday\web\wp-content\plugins\sfbrowser\lang/PotBase.php:91
+msgid "contentsSucces"
+msgstr "Contents retreived."
+
