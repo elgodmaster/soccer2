@@ -1,0 +1,91 @@
+<?php
+
+__('sfb',					"SFBrowser");
+
+// single or small words
+__('ok',					"Ok");
+__('cancel',				"Cancel");
+__('reset',					"Reset");
+__('select',				"Select");
+__('choose',				"Choose");
+__('del',					"Delete");
+__('view',					"View");
+__('deselect',				"Deselect");
+__('close',					"Close");
+__('reload',				"Reload");
+__('upload',				"Upload");
+__('changed',				"changed");
+
+__('show',					"Show");
+__('load',					"Load");
+__('save',					"Save");
+__('saveas',				"Save as");
+__('loading',				"Loading");
+__('rename',				"Rename");
+
+__('folder',				"Folder");
+__('newfolder',				"New folder");
+
+__('file',					"File");
+__('type',					"Type");
+__('name',					"Name");
+__('size',					"Size");
+__('filetype',				"Filetype");
+__('filename',				"Filename");
+__('filesize',				"Filesize");
+__('date',					"Date");
+__('dimensions',			"Dimensions");
+__('title',					"Title");
+__('thumbnail',				"Thumbnail");
+
+__('dragMe',				"Drag me");
+	
+	// files
+__('fileUploaded',			"File uploaded");
+__('fileDeleted',			"File deleted");
+__('fileNotdeleted',		"File could not be deleted");
+__('fileNotselected',		"No file selected");
+__('fileExistsOverwrite',	"The file already exists, overwrite?");
+__('fileExistsrenamed',		"The file already exists, it has been uploaded and appended by a number.");
+__('fileRenamed',			"Rename succesfull");
+__('fileUploadCancel',		"Cancel upload");
+__('fileTooBig',			"The file '#1' exceeds the maximum upload size of #2. Either compress the file, or upload through FTP.");
+
+__('duplicate',				"Duplicate");
+__('fileDuplicated',		"Duplication succesfull");
+__('fileNotduplicated',		"Duplication failed");
+
+	// folders
+__('folderCreated',			"Folder created");
+__('folderFailed',			"Unable to create folder");
+__('folderDeleted',			"Folder deleted");
+__('folderNotdeleted',		"The folder could not be deleted, make sure that it is empty.");
+__('confirmDelete',			"Delete this file?");
+__('confirmDeletef',		"Delete this folder?");
+
+	// filenames
+__('filenameInvalid',		"This is not a valid filename.");
+__('filenameNoext',			"You may not change extensions.");
+__('filenameNochange',		"No Changes made.");
+__('filenameNothing',		"You cannot rename something to nothing");
+__('filenameSucces',		"Rename succesfull.");
+__('filenameFailed',		"Rename failed.");
+__('filenameExists',		"The filename already exists.");
+
+	// upload
+__('uploadErr',				"No error code available");
+__('uploadErr1',			"The uploaded file exceeds the upload_max_filesize directive in php.ini");
+__('uploadErr2',			"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form");
+__('uploadErr3',			"The uploaded file was only partially uploaded");
+__('uploadErr4',			"No file was uploaded.");
+__('uploadErr6',			"Missing a temporary folder");
+__('uploadErr7',			"Failed to write file to disk");
+__('uploadErr8',			"File upload stopped by extension");
+__('uploadNotallowed',		"The filetype '#1' is not allowed.");
+
+	// misc
+__('previewPart',			"Shows the first #1 bytes");
+__('previewText',			"- loading text -");
+__('previewContents',		"File contents',");
+__('getfirefox',			"Everything works fine, things just look better in <a href',		\"http',//www.getfirefox.com/\">Firefox</a>.");
+__('contentsSucces',		"Contents retreived.");
