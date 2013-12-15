@@ -1,17 +1,19 @@
 
 
-<fieldset>
+<fieldset >
 
 <legend>JORNADA <?php echo $nLap; ?></legend>
+ <div align="center">
  
- 	<table border="1">
+ 	<table>
  	<thead>
- 	<tr>
- 		<td>N.partido</td>
- 		<th>Local</th>
- 		<th></th>
- 		<th>Visitante</th>
+ 	<tr >
+ 		<td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+ 		<th><ins>LOCAL</ins></th>
+ 		<th><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></th>
+ 		<th><ins>VISITANTE</ins></th>
  	</tr>
+ 	<tr><td colspan="4">&nbsp;</td></tr>
  	</thead>
  	
  	<tbody>
@@ -23,15 +25,15 @@
 		<?php 	
 		
 				
-				echo '<td><strong>P'.++$p.'</strong></td>';
+				echo '<td>p'.$match->NAME.'</td>';
 				echo '<td width="150px" align="center" valign="top">';
 				echo CHtml::image($match->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;"));
 				echo "<br />";				
 				echo $match->lOCAL->NAME;
 				echo "</td>";
 				
-				echo "<td>";
-				echo 'Vs';
+				echo "<td align=\"center\">";
+				echo '<b>Vs</b>';
 				echo "</td>";
 				
 				echo '<td width="150px" align="center" valign="top">';
@@ -76,12 +78,12 @@
 		
 		<tfoot>
 			<tr>
-				<td colspan="4">Generar reporte</td>
+				<th colspan="4"></th>
 			
 			</tr>
 			
 		</tfoot>
 		</table>
  
- 
+ </div>
 </fieldset>

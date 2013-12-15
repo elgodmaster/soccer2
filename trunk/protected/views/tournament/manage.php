@@ -12,18 +12,12 @@ $this->menu=array(
 ?>
 
 <h1><?php echo $model->NAME;?></h1>
-
+    
 <?php $this->widget('bootstrap.widgets.TbAlert', array(
-        'block'=>true, // display a larger alert block?
+        'block'=>false, // display a larger alert block?
         'fade'=>true, // use transitions?
         'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-        'alerts'=>array( // configurations per alert type
-        'success'=>array('block'=>false, 'fade'=>true, 'closeText'=>'false'), // success, info, warning, error or danger
-		'info'=>array('block'=>false, 'fade'=>true, 'closeText'=>'false'),
-		'warning'=>array('block'=>false, 'fade'=>false, 'closeText'=>'&times;'),
-        'error'=>array('block'=>false, 'fade'=>true, 'closeText'=>'false'),
-        'danger'=>array('block'=>false, 'fade'=>true, 'closeText'=>'false'),
-        ),)); 
+        )); 
 
 ?>
     
@@ -78,15 +72,15 @@ $this->menu=array(
     'type'=>'list',
     'items'=>array(
         array('label'=>'Equipos'),
-        array('label'=>'Inicio', 'icon'=>'home', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
+        array('label'=>'Equpos en el torneo', 'icon'=>'bullhorn', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
         array('label'=>'todos', 'icon'=>'book', 'url'=>'' ),
-    	array('label' =>'test', 'icon'=>'ok','url' => 'http://www.someurl.com',),
+    	array('label' =>'Ayuda', 'icon'=>'flag','url' => 'http://www.someurl.com',),
 
         array('label'=>'Perfil'),
         array('label'=>'Datos generales', 'icon'=>'user', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_profileForm')),
         array('label'=>'Documentos', 'icon'=>'file', 'url'=>array('manageDocuments','id'=>$model->ID)),
     	array('label'=>'Bases, Reglas y Convocatoria', 'icon'=>'pencil', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_ruleForm')),
-        array('label'=>'Help', 'icon'=>'flag', 'url'=>'#'),
+        array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>
 
@@ -98,29 +92,59 @@ $this->menu=array(
     'type'=>'list',
     'items'=>array(
         array('label'=>'Configuracion'),
-		array('label'=>'Horarios', 'icon'=>'cog', 'url'=>array('updateBySchedule','id'=>$model->ID)),
-		array('label'=>'Categoria y tipo de torneo', 'icon'=>'cog', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
-		array('label'=>'Eliminatoría', 'icon'=>'cog', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
-        array('label'=>'Help', 'icon'=>'flag', 'url'=>'#'),
+		array('label'=>'Horarios', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
+		array('label'=>'Categoria y tipo de torneo', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
+		array('label'=>'Eliminatoría', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
+        array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
         
 
         array('label'=>'Jornadas'),
 		array('label'=>'Configuracion', 'icon'=>'cog', 'url'=>array('manageMatchs','id'=>$model->ID), ),
-        ($model->isEnabledToGenerateMatch()) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'magic', 'url'=>array('manageMatchs','id'=>$model->ID), )
+        ($model->isEnabledToGenerateMatch()) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), )
 		:NULL,
-		array('label'=>'Help', 'icon'=>'flag', 'url'=>'#'),
+		array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>
 
 
 </div>
+
+
+<div class="span-10">
+
+<?php $this->widget('bootstrap.widgets.TbMenu', array(
+    'type'=>'list',
+    'items'=>array(
+        array('label'=>'Publicaciones'),
+		array('label'=>'Facebook', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
+		array('label'=>'Correo electronico', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
+		array('label'=>'Twitter', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
+        array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
+        
+
+            ),
+)); ?>
+
+
+</div>
+
+
+
 </fieldset>
 
 <div class="form-actions">
 
 <?php if($model->STATUS == 3) {?>
+
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id'=>'verticalForm',
+)); ?>
+		
+		<?php echo $form->hiddenField($model,"ID",array('value'=>$model->ID));?>
 		
 		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit',  'type'=>'primary','label'=> $model->isNewRecord ?'Create' : 'Generar Torneo')); ?>
+		
+<?php $this->endWidget(); ?>		
 		
 <?php }?>		
 </div>
