@@ -267,7 +267,7 @@ class TournamentController extends Controller
 
 		$model = $this->loadModel($id);
 
-		if(isset($_POST['MatchGame'])){
+		if(isset($_POST['MatchGame']) && $model->STATUS == 4){
 				
 			$matchArray = array();
 				
@@ -298,6 +298,8 @@ class TournamentController extends Controller
 
 			}
 
+			$this->redirect(array('manage','id'=>$model->ID));
+			
 		}
 
 		
@@ -435,7 +437,11 @@ class TournamentController extends Controller
 			
 			$group++;
 			
+			$matchName = 0;
+			
 			foreach ($round as $match){
+				
+				$matchName++;
 				
 				$components = array();
 					
@@ -451,6 +457,8 @@ class TournamentController extends Controller
 				
 				$matchGame->vISITOR =$equipos[intval( $components[1])]->iDTEAM;
 				
+				$matchGame->NAME = $matchName;
+				
 				
 				$matchGameMirror = new MatchGame();			
 				
@@ -462,6 +470,8 @@ class TournamentController extends Controller
 				$matchGameMirror->lOCAL = $equipos[intval($components[1])]->iDTEAM;
 				
 				$matchGameMirror->vISITOR =$equipos[intval( $components[0])]->iDTEAM;
+				
+				$matchGameMirror->NAME = $matchName;
 				
 				$mirror [] = $matchGameMirror;
 				
@@ -645,6 +655,7 @@ class TournamentController extends Controller
 			if($model->save()){
 				
 				Yii::app()->user->setFlash('success', '<strong>!Listo</strong> Se ha creado el torneo y puede configurarlo.');
+				
 				$this->redirect(array('manage','id'=>$model->ID));
 			}
 		}
@@ -809,6 +820,30 @@ class TournamentController extends Controller
 		$model->STATUS = $this->getOverViewStatus($model);
 		
 		$model->save();
+		
+		
+		if($model->STATUS  ==  3 && isset($_POST['Tournament'])){
+			
+			
+			$model->STATUS = 4; // CERRADO
+		
+			
+			
+			$matchs = $this->generateMatchs($id);
+			
+			foreach ($matchs as $match){
+				
+				$match->LOCAL = $match->lOCAL->ID;
+				$match->VISITOR= $match->vISITOR->ID;
+				$match->save();// Verificar transaccionalidad
+				
+			}
+		
+			$model->save(); // Unir en transaccionalidad
+			
+			
+		}
+		
 		
 		$this->render('manage',array(
 				'model'=>$model,
@@ -1822,7 +1857,7 @@ main();
 		if ($model->TYPE == 0 ){
 		
 			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>Seleccione el tipo de torneo');
-			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>Seleccione el tipo de 2 vecestorneo');
+			
 		
 		}
 		
@@ -1834,12 +1869,12 @@ main();
 		
 		if ($nTeams >= $model->START_E && $model->TYPE != 4 ){
 			
-			Yii::app()->user->setFlash('info', '<strong>Listo.</strong> Ya puede generar el torneo. ');
+			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
 			
 		}else if($model->TYPE == 4 && $nTeams >= ($model->START_E*2) ){
 
-			Yii::app()->user->setFlash('info', '<strong>Listo.</strong> Ya puede generar el torneo. ');
+			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
 				
 			}else{
