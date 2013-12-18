@@ -266,6 +266,8 @@ class TournamentController extends Controller
 		$playGround = new PlayGround();
 
 		$model = $this->loadModel($id);
+		
+		$roundId = isset($_POST['roundId']) ? $_POST['roundId'] : 1; 
 
 		if(isset($_POST['MatchGame']) && $model->STATUS == 4){
 				
@@ -298,7 +300,7 @@ class TournamentController extends Controller
 
 			}
 
-			$this->redirect(array('manage','id'=>$model->ID));
+			$this->redirect(array('manage','id'=>$model->ID,'roundId'=>$roundId,));
 			
 		}
 
@@ -307,15 +309,11 @@ class TournamentController extends Controller
 
 		if (count($model->matchGames) > 0) {
 				
-				
-				
-				
-				
-				
 			$this->render('matchs',array(
 					'model'=>$model,
 					'matchGames'=>$model->matchGames,
 					'playGround'=>$playGround,
+					'roundId'=>$roundId,
 			));
 				
 		}else{
@@ -327,6 +325,7 @@ class TournamentController extends Controller
 					'model'=>$model,
 					'matchGames'=>$toMatch,
 					'playGround'=>$playGround,
+					'roundId'=>$roundId,
 			));
 				
 		}
@@ -822,6 +821,9 @@ class TournamentController extends Controller
 		$model->save();
 		
 		
+		$activeMatch =  isset($_GET['matchId']) ? $_GET['matchId'] : 1 ;
+		
+		
 		if($model->STATUS  ==  3 && isset($_POST['Tournament'])){
 			
 			
@@ -840,6 +842,8 @@ class TournamentController extends Controller
 			}
 		
 			$model->save(); // Unir en transaccionalidad
+			
+			$this->redirect(array('manage','id'=>$id));
 			
 			
 		}
@@ -1822,6 +1826,7 @@ main();
 	
 	
 	/**
+	 * This method evaluates the current tournament status
 	 * 
 	 * @param Tournament $model
 	 * @return number
@@ -1832,6 +1837,8 @@ main();
 
 		$state  = 0;
 		$nTeams = count($model->teams);
+		
+		if($model->STATUS > 3 ) return $model->STATUS;
 		
 				
 		if ($model->RULES == null || $model->BASES == null || $model->PROMO == null ){
@@ -1872,12 +1879,14 @@ main();
 			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
 			
-		}else if($model->TYPE == 4 && $nTeams >= ($model->START_E*2) ){
+		}elseif($model->TYPE == 4 && $nTeams >= ($model->START_E*2) ){
 
 			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
 				
 			}else{
+				
+				
 				
 				Yii::app()->user->setFlash('warning', '<strong>Equipos.</strong> Es necesario agregar mas equipos. ');
 				$state = 2;
