@@ -100,8 +100,7 @@ $this->menu=array(
 
         array('label'=>'Jornadas'),
 		array('label'=>'Configuracion', 'icon'=>'cog', 'url'=>array('manageMatchs','id'=>$model->ID), ),
-        ($model->isEnabledToGenerateMatch()) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), )
-		:NULL,
+        ($model->isEnabledToGenerateMatch() && $model->STATUS < 4) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), ): (($model->STATUS > 3)? array('label'=>'Jornadas', 'icon'=>'th-large', 'url'=>array('manageMatchs','id'=>$model->ID), ) : null),
 		array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>
