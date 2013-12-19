@@ -267,7 +267,7 @@ class TournamentController extends Controller
 
 		$model = $this->loadModel($id);
 		
-		$roundId = isset($_POST['roundId']) ? $_POST['roundId'] : 1; 
+		$roundId = isset($_GET['roundId']) ? $_GET['roundId'] : 1; 
 
 		if(isset($_POST['MatchGame']) && $model->STATUS == 4){
 				

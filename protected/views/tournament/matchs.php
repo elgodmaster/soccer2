@@ -13,7 +13,6 @@ $this->menu=array(
 <h1>Jornadas</h1>
 
 <br />
-<br />
 
 <?php /** @var TbActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -27,6 +26,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'tabs'=>$this->getTabularFormTabs($form, $model, $matchGames),
 	'placement'=>'left',
 )); ?>
+ 
+ <div class="form-actions">
+    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'info', 'label'=>'Listo')); ?>
+</div>
+ 
+ 
  
  <?php } elseif ($model->STATUS>3){
  
@@ -64,8 +69,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  <?php $this->widget('bootstrap.widgets.TbMenu', array(
     'type'=>'pills', // '', 'tabs', 'pills' (or 'list')
     'stacked'=>false, // whether this is a stacked menu
-    'items'=> $menuOptions
-    ,
+    'items'=> $menuOptions,
+
 ));
 
 echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGames,'playGround'=>$playGround));
@@ -75,10 +80,7 @@ echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$mat
  
  
  <?php }?>
-<div class="form-actions">
-    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'info', 'label'=>'Listo')); ?>
-</div>
- 
+
 <?php $this->endWidget(); ?>
 
 
