@@ -293,6 +293,8 @@ class TournamentController extends Controller
 					}					
 						
 					$dbMatch->attributes = $match;
+					
+					
 						
 					$dbMatch->save();
 						
@@ -300,7 +302,7 @@ class TournamentController extends Controller
 
 			}
 
-			$this->redirect(array('manage','id'=>$model->ID,'roundId'=>$roundId,));
+			$this->redirect(array('manageMatchs','id'=>$model->ID,'roundId'=>$roundId,));
 			
 		}
 
