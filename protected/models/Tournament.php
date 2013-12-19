@@ -53,7 +53,7 @@ class Tournament extends CActiveRecord
 			1=>'ABIERTO',
 			2=>'CONFIGURACION',
 			3=>'LISTO CERRAR',
-			4=>'CERRADO',
+			4=>'CERRADO-CONFIGURANDO JORNADAS',
 			5=>'OPERACION',
 			6=>'ELIMINATORIA',
 			7=>'FINALIZADO',
