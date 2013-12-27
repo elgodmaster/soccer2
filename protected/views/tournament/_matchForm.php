@@ -1,3 +1,34 @@
+
+
+
+
+	
+	<?php 
+
+	echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
+	echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>';
+	echo "<br />";
+
+	?>
+	
+	
+	<div class="view">
+	
+	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
+	'type'=>'striped bordered condensed',
+    'data'=>$matchGames[0],
+    'attributes'=>array(
+        array('name'=>'ID', 'label'=>'ID'),
+     //	   array('name'=>'NAME', 'label'=>'Nombre del torneo'),
+       
+
+    ),
+)); ?>
+	
+
+	
+	</div>
+
 <div class="form">
 
 	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -6,14 +37,12 @@
 )); ?>
 
 
-	<?php 
-
-	echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
-	echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>';
-	echo "<br /><br />";
-
-	?>
-
+	
+	
+	
+	
+	
+	
 	<?php echo $form->errorSummary($model); ?>
 
 
@@ -148,6 +177,12 @@ $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
 	</fieldset>
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>$model->isNewRecord?'Create':'Guardar'));?>
+		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar',
+				
+				'htmlOptions'=>array('name'=>'publishRound'),
+		)
+				
+				);?>
 
 	</div>
 
