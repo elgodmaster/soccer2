@@ -288,6 +288,7 @@ class TournamentController extends Controller
 
 
 					}else{
+						
 						$dbMatch = new MatchGame();
 
 					}					
