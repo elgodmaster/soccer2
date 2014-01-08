@@ -19,7 +19,7 @@
     'data'=>$matchGames[0],
     'attributes'=>array(
         array('name'=>'ID', 'label'=>'ID'),
-     //	   array('name'=>'NAME', 'label'=>'Nombre del torneo'),
+     	array('name'=>'STATUS', 'label'=>'ESTATUS', 'value'=>MatchGame::model()->aStatus[$matchGames[0]->STATUS]),
        
 
     ),
@@ -44,63 +44,53 @@
 	
 	
 	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($matchGames[0]); ?>
 
 
 
 	<fieldset>
-		<table border="0">
+		<table border="0" class="table table-hover">
 
 			<thead>
 				<tr>
-					<td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-					</td>
-					<th><ins>LOCAL</ins>
-					</th>
-					<th><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-					</th>
-					<th><ins>VISITANTE</ins>
-					</th>
-					<th></th>
+					<td>#</td>
+					<th>LOCAL</th>
+					<th>VISITANTE</th>
 					<th>FECHA</th>
 					<th>CANCHA</th>
 					<th>ARBITRO</th>
 
 				</tr>
 				<tr>
-					<td colspan="7">&nbsp;</td>
+					<td colspan="6">&nbsp;</td>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
-
+				$readyToPublish = true;
 				$switchVar = 0;
 				$numeroPartidos = sizeof($matchGames);
 				for($i=0; $i<$numeroPartidos; $i++) //START FOR
 				{
 					?>
 				<tr>
-
+					
 
 					<?php 	
 
-					echo '<td><strong>P'. ($i+1). '</strong></td>';
-					echo '<td width="150px" align="center" valign="top">';
+					echo '<td ><strong>P'. ($i+1). '</strong></td>';
+					echo '<td  align="center" valign="top">';
 					echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;"));
 					echo "<br />";
 					echo $matchGames[$i]->lOCAL->NAME;
 					echo "</td>";
 
-					echo "<td>";
-					echo 'Vs';
-					echo "</td>";
+					
 
-					echo '<td width="150px" align="center" valign="top">';
+					echo '<td  align="center" valign="top">';
 					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;"));
 					echo "<br />";
 					echo $matchGames[$i]->vISITOR->NAME;
-					echo "</td>";
-
-					echo "<td>";
 					echo $form->hiddenField($matchGames[$i],"[$i]ID",array('value'=>$matchGames[$i]->ID));
 					echo $form->hiddenField($matchGames[$i],"[$i]LOCAL",array('value'=>$matchGames[$i]->lOCAL->ID));
 					echo $form->hiddenField($matchGames[$i],"[$i]VISITOR",array('value'=>$matchGames[$i]->vISITOR->ID));
@@ -109,6 +99,10 @@
 					echo $form->hiddenField($matchGames[$i],"[$i]NAME", array('value'=>$i+1));
 					echo "</td>";
 
+					
+
+					if ($matchGames[$i]->STATUS < 3) {
+					
 					echo "<td>";
 					Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
 						
@@ -119,7 +113,7 @@
 							'mode'=>'datetime', //use "time","date" or "datetime" (default)
 							'options'=>array( "dateFormat"=>'yy-mm-dd', 'timeFormat'=>'hh:mm'),
 						
-							'htmlOptions'=>array('class'=>'input-medium'),
+							'htmlOptions'=>array('class'=>'input-medium',),
 							));
 
 		
@@ -157,8 +151,16 @@ $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
 				echo "<td>";
 				echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
 				echo "</td>";
+				
+					}else {
+						
+						echo '<td valign="bottom"><input  type="text" value="'.$matchGames[$i]->TIME.'" readonly="readonly" class="input-medium" /></td>';
+						echo '<td valign="baseline"><input  type="text" value="'.$matchGames[$i]->pLAYGROUND->NAME.'" readonly="readonly" class="input-medium" /></td>';
+						echo '<td valign="middle"><input  type="text" value="'.$matchGames[$i]->rEFEREE->NAME.'" readonly="readonly" class="input-medium" /></td>';
 
+					}
 
+				if($matchGames[$i]->STATUS < 2)$readyToPublish = false;
 				?>
 
 
@@ -167,23 +169,20 @@ $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
 				</tr>
 
 				<tr>
-					<td colspan="7">&nbsp;</td>
+					<td colspan="6">&nbsp;</td>
 				</tr>
 
-				<?php }?>
+				<?php }//end for?> 
 
 			</tbody>
 		</table>
 	</fieldset>
 	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>$model->isNewRecord?'Create':'Guardar'));?>
-		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar',
-				
-				'htmlOptions'=>array('name'=>'publishRound'),
-		)
-				
-				);?>
-
+	<?php if (!$readyToPublish)
+				$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
+			else if($matchGames[0]->STATUS < 3) 	
+	 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
+	?>
 	</div>
 
 

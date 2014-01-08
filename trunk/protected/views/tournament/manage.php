@@ -98,9 +98,9 @@ $this->menu=array(
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
         
 
-        array('label'=>'Jornadas'),
-		array('label'=>'Configuracion', 'icon'=>'cog', 'url'=>array('manageMatchs','id'=>$model->ID), ),
+        array('label'=>'Jornadas'),		
         ($model->isEnabledToGenerateMatch() && $model->STATUS < 4) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), ): (($model->STATUS > 3)? array('label'=>'Jornadas', 'icon'=>'th-large', 'url'=>array('manageMatchs','id'=>$model->ID), ) : null),
+		array('label'=>'Resultados', 'icon'=>'cog', 'url'=>array('manageResults','id'=>$model->ID), ),
 		array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>

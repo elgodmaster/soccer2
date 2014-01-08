@@ -71,7 +71,7 @@ class Team extends CActiveRecord
 			'matchGames' => array(self::HAS_MANY, 'MatchGame', 'VISITOR'),
 			'matchGames1' => array(self::HAS_MANY, 'MatchGame', 'LOCAL'),
 			'iDCATEGORY' => array(self::BELONGS_TO, 'Category', 'ID_CATEGORY'),
-			'players' => array(self::MANY_MANY, 'Player', 'tbl_team_player(TEAM_ID,PLAYER_ID)'),
+			'players' => array(self::HAS_MANY, 'TeamPlayer', 'TEAM_ID'),
 		);
 	}
 

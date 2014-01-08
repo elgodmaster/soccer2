@@ -2,6 +2,15 @@
 
 class MatchGameController extends Controller
 {
+
+	/**
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 */
+	public $layout='//layouts/column2';
+	
+	
+	
 	public function actionIndex()
 	{
 		$this->render('index');
@@ -29,7 +38,14 @@ class MatchGameController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		
 		
-		if(isset($_POST['MatchResult'])){
+		if(isset($_POST['PlayerResult'])){
+					
+			$playerResultPost = $_POST['PlayerResult'];
+			
+			$playerResultModel = PlayerResult::model()->findByPK($playerResultPost['RESULT_ID'],$playerResultPost['RESULT_ID'],$playerResultPost['RESULT_ID']);
+			
+			
+			
 			
 		}
 		
@@ -65,7 +81,7 @@ class MatchGameController extends Controller
 		}
 		
 		
-		$this->render('managePlayerResult',array(
+		$this->renderPartial('_playerResultForm',array(
 				'model'=>$model,
 				'playerModel'=>$playerModel,
 				'playerResults'=>$playerResults,
@@ -129,7 +145,7 @@ class MatchGameController extends Controller
 		
 		
 		
-		$currentResults = $model->tblCatResults;
+		$currentResults = $model->matchResults;
 				
 		$catResult = new CatResult();
 		
