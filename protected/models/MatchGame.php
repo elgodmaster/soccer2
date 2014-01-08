@@ -14,13 +14,14 @@
  * @property integer $ID_REFEREE
  * @property integer $ACTIVE
  * @property string $NAME
+ * @property integer $STATUS
  *
  * The followings are the available model relations:
  * @property Team $vISITOR
  * @property Tournament $tOURNAMENT
  * @property Team $lOCAL
  * @property PlayGround $pLAYGROUND
- * @property CatResult[] $tblCatResults
+ * @property MatchResult[] $matchResults
  * @property PlayerResult[] $playerResults
  */
 class MatchGame extends CActiveRecord
@@ -35,6 +36,22 @@ class MatchGame extends CActiveRecord
 		return parent::model($className);
 	}
 
+	
+	/**
+	 * Match Game  status
+	 * @var string array
+	 */
+	public $aStatus= array(
+	
+			1=>'CONFIGURANDO',
+			2=>'LISTO PARA PROGRAMAR',
+			3=>'PROGRAMADO',
+			4=>'PUBLICADO',
+				
+	);
+	
+	
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -51,14 +68,14 @@ class MatchGame extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NAME', 'required'),
-			array('PLAY_GROUND_ID, VISITOR, TOURNAMENT_ID, LOCAL, ACTIVE, ID_REFEREE', 'numerical', 'integerOnly'=>true),
+			array('NAME, TIME, PLAY_GROUND_ID', 'required'),
+			array('PLAY_GROUND_ID, VISITOR, STATUS,TOURNAMENT_ID, LOCAL, ACTIVE, ID_REFEREE', 'numerical', 'integerOnly'=>true),
 			array('GROUP', 'length', 'max'=>10),
 			array('NAME', 'length', 'max'=>100),
 			array('TIME', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID, PLAY_GROUND_ID, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
+			array('ID, PLAY_GROUND_ID,STATUS, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,7 +92,7 @@ class MatchGame extends CActiveRecord
 			'lOCAL' => array(self::BELONGS_TO, 'Team', 'LOCAL'),
 			'rEFEREE' => array(self::BELONGS_TO, 'Referee', 'ID_REFEREE'),
 			'pLAYGROUND' => array(self::BELONGS_TO, 'PlayGround', 'PLAY_GROUND_ID'),
-			'tblCatResults' => array(self::MANY_MANY, 'CatResult', 'tbl_match_result(MATCH_ID, RESULT_ID)'),
+			'matchResults' => array(self::HAS_MANY, 'MatchResult', 'MATCH_ID'),
 			'playerResults' => array(self::HAS_MANY, 'PlayerResult', 'MATCH_ID'),
 		);
 	}

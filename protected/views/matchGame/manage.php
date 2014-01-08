@@ -1,7 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Match'=>array('index'),
-	'Manage',
+	'Tournaments'=>array('tournament/index'),
+	$model->tOURNAMENT->NAME=>array('tournament/manage','id'=>$model->TOURNAMENT_ID),
+	'Resultados'=>array('tournament/manageResults','id'=>$model->TOURNAMENT_ID),
+	'JORNADA '.$model->GROUP=>array('tournament/manageResults','id'=>$model->TOURNAMENT_ID, 'roundId'=>$model->GROUP),
+	'Partido '.$model->lOCAL->NAME.' vs '.$model->vISITOR->NAME	
+		
 );
 
 $this->menu=array(
@@ -10,6 +14,24 @@ $this->menu=array(
 );
 ?>
 
-<h1>Manage Match</h1>
+<h3>Asignar Resultados</h3>
+
+<div class="view">
+	
+		<?php $this->widget('bootstrap.widgets.TbDetailView', array(
+			'type'=>'striped bordered condensed',
+		    'data'=>$model,
+		    'attributes'=>array(
+		        array('name'=>'ID', 'label'=>'Torneo', 'value'=>$model->tOURNAMENT->NAME),
+		     //	   array('name'=>'NAME', 'label'=>'Nombre del torneo'),
+		        array('name'=>'GROUP', 'label'=>'# Jornada', ),
+		    	array('name'=>'NAME', 'label'=>'# Partido', ),
+				array('name'=>'NAME', 'label'=>'Equipos', 'value'=>$model->lOCAL->NAME.' vs '.$model->vISITOR->NAME ),
+		    		
+		
+		    ),
+		)); ?>
+	
+	</div>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model,'matchResults'=>$matchResults)); ?>

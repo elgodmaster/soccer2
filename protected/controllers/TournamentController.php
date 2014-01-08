@@ -35,7 +35,7 @@ class TournamentController extends Controller
 						'users'=>array('@'),
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
-						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule'),
+						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -254,6 +254,85 @@ class TournamentController extends Controller
 	}
 
 
+	/**
+	 * Manages march results of tournament
+	 * it support post and get methods
+	 * @param integer $id
+	 * @return multitype:
+	 */
+	public function actionManageResults($id){
+		
+		$model = $this->loadModel($id);
+		$currentRound = 1;
+		
+		$currentRound = isset($_GET['roundId']) ? $_GET['roundId'] : 1;
+		
+		/**
+		 * Get the mandatory id for score
+		 */
+		$MATCH_TYPE = 3;
+		
+		$ACTIVE = 1;
+		
+		$matchGame = MatchGame::model()->findByPk(109);
+		
+		$results = $matchGame->matchResults;
+		
+		/**
+		 * Validate if exists more than 1 match
+		 * true: continue
+		 * false: redirect to home
+		 */	if (1){}
+		
+		/**
+		 * Evaluate  current Round
+		 */if(1){}
+		
+		
+		
+
+/*
+		$currentResults = $matchGame->matchResults;
+		
+		$catResult = new CatResult();
+		
+		$catResult->TYPE_RESULT = $MATCH_TYPE;
+		
+		$catResult->ACTIVE = $ACTIVE;
+		
+		$catResults = array();
+		
+		$catResults = $catResult->search()->getData();
+		
+		$matchResults = array();
+		
+		foreach ($catResults as $_catResult){
+		
+				
+			$matchResult = MatchResult::model()->findByPk(array('RESULT_ID'=>$_catResult->ID, 'MATCH_ID'=>$id));
+				
+			if($matchResult === null){
+		
+				$matchResult = new MatchResult();
+		
+				$matchResult->MATCH_ID = $id;
+					
+				$matchResult->RESULT_ID = $_catResult->ID;
+					
+			}
+		
+			$matchResults[] = $matchResult;
+		
+		}*/
+		
+		
+		$this->render('matchResults',array(
+				'model'=>$model,
+				'roundId'=>$currentRound,
+		));
+		
+	}
+	
 
 	/**
 	 * Controlller for manage matchs
@@ -273,7 +352,7 @@ class TournamentController extends Controller
 				
 			$matchArray = array();
 				
-			if (isset($_POST['MatchGame'])){
+			if (isset($_POST['saveRound'])){
 
 
 				$matchArray = $_POST['MatchGame'];
@@ -296,11 +375,35 @@ class TournamentController extends Controller
 					$dbMatch->attributes = $match;
 					
 					
+					/*Send to match validation*/
+					if ($this->performMatchValidation($dbMatch, $model)){
+											
+						$dbMatch->STATUS = 2;
+						$dbMatch->save();
 						
-					$dbMatch->save();
+					}
+						
+					
 						
 				}
 
+			} else if (isset($_POST['publishRound'])) {
+				
+
+				$matchArray = $_POST['MatchGame'];
+				
+				foreach ($matchArray as $match){
+				
+				
+				
+					if (isset($match['ID']) && $match['ID'] > 0){
+				
+						$dbMatch = MatchGame::model()->findByPk($match['ID']);
+						$dbMatch->STATUS = 3;
+						$dbMatch->save();
+				
+					}
+				}
 			}
 
 			$this->redirect(array('manageMatchs','id'=>$model->ID,'roundId'=>$roundId,));
@@ -1911,6 +2014,21 @@ main();
 	{
 		$d = DateTime::createFromFormat($format, $date);
 		return $d && $d->format($format) == $date;
+	}
+	
+	
+	
+	/**
+	 * Does  business validation between Tournament and MatchGame
+	 * @param MatchGame $match
+	 * @param Tournament $tournament
+	 * @return boolean
+	 */
+	function performMatchValidation($match, $tournament){
+			
+		
+		
+		return true;
 	}
 
 

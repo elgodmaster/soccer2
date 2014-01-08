@@ -91,9 +91,9 @@ class TeamPlayer extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('PLAYER_ID',$this->PLAYER_ID);
-	/*	$criteria->compare('TEAM_ID',$this->TEAM_ID);
-		$criteria->compare('ROLE_ID',$this->ROLE_ID);
+//		$criteria->compare('PLAYER_ID',$this->PLAYER_ID);
+		$criteria->compare('TEAM_ID',$this->TEAM_ID);
+	/*	$criteria->compare('ROLE_ID',$this->ROLE_ID);
 		$criteria->compare('ADD_DATE',$this->ADD_DATE,true);
 		$criteria->compare('ACTIVE',$this->ACTIVE);
 		$criteria->compare('NUMBER',$this->NUMBER,true);
