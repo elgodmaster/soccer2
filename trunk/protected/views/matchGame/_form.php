@@ -39,7 +39,7 @@
 						
 		</tr>
 		
-		<?$i++; }//End for?>
+		<?php $i++; }//End for?>
 		
 		
 	</table>
@@ -79,7 +79,7 @@
 				</td>
 			</tr>
 					
-		<? }//End for?>
+		<?php }//End for?>
 		</tbody>
 		
 	</table>		
@@ -121,7 +121,7 @@
 				</td>
 			</tr>
 					
-		<? }//End for?>
+		<?php }//End for?>
 		</tbody>
 	</table>		
 	
