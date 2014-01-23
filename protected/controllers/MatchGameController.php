@@ -42,7 +42,10 @@ class MatchGameController extends Controller
 					
 			$playerResultPost = $_POST['PlayerResult'];
 			
-			$playerResultModel = PlayerResult::model()->findByPK($playerResultPost['RESULT_ID'],$playerResultPost['RESULT_ID'],$playerResultPost['RESULT_ID']);
+			$playerResultModel = PlayerResult::model()->findByPK(
+														array('RESULT_ID'=>$playerResultPost['RESULT_ID'],
+															  'PLAYER_ID'=>$playerResultPost['MATCH_ID'],
+															  'MATCH_ID'=>$playerResultPost['PLAYER_ID']));
 			
 			
 			
