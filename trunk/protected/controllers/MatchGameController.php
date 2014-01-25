@@ -39,16 +39,30 @@ class MatchGameController extends Controller
 		
 		
 		if(isset($_POST['PlayerResult'])){
-					
-			$playerResultPost = $_POST['PlayerResult'];
+
+			$players = $_POST['PlayerResult'];
 			
-			$playerResultModel = PlayerResult::model()->findByPK(
-														array('RESULT_ID'=>$playerResultPost['RESULT_ID'],
-															  'PLAYER_ID'=>$playerResultPost['MATCH_ID'],
-															  'MATCH_ID'=>$playerResultPost['PLAYER_ID']));
+			foreach ($players as $playerResultPost)	{	
 			
+			$catResult = isset($playerResultPost['RESULT_ID']) ? $playerResultPost['RESULT_ID'] : -1 ;
+			$matchId =  isset($playerResultPost['MATCH_ID']) ? $playerResultPost['MATCH_ID'] : -1;			
 			
+			$playerResult = PlayerResult::model()->findByPK(array('RESULT_ID'=>$catResult, 'PLAYER_ID'=>$playerId, 'MATCH_ID'=>$matchId));
 			
+			if ($playerResult != null){
+				
+				$playerResult->attributes = $playerResultPost;
+				$playerResult->save();
+				
+			}else {
+				
+				throw new CHttpException(404,'The requested page does not exist.');
+				
+			}
+			
+			}
+			
+			$this->redirect(array('manage','id'=>$matchId));
 			
 		}
 		
@@ -74,7 +88,9 @@ class MatchGameController extends Controller
 				
 				$playerResult->MATCH_ID = $id;
 				$playerResult->PLAYER_ID = $playerId;
-				$playerResult->RESULT_ID = $_catResult->ID;				
+				$playerResult->RESULT_ID = $_catResult->ID;	
+
+				$playerResult->save();
 				
 			}
 			

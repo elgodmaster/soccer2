@@ -35,7 +35,7 @@ class TournamentController extends Controller
 						'users'=>array('@'),
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
-						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults'),
+						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -787,9 +787,7 @@ class TournamentController extends Controller
 		if(isset($_POST['Tournament']))
 		{
 			$model->attributes=$_POST['Tournament'];
-			$model->STATUS = 2;
-			
-			
+					
 			if($model->save()){
 				Yii::app()->user->setFlash('success', '<strong>!Listo.</strong> Guardado Correctamente.');
 				$this->redirect(array('manage','id'=>$model->ID));
@@ -821,10 +819,7 @@ class TournamentController extends Controller
 		if(isset($_POST['Tournament']))
 		{
 			$model->attributes=$_POST['Tournament'];
-			
-			$model->STATUS = 2;
-				
-				
+							
 			if($model->save()){
 				Yii::app()->user->setFlash('success', '<strong>!Listo.</strong> Guardado Correctamente.');
 				$this->redirect(array('manage','id'=>$model->ID));
@@ -865,10 +860,6 @@ class TournamentController extends Controller
 			$model->SCHEDULE_D = implode(",", is_array($schedule['SCHEDULE_D'])? $schedule['SCHEDULE_D'] : array());
 			}catch (Exception $ex){			
 			}
-			
-			
-			$model->STATUS = 2;
-			
 			
 			if($model->save()){
 				Yii::app()->user->setFlash('success', '<strong>!Listo.</strong> Guardado Correctamente.');
@@ -1615,6 +1606,88 @@ class TournamentController extends Controller
 	
 	}
 	
+	/**
+	 * does the publication for a once round
+	 * 
+	 * @param integer $id
+	 * @return number
+	 */
+	public function actionPublish($id){
+
+		
+		/*$mail = new YiiMailer('contact', array('message' => 'Message to send', 'name' => 'John Doe', 'description' => 'Contact form'));
+		
+		$mail->setFrom('jesus.nataren@gmail.com', 'Jesus Nataren');
+		$mail->setTo(Yii::app()->params['adminEmail']);
+		$mail->setSubject('Proxima Jornada');*/
+		
+		$mail = new YiiMailer();
+		//$mail->clearLayout();//if layout is already set in config
+		/*$mail->setFrom('jesus.nataren@gmail.com', 'Jesus Nataren');
+		$mail->setTo(Yii::app()->params['adminEmail']);
+		$mail->setSubject('Mail subject');
+		$mail->setBody('Simple message');
+		$mail->send();*/
+		
+		
+	
+		//Tell PHPMailer to use SMTP
+		$mail->isSMTP();
+		//Enable SMTP debugging
+		// 0 = off (for production use)
+		// 1 = client messages
+		// 2 = client and server messages
+		$mail->SMTPDebug = 2;
+		//Ask for HTML-friendly debug output
+		$mail->Debugoutput = 'html';
+		//Set the hostname of the mail server
+		$mail->Host = 'mail.google.com';
+		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+		$mail->Port = 25;
+		//Set the encryption system to use - ssl (deprecated) or tls
+		//$mail->SMTPSecure = 'tls';
+		//Whether to use SMTP authentication
+		$mail->SMTPAuth = true;
+		//Username to use for SMTP authentication - use full email address for gmail
+		$mail->Username = "jesus.nataren@gmail.com";
+		//Password to use for SMTP authentication
+		$mail->Password = "K4r3n621Qu3tz41198";
+		//Set who the message is to be sent from
+		$mail->setFrom('jjnataren@hotmail.com', 'Jesus Nataren');
+		//Set an alternative reply-to address
+		//$mail->addReplyTo('replyto@example.com', 'First Last');
+		//Set who the message is to be sent to
+		$mail->addAddress('jesus.nataren@gmail.com', 'Jesus Nataren');
+		//Set the subject line
+		$mail->Subject = 'PHPMailer GMail SMTP test';
+		//Read an HTML message body from an external file, convert referenced images to embedded,
+		//convert HTML into a basic plain-text alternative body
+		$mail->msgHTML('<html><body><H1>HELLO</H1><body></html>');
+		//Replace the plain text body with one created manually
+		$mail->AltBody = 'This is a plain-text message body';
+		//Attach an image file
+		
+		
+		//send the message, check for errors
+		if (!$mail->send()) {
+		Yii::app()->user->setFlash('info', '<strong>Publicado. </strong>Se envio email a los participantes del torneo. ');
+		} else {
+		Yii::app()->user->setFlash('error', '<strong>Error. </strong>No se envio el email. ');
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$this->redirect(array('manageMatchs','id'=>$id));
+		
+		return 1;
+		
+	}
 	
 	/**
 	 * This function generates a fixture list.
@@ -2015,6 +2088,9 @@ main();
 		$d = DateTime::createFromFormat($format, $date);
 		return $d && $d->format($format) == $date;
 	}
+	
+	
+	
 	
 	
 	
