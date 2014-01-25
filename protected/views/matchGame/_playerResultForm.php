@@ -49,20 +49,20 @@
 			
 		<tr>
 			<td><?php echo $playerResult->rESULT->NAME; ?></td>
-			<td><?php echo $form->textField($playerResult,"TOTAL",array('size'=>2,'maxlength'=>2,'class'=>'input-mini')); ?></td>					
+			<td><?php echo $form->textField($playerResult,"[$i]TOTAL",array('size'=>2,'maxlength'=>2,'class'=>'input-mini')); ?></td>					
 			
-			<td><?php echo $form->textField($playerResult,"COMMENT",array('size'=>15,'maxlength'=>50)); ?>
+			<td><?php echo $form->textField($playerResult,"[$i]COMMENT",array('size'=>15,'maxlength'=>50)); ?>
 			
-			<?php 	echo $form->hiddenField($playerResult,"RESULT_ID",array('value'=>$playerResult->RESULT_ID));
-					echo $form->hiddenField($playerResult,"MATCH_ID",array('value'=>$playerResult->MATCH_ID));
-					echo $form->hiddenField($playerResult,"PLAYER_ID",array('value'=>$playerResult->PLAYER_ID));
+			<?php 	echo $form->hiddenField($playerResult,"[$i]RESULT_ID",array('value'=>$playerResult->RESULT_ID));
+					echo $form->hiddenField($playerResult,"[$i]MATCH_ID",array('value'=>$playerResult->MATCH_ID));
+					echo $form->hiddenField($playerResult,"[$i]PLAYER_ID",array('value'=>$playerResult->PLAYER_ID));
 					
 			?>
 			</td>
 						
 		</tr>
 		
-		<?$i++; }//End for?>
+		<?php $i++; }//End for?>
 		
 	</table>		
 

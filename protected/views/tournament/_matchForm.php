@@ -182,7 +182,14 @@ $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
 				$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
 			else if($matchGames[0]->STATUS < 3) 	
 	 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
-	?>
+			else if($matchGames[0]->STATUS == 3)
+				$this->widget('bootstrap.widgets.TbButton', array(
+								    'label'=>'Pubilcar',
+								    'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+								    'size'=>'small', // null, 'large', 'small' or 'mini'
+								   	'url'=>array('publish', 'id'=>$model->ID),
+									));
+			?>
 	</div>
 
 
