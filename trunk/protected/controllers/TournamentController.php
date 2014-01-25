@@ -1637,13 +1637,18 @@ class TournamentController extends Controller
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
-		$mail->SMTPDebug = 2;
+		$mail->SMTPDebug = 0;
 		//Ask for HTML-friendly debug output
-		$mail->Debugoutput = 'html';
+		//$mail->Debugoutput = 'html';
 		//Set the hostname of the mail server
-		$mail->Host = 'mail.google.com';
+		//$mail->Host = 'mail.google.com';
 		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-		$mail->Port = 25;
+		//$mail->Port = 465;
+		$mail->Host = 'smtp.gmail.com';
+		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+		$mail->Port = 587;
+		//Set the encryption system to use - ssl (deprecated) or tls
+		$mail->SMTPSecure = 'tls';
 		//Set the encryption system to use - ssl (deprecated) or tls
 		//$mail->SMTPSecure = 'tls';
 		//Whether to use SMTP authentication
@@ -1653,13 +1658,13 @@ class TournamentController extends Controller
 		//Password to use for SMTP authentication
 		$mail->Password = "K4r3n621Qu3tz41198";
 		//Set who the message is to be sent from
-		$mail->setFrom('jjnataren@hotmail.com', 'Jesus Nataren');
+		$mail->setFrom('jesus.nataren@gmail.com', 'Jesus Nataren');
 		//Set an alternative reply-to address
 		//$mail->addReplyTo('replyto@example.com', 'First Last');
 		//Set who the message is to be sent to
-		$mail->addAddress('jesus.nataren@gmail.com', 'Jesus Nataren');
+		$mail->addAddress('jjnataren@hotmail.com', 'Jesus Nataren');
 		//Set the subject line
-		$mail->Subject = 'PHPMailer GMail SMTP test';
+		$mail->Subject = 'Ligas de futbol. Programacion de fechas';
 		//Read an HTML message body from an external file, convert referenced images to embedded,
 		//convert HTML into a basic plain-text alternative body
 		$mail->msgHTML('<html><body><H1>HELLO</H1><body></html>');
@@ -1669,10 +1674,10 @@ class TournamentController extends Controller
 		
 		
 		//send the message, check for errors
-		if (!$mail->send()) {
+		if ($mail->send()) {
 		Yii::app()->user->setFlash('info', '<strong>Publicado. </strong>Se envio email a los participantes del torneo. ');
 		} else {
-		Yii::app()->user->setFlash('error', '<strong>Error. </strong>No se envio el email. ');
+		Yii::app()->user->setFlash('error', '<strong>Error. </strong>No se envio el email. ');//$mail->ErrorInfo);
 		}
 		
 		

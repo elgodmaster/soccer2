@@ -74,7 +74,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=soccer',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		
