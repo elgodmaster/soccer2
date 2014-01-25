@@ -20,6 +20,14 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'type'=>'horizontal',
 )); ?>
  
+ <?php $this->widget('bootstrap.widgets.TbAlert', array(
+        'block'=>false, // display a larger alert block?
+        'fade'=>true, // use transitions?
+        'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+        )); 
+
+?>
+ 
  <?php if ($model->STATUS<4) {?>
  
 <?php $this->widget('bootstrap.widgets.TbTabs', array(
