@@ -19,6 +19,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'ext.jasPHP.*',
+		'ext.yiimailer.YiiMailer'	
 	),
 		'aliases' => array(
 				//If you used composer your path should be
@@ -73,7 +74,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=soccer',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		
