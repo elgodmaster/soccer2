@@ -27,6 +27,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         )); 
 
 ?>
+
  
  <?php if ($model->STATUS<4) {?>
  

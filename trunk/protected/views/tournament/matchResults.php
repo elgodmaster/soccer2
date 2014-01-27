@@ -77,7 +77,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  
  ?>
  
- <table class="table table-hover" >
+ <table class="table table-hover">
  	
   	<tbody>
  <?php foreach ($matchGames as $match){ ?>
@@ -110,12 +110,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  		</tr>
  		<tr>
  			<th></th>
- 			<th>
+ 			<th style="text-align: center;">
  			<?php  	echo CHtml::image($match->lOCAL->getLogo(), '', array("style"=>"width:25px;height:25px;" ,"class"=>"img-circle"));
 					echo '&nbsp;'.$match->lOCAL->NAME;
 			?>
 			</th>		
- 			<th>
+ 			<th style="text-align: center;">
  			<?php  	echo CHtml::image($match->vISITOR->getLogo(), '', array("style"=>"width:25px;height:25px;", "class"=>"img-circle"));
 					echo '&nbsp;'.$match->vISITOR->NAME;
 			?>
@@ -129,32 +129,36 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  	
  	
  		<tr>
- 			<td><p class="text-center"><?php echo $result->cAT_RESULT->NAME?></p></td>
- 			<td>
+ 			<td ><p class="text-center"><?php echo $result->cAT_RESULT->NAME?></p></td>
+ 			<td style="text-align: center;">
  			<?php 
  			
  			//echo ($result->TOTAL_LOCAL > $result->TOTAL_VISITOR)? '<p class="text-success">'.$result->TOTAL_LOCAL.'</p>' : $result->TOTAL_LOCAL
  			
  			if($result->TOTAL_LOCAL > $result->TOTAL_VISITOR){
+
+			echo "<strong>$result->TOTAL_LOCAL<strong>";
  				
-					 $this->widget('bootstrap.widgets.TbBadge', array(
+			/*		 $this->widget('bootstrap.widgets.TbBadge', array(
 							'type'=>'success', // 'success', 'warning', 'important', 'info' or 'inverse'
 							'label'=>$result->TOTAL_LOCAL,
-					)); 		
+					));*/ 		
 		
  			}else if($result->TOTAL_LOCAL == $result->TOTAL_VISITOR){
- 				
-					$this->widget('bootstrap.widgets.TbBadge', array(
+ 			
+			echo $result->TOTAL_LOCAL;	
+					/*$this->widget('bootstrap.widgets.TbBadge', array(
 							'type'=>'info', // 'success', 'warning', 'important', 'info' or 'inverse'
 							'label'=>$result->TOTAL_LOCAL,
-					));
+					));*/
 
  			}else{
  			
-					$this->widget('bootstrap.widgets.TbBadge', array(
+			echo $result->TOTAL_LOCAL;
+					/*$this->widget('bootstrap.widgets.TbBadge', array(
 							'type'=>'important', // 'success', 'warning', 'important', 'info' or 'inverse'
 							'label'=>$result->TOTAL_LOCAL,
-					));
+					));*/
 	
 
  			}
@@ -162,31 +166,35 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  			?>
  			
  			</td>
- 			<td>
+ 			<td style="text-align: center;">
  			<?php 
  			 
  			//echo ($result->TOTAL_VISITOR > $result->TOTAL_LOCAL)? '<p class="text-success">'.$result->TOTAL_VISITOR.'</p>' : $result->TOTAL_VISITOR
  			
  			if($result->TOTAL_VISITOR > $result->TOTAL_LOCAL){
+		
+			echo '<p class="text-center"><strong>'.$result->TOTAL_VISITOR.'<strong></p>';
  					
- 				$this->widget('bootstrap.widgets.TbBadge', array(
+ 			/*	$this->widget('bootstrap.widgets.TbBadge', array(
  						'type'=>'success', // 'success', 'warning', 'important', 'info' or 'inverse'
  						'label'=>$result->TOTAL_VISITOR,
- 				));
+ 				));*/
  			
  			}else if ($result->TOTAL_VISITOR == $result->TOTAL_LOCAL){
  					
- 				$this->widget('bootstrap.widgets.TbBadge', array(
+ 		/*		$this->widget('bootstrap.widgets.TbBadge', array(
  						'type'=>'info', // 'success', 'warning', 'important', 'info' or 'inverse'
  						'label'=>$result->TOTAL_VISITOR,
- 				));
+ 				));*/
+			echo $result->TOTAL_VISITOR;
  			
  			}else{
  				
-				$this->widget('bootstrap.widgets.TbBadge', array(
+		/*		$this->widget('bootstrap.widgets.TbBadge', array(
 						'type'=>'important', // 'success', 'warning', 'important', 'info' or 'inverse'
 						'label'=>$result->TOTAL_VISITOR,
-				));
+				));*/
+			echo $result->TOTAL_VISITOR;
 
  			}
  			

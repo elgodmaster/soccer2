@@ -157,7 +157,7 @@ class MatchGameController extends Controller
 						
 				}
 				
-				$this->redirect(array('manage','id'=>$id));
+				$this->redirect(array('tournament/manageResults','id'=>$dbMatchResult->mATCH->TOURNAMENT_ID, 'roundId'=>$dbMatchResult->mATCH->GROUP));
 		
 		}
 		

@@ -35,7 +35,7 @@ class TournamentController extends Controller
 						'users'=>array('@'),
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
-						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish'),
+						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -2112,5 +2112,82 @@ main();
 		return true;
 	}
 
+	
+	/**
+	 * Retrieves dashboard tournamen points
+	 * 
+	 * @param integer $id
+	 * @return number
+	 */
+	public function actionPointBoard($id){
+		
+		
+		$SCORE_KEY = 1;
+		$model = $this->loadModel($id);
+		$board = array();
+		
+		foreach ($model->teams as $team){
+			
+			$board[$team->ID_TEAM]['POINTS'] = 0;
+			$board[$team->ID_TEAM]['JJ'] = 0;
+			$board[$team->ID_TEAM]['JG'] = 0;
+			$board[$team->ID_TEAM]['JE'] = 0;
+			$board[$team->ID_TEAM]['JP'] = 0;
+			
+		}
+
+		foreach ($model->matchGames as $matchGame){
+			
+			
+			foreach ($matchGame->matchResults as $result) {
+				
+				if($result->RESULT_ID == $SCORE_KEY ){
+					
+					$board[$matchGame->LOCAL]['JJ'] += 1; 
+					$board[$matchGame->VISITOR]['JJ'] += 1;
+					
+					if($result->TOTAL_LOCAL > $result->TOTAL_VISITOR){
+						
+						$board[$matchGame->LOCAL]['POINTS'] += 3;
+						
+						$board[$matchGame->LOCAL]['JG'] += 1;
+						$board[$matchGame->VISITOR]['JP'] += 1;
+							
+						
+					}elseif ($result->TOTAL_LOCAL == $result->TOTAL_VISITOR){
+
+						$board[$matchGame->LOCAL]['POINTS'] += 1;
+						$board[$matchGame->VISITOR]['POINTS'] += 1;
+						
+						$board[$matchGame->LOCAL]['JE'] += 1;
+						$board[$matchGame->VISITOR]['JE'] += 1;
+							
+						
+					}else {
+						
+						$board[$matchGame->VISITOR]['POINTS'] += 3;
+						
+						$board[$matchGame->LOCAL]['JP'] += 1;
+						$board[$matchGame->VISITOR]['JG'] += 1;
+							
+						
+					} 
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		$this->render('pointsBoard',array(
+				'model'=>$model,
+				'board'=>$board,
+		));
+		
+		
+		
+	}
+	
 
 }
