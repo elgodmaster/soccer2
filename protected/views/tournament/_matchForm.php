@@ -2,32 +2,32 @@
 
 
 
-	
-	<?php 
 
-	echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
-	echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>';
-	echo "<br />";
+<?php 
 
-	?>
-	
-	
-	<div class="view">
-	
+echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
+echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>';
+echo "<br />";
+
+?>
+
+
+<div class="view">
+
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
-	'type'=>'striped bordered condensed',
-    'data'=>$matchGames[0],
-    'attributes'=>array(
+			'type'=>'striped bordered condensed',
+			'data'=>$matchGames[0],
+			'attributes'=>array(
         array('name'=>'ID', 'label'=>'ID'),
      	array('name'=>'STATUS', 'label'=>'ESTATUS', 'value'=>MatchGame::model()->aStatus[$matchGames[0]->STATUS]),
-       
+
 
     ),
 )); ?>
-	
 
-	
-	</div>
+
+
+</div>
 
 <div class="form">
 
@@ -37,12 +37,12 @@
 )); ?>
 
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<?php echo $form->errorSummary($model); ?>
 	<?php echo $form->errorSummary($matchGames[0]); ?>
 
@@ -74,7 +74,7 @@
 				{
 					?>
 				<tr>
-					
+
 
 					<?php 	
 
@@ -85,7 +85,7 @@
 					echo $matchGames[$i]->lOCAL->NAME;
 					echo "</td>";
 
-					
+
 
 					echo '<td  align="center" valign="top">';
 					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;"));
@@ -99,69 +99,69 @@
 					echo $form->hiddenField($matchGames[$i],"[$i]NAME", array('value'=>$i+1));
 					echo "</td>";
 
-					
+
 
 					if ($matchGames[$i]->STATUS < 3) {
-					
-					echo "<td>";
-					Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
-						
-					$this->widget('CJuiDateTimePicker',array(
-							'model'=>$matchGames[$i], //Model object
-							'attribute'=>"[$i]TIME", //attribute name
-							'language'=>'es',
-							'mode'=>'datetime', //use "time","date" or "datetime" (default)
-							'options'=>array( "dateFormat"=>'yy-mm-dd', 'timeFormat'=>'hh:mm'),
-						
-							'htmlOptions'=>array('class'=>'input-medium',),
-							));
+							
+						echo "<td>";
+						Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
 
-		
-				
-			
-					
-			
-/*
-$this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
-		'model'=>$matchGames[$i],
-		'attribute'=>"[$i]TIME",
-		'type'=>'datetime', // available parameter is datetime or time
-		//'language'=>'de', // default to english
-		//'themeName'=>'sunny', // jquery ui theme, file is under assets folder
-		'options'=>array(
+						$this->widget('CJuiDateTimePicker',array(
+								'model'=>$matchGames[$i], //Model object
+								'attribute'=>"[$i]TIME", //attribute name
+								'language'=>'es',
+								'mode'=>'datetime', //use "time","date" or "datetime" (default)
+								'options'=>array( "dateFormat"=>'yy-mm-dd', 'timeFormat'=>'hh:mm'),
+
+								'htmlOptions'=>array('class'=>'input-medium',),
+						));
+
+
+
+							
+							
+							
+						/*
+						 $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
+						 		'model'=>$matchGames[$i],
+						 		'attribute'=>"[$i]TIME",
+						 		'type'=>'datetime', // available parameter is datetime or time
+						 		//'language'=>'de', // default to english
+						 		//'themeName'=>'sunny', // jquery ui theme, file is under assets folder
+						 		'options'=>array(
 				// put your js options here check http://trentrichardson.com/examples/timepicker/#slider_examples for more info
-				'timeFormat'=>'HH:mm:ss',
-				'showSecond'=>true,
-				'hourGrid'=>4,
-				'minuteGrid'=>10,
+						 				'timeFormat'=>'HH:mm:ss',
+						 				'showSecond'=>true,
+						 				'hourGrid'=>4,
+						 				'minuteGrid'=>10,
 		),
-		'htmlOptions'=>array(
+						 		'htmlOptions'=>array(
 				'class'=>'input-medium'
 		)
-));
-*/
-				echo "</td>";
-				
-				
+						 ));
+						*/
+						echo "</td>";
 
-				echo "<td>";
-				echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
-				echo "</td>";
 
-				echo "<td>";
-				echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
-				echo "</td>";
-				
+
+						echo "<td>";
+						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
+						echo "</td>";
+
+						echo "<td>";
+						echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
+						echo "</td>";
+
 					}else {
-						
+
 						echo '<td valign="bottom"><input  type="text" value="'.$matchGames[$i]->TIME.'" readonly="readonly" class="input-medium" /></td>';
 						echo '<td valign="baseline"><input  type="text" value="'.$matchGames[$i]->pLAYGROUND->NAME.'" readonly="readonly" class="input-medium" /></td>';
 						echo '<td valign="middle"><input  type="text" value="'.$matchGames[$i]->rEFEREE->NAME.'" readonly="readonly" class="input-medium" /></td>';
 
 					}
 
-				if($matchGames[$i]->STATUS < 2)$readyToPublish = false;
-				?>
+					if($matchGames[$i]->STATUS < 2)$readyToPublish = false;
+					?>
 
 
 
@@ -172,23 +172,36 @@ $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
 					<td colspan="6">&nbsp;</td>
 				</tr>
 
-				<?php }//end for?> 
+				<?php }//end for?>
 
 			</tbody>
 		</table>
 	</fieldset>
 	<div class="form-actions">
-	<?php if (!$readyToPublish)
-				$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
-			else if($matchGames[0]->STATUS < 3) 	
-	 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
-			else if($matchGames[0]->STATUS == 3)
-				$this->widget('bootstrap.widgets.TbButton', array(
-								    'label'=>'Pubilcar',
-								    'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-								    'size'=>'small', // null, 'large', 'small' or 'mini'
-								   	'url'=>array('publish', 'id'=>$model->ID),
-									));
+		<?php if (!$readyToPublish)
+			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
+		else if($matchGames[0]->STATUS < 3)
+			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
+		else if($matchGames[0]->STATUS == 3){
+			$this->widget('bootstrap.widgets.TbButton', array(
+					'label'=>'Publicar',
+					'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+					'size'=>'small', // null, 'large', 'small' or 'mini'
+					'url'=>array('publish', 'id'=>$model->ID),
+			));
+	echo "<br />";
+	echo "<br />";
+	
+	
+	$this->widget('ext.yii-facebook-opengraph.plugins.LikeButton', array(
+			'href' => 'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
+			'show_faces'=>true,
+			'send' => true,
+	));
+	
+
+
+}
 			?>
 	</div>
 

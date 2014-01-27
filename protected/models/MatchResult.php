@@ -56,6 +56,7 @@ class MatchResult extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'cAT_RESULT' => array(self::BELONGS_TO, 'CatResult', 'RESULT_ID'),
+			'mATCH' => array(self::BELONGS_TO, 'MatchGame', 'MATCH_ID'),
 		);
 		
 	}
