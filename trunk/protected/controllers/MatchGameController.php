@@ -110,6 +110,41 @@ class MatchGameController extends Controller
 		
 	}
 	
+	/**
+	 * Evaluates a particular match
+	 * @param integer $id
+	 * @return multitype:
+	 */
+	public function actionValidate($id)
+	{
+		
+		$CERRADO = 6;
+		
+		$SCORE_RESULT = 1;
+		
+		$model = $this->loadModel($id);
+		
+		foreach ($model->matchResults as $result){
+			
+			if ($result->RESULT_ID == $SCORE_RESULT && $result->TOTAL_LOCAL != null && $result->TOTAL_VISITOR != null){
+				
+				$model->STATUS = $CERRADO;
+				echo "true";
+				$model->save();
+				return ;
+				
+			}
+			
+			
+			
+		}
+		
+		echo "Aun no se califica el resultado";
+		throw new CHttpException(500,'No puedes dar vobo en este partido aun'); // confirm http estatus code = 400 Bad Request
+				
+		
+	}
+	
 	
 	/**
 	 * Manages MatchGame 
@@ -121,6 +156,8 @@ class MatchGameController extends Controller
 		$MATCH_TYPE = 3;
 		
 		$ACTIVE = 1;
+		
+		$STATUS_EVALUANDO = 5;
 		
 		$model = $this->loadModel($id);
 		
@@ -148,14 +185,16 @@ class MatchGameController extends Controller
 		
 					
 					if($dbMatchResult === null) $dbMatchResult = new MatchResult();
-		
-						
 						
 					$dbMatchResult->attributes = $matchResult;
 						
 					$dbMatchResult->save();
 						
 				}
+				
+				$model->STATUS = $STATUS_EVALUANDO;
+				
+				$model->save();
 				
 				$this->redirect(array('tournament/manageResults','id'=>$dbMatchResult->mATCH->TOURNAMENT_ID, 'roundId'=>$dbMatchResult->mATCH->GROUP));
 		

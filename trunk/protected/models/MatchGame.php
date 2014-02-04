@@ -47,6 +47,8 @@ class MatchGame extends CActiveRecord
 			2=>'LISTO PARA PROGRAMAR',
 			3=>'PROGRAMADO',
 			4=>'PUBLICADO',
+			5=>'EVALUANDO',
+			6=>'CERRADO',
 				
 	);
 	

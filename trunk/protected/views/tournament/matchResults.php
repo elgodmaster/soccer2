@@ -101,10 +101,31 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 								    'size'=>'mini', // null, 'large', 'small' or 'mini'
 								   	'url'=>array('matchGame/manage', 'id'=>$match->ID),
 									)); ?>
+									
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
-			    'label'=>'OK', 
-			    'type'=>'success', 
+				'url'=>array('matchGame/validate', 'id'=>$match->ID),
+			    'label'=>($match->STATUS!=6)?'Listo':'Evaluado',
+				'buttonType' => 'ajaxButton',
+			    'type'=>($match->STATUS!=6)?'warning': 'success',
+				'disabled'=>($match->STATUS==6),		
+				'htmlOptions'=>array('id'=>'_listo'.$match->ID),
 			    'size'=>'mini', 
+				'ajaxOptions' => array(
+								'type' => 'get',
+								'success'=>"js:function(vals){
+                            	 								
+																	$('#_listo$match->ID').html('Evaluado');
+																	$('#_listo$match->ID').attr('disabled','true');
+																	$('#_listo$match->ID').attr('class','btn btn-success btn-mini');
+																																    
+                											}",
+						
+								'error'=>"js:function(vals){
+															 alert('No puedes autorizar este partido aun, razon: '.concat(String(vals)));
+ 															}",
+									   ),
+				
+				
 				)); ?>
  			</td>
  		</tr>
@@ -231,3 +252,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 
 <?php //echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGames,'playGround'=>$playGround)); ?>
+
+
+

@@ -36,16 +36,16 @@ $this->menu=array(
  </thead>
  
  <tbody>
- 	<?php $i=0; foreach ($model->teams as $team){ ?>
+ 	<?php $i=0; foreach ($board as $reg){//foreach ($model->teams as $team){ ?>
  		
 		<tr>
 			<td><?php echo $i+1;?></td>
-			<td><?php echo $team->iDTEAM->NAME;?></td>
-			<td><?php echo $board[$team->ID_TEAM]['POINTS'];?></td>
-			<td><?php echo $board[$team->ID_TEAM]['JJ'];?></td>
-			<td><?php echo $board[$team->ID_TEAM]['JG'];?></td>
-			<td><?php echo $board[$team->ID_TEAM]['JE'];?></td>
-			<td><?php echo $board[$team->ID_TEAM]['JP'];?></td>
+			<td><?php echo $reg['NAME'];?></td>
+			<td><?php echo $reg['POINTS'];?></td>
+			<td><?php echo $reg['JJ'];?></td>
+			<td><?php echo $reg['JG'];?></td>
+			<td><?php echo $reg['JE'];?></td>
+			<td><?php echo $reg['JP'];?></td>
 		
 		</tr> 	
  	
@@ -53,6 +53,8 @@ $this->menu=array(
  </tbody>
  
  </table>
+ 
+ 
  
  
  <?php

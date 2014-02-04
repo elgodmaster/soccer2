@@ -80,7 +80,7 @@ $this->menu=array(
 
         array('label'=>'Perfil'),
         array('label'=>'Datos generales', 'icon'=>'user', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_profileForm')),
-        array('label'=>'Documentos', 'icon'=>'file', 'url'=>array('manageDocuments','id'=>$model->ID)),
+        array('label'=>'Documentos', 'icon'=>'folder-open', 'url'=>array('manageDocuments','id'=>$model->ID)),
     	array('label'=>'Bases, Reglas y Convocatoria', 'icon'=>'pencil', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_ruleForm')),
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
@@ -96,13 +96,14 @@ $this->menu=array(
         array('label'=>'Configuracion'),
 		array('label'=>'Horarios', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
 		array('label'=>'Categoria y tipo de torneo', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
-		array('label'=>'Eliminatoría', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
+		array('label'=>'Eliminatoria', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
 
         array('label'=>'Jornadas'),
-        ($model->isEnabledToGenerateMatch() && $model->STATUS < 4) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), ): (($model->STATUS > 3)? array('label'=>'Horarios', 'icon'=>'th-large', 'url'=>array('manageMatchs','id'=>$model->ID), ) : null),
-		array('label'=>'Resultados', 'icon'=>'cog', 'url'=>array('manageResults','id'=>$model->ID), ),
+        ($model->isEnabledToGenerateMatch() && $model->STATUS < 4) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), ): (($model->STATUS > 3)? array('label'=>'Horarios', 'icon'=>'time', 'url'=>array('manageMatchs','id'=>$model->ID), ) : null),
+		array('label'=>'Temporada regular', 'icon'=>'retweet', 'url'=>array('manageResults','id'=>$model->ID), ),
+		array('label'=>'Clasificacion', 'icon'=>'random', 'url'=>array('clasification','id'=>$model->ID), ),
 		array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>

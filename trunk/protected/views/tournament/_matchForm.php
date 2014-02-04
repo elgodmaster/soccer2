@@ -194,7 +194,7 @@ echo "<br />";
 	
 	
 	$this->widget('ext.yii-facebook-opengraph.plugins.LikeButton', array(
-			'href' => 'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
+			'href' => array('manageMatchs','id'=>$model->ID),//'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
 			'show_faces'=>true,
 			'send' => true,
 	));
