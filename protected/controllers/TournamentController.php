@@ -35,7 +35,8 @@ class TournamentController extends Controller
 						'users'=>array('@'),
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
-						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments','uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard'),
+						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments',
+								'uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard','clasification'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -2035,26 +2036,26 @@ main();
 
 		if ($model->SCHEDULE_CONFIG == null || $model->SCHEDULE_D == null  ){
 				
-			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>Complete: Horarios');
+			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Complete: Horarios');
 				
 		}
 		
 		if (!$this->validateDate($model->START_DATE, 'Y-m-d')){
 		
-			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>No ha definido fecha de inicio para el torneo');
+			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>No ha definido fecha de inicio para el torneo');
 		
 		}
 		
 		if ($model->TYPE == 0 ){
 		
-			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>Seleccione el tipo de torneo');
+			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Seleccione el tipo de torneo');
 			
 		
 		}
 		
 		if ($model->START_E == null || $model->ELI_CONF == null || $model->WIN_PLACE == null  ){
 		
-			Yii::app()->user->setFlash('warning', '<strong>Configuración. </strong>Complete: Eliminatoría');
+			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Complete: EliminatorÃ­a');
 		
 		}
 		
@@ -2113,72 +2114,21 @@ main();
 	}
 
 	
+	
+	
+	
+	
 	/**
-	 * Retrieves dashboard tournamen points
+	 * Retrieves dashboard of  teams ranking
 	 * 
 	 * @param integer $id
 	 * @return number
 	 */
 	public function actionPointBoard($id){
 		
-		
-		$SCORE_KEY = 1;
 		$model = $this->loadModel($id);
-		$board = array();
 		
-		foreach ($model->teams as $team){
-			
-			$board[$team->ID_TEAM]['POINTS'] = 0;
-			$board[$team->ID_TEAM]['JJ'] = 0;
-			$board[$team->ID_TEAM]['JG'] = 0;
-			$board[$team->ID_TEAM]['JE'] = 0;
-			$board[$team->ID_TEAM]['JP'] = 0;
-			
-		}
-
-		foreach ($model->matchGames as $matchGame){
-			
-			
-			foreach ($matchGame->matchResults as $result) {
-				
-				if($result->RESULT_ID == $SCORE_KEY ){
-					
-					$board[$matchGame->LOCAL]['JJ'] += 1; 
-					$board[$matchGame->VISITOR]['JJ'] += 1;
-					
-					if($result->TOTAL_LOCAL > $result->TOTAL_VISITOR){
-						
-						$board[$matchGame->LOCAL]['POINTS'] += 3;
-						
-						$board[$matchGame->LOCAL]['JG'] += 1;
-						$board[$matchGame->VISITOR]['JP'] += 1;
-							
-						
-					}elseif ($result->TOTAL_LOCAL == $result->TOTAL_VISITOR){
-
-						$board[$matchGame->LOCAL]['POINTS'] += 1;
-						$board[$matchGame->VISITOR]['POINTS'] += 1;
-						
-						$board[$matchGame->LOCAL]['JE'] += 1;
-						$board[$matchGame->VISITOR]['JE'] += 1;
-							
-						
-					}else {
-						
-						$board[$matchGame->VISITOR]['POINTS'] += 3;
-						
-						$board[$matchGame->LOCAL]['JP'] += 1;
-						$board[$matchGame->VISITOR]['JG'] += 1;
-							
-						
-					} 
-					
-				}
-				
-			}
-			
-			
-		}
+		$board = $this->getRankingBoard($model);
 		
 		$this->render('pointsBoard',array(
 				'model'=>$model,
@@ -2186,6 +2136,125 @@ main();
 		));
 		
 		
+		
+	}
+	
+	/**
+	 * Retrieves  the clasification games
+	 * @param integer $id
+	 */
+	public function actionClasification($id){
+		
+		$model = $this->loadModel($id);
+		
+		$STATUS_CERRRADO = 6;
+		
+		foreach ($model->matchGames as $match){
+			
+			if($match->STATUS < $STATUS_CERRRADO){
+				
+				Yii::app()->user->setFlash('warning', '<strong>No disponible. </strong> Aun no termina la temporada regular');
+				$this->redirect(array('manage','id'=>$id));
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	/**
+	 * Retrieves a board ranking
+	 * @param integer $id
+	 * @return multitype:
+	 */
+	protected function getRankingBoard($model){
+		
+		
+		$SCORE_KEY = 1;	
+		$board = array();
+		$sortList = array();
+		
+		foreach ($model->teams as $team){
+				
+			$board[$team->ID_TEAM]['POINTS'] = 0;
+			$board[$team->ID_TEAM]['JJ'] = 0;
+			$board[$team->ID_TEAM]['JG'] = 0;
+			$board[$team->ID_TEAM]['JE'] = 0;
+			$board[$team->ID_TEAM]['JP'] = 0;
+			$board[$team->ID_TEAM]['NAME'] = $team->iDTEAM->NAME;
+				
+			$sortList[$team->ID_TEAM] = 0;
+				
+		}
+		
+		foreach ($model->matchGames as $matchGame){
+				
+				
+			foreach ($matchGame->matchResults as $result) {
+		
+				if($result->RESULT_ID == $SCORE_KEY ){
+						
+					$board[$matchGame->LOCAL]['JJ'] += 1;
+					$board[$matchGame->VISITOR]['JJ'] += 1;
+						
+		
+						
+					if($result->TOTAL_LOCAL > $result->TOTAL_VISITOR){
+		
+						$board[$matchGame->LOCAL]['POINTS'] += 3;
+		
+						$sortList[$matchGame->LOCAL] += 3;
+		
+						$board[$matchGame->LOCAL]['JG'] += 1;
+						$board[$matchGame->VISITOR]['JP'] += 1;
+							
+		
+					}elseif ($result->TOTAL_LOCAL == $result->TOTAL_VISITOR){
+		
+						$board[$matchGame->LOCAL]['POINTS'] += 1;
+						$board[$matchGame->VISITOR]['POINTS'] += 1;
+		
+						$sortList[$matchGame->VISITOR] += 1;
+						$sortList[$matchGame->LOCAL] += 1;
+		
+						$board[$matchGame->LOCAL]['JE'] += 1;
+						$board[$matchGame->VISITOR]['JE'] += 1;
+							
+		
+					}else {
+		
+						$board[$matchGame->VISITOR]['POINTS'] += 3;
+						$sortList[$matchGame->VISITOR] += 3;
+		
+						$board[$matchGame->LOCAL]['JP'] += 1;
+						$board[$matchGame->VISITOR]['JG'] += 1;
+							
+		
+					}
+						
+				}
+		
+			}
+				
+				
+		}
+		
+		
+		arsort($sortList);
+		
+		$ranking = array();
+		
+		foreach ($sortList as $key=>$value){
+			
+			$ranking[] = $board[$key];
+			
+		}
+		
+		return 	$ranking;
 		
 	}
 	
