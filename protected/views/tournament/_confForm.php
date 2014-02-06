@@ -41,9 +41,9 @@
 	<div class="span-20"> 
 	
 	  <?php echo $form->radioButtonListRow($model, 'WIN_PLACE', array(
-        'Primer Lugar',
-        'Primer y Segundo lugar',
-	 	'Primer, Segundo y Tercer lugar ',
+       1=> 'Primer Lugar',
+       2=> 'Primer y Segundo lugar',
+	   4 => 'Primer, Segundo y Tercer lugar ',
     )); ?>
    		
 		</div>	

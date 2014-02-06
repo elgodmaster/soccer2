@@ -8,6 +8,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 		array('label'=>'Crear Torneo', 'url'=>array('create')),
 		array('label'=>'Manage Torneo', 'url'=>array('admin')),
+		array('label'=>'Delete Tournament', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
+		
 );
 ?>
 

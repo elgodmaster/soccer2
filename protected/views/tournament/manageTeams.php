@@ -15,6 +15,14 @@ $this->menu=array(
 <h1><?php echo $model->NAME; ?></h1>
 
 
+<?php $this->widget('bootstrap.widgets.TbAlert', array(
+		'block'=>false, // display a larger alert block?
+		'fade'=>true, // use transitions?
+		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+));
+
+?>
+
 
 <?php echo CHtml::ajaxLink(Yii::t('job','Agregar Equipo'),$this->createUrl('tournament/searchAvaliableTeams',array('tournamentId'=>$model->ID)),array(
         'onclick'=>'$("#jobDialog").dialog("open"); return false;',
