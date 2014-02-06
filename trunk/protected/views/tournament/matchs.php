@@ -33,11 +33,11 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  
 <?php $this->widget('bootstrap.widgets.TbTabs', array(
     'tabs'=>$this->getTabularFormTabs($form, $model, $matchGames),
-	'placement'=>'left',
+	'placement'=>'top',
 )); ?>
  
  <div class="form-actions">
-    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'info', 'label'=>'Listo')); ?>
+    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link','url'=>array('manage','id'=>$model->ID) , 'type'=>'info', 'label'=>'Listo')); ?>
 </div>
  
  

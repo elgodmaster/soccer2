@@ -414,7 +414,7 @@ class TournamentController extends Controller
 		
 		
 
-		if (count($model->matchGames) > 0) {
+		if ($model->STATUS > 3 && count($model->matchGames) > 0) {
 				
 			$this->render('matchs',array(
 					'model'=>$model,
@@ -551,7 +551,7 @@ class TournamentController extends Controller
 				
 				$components = array();
 					
-				$components =  split(' v ', $match);
+				$components =  explode(' v ', $match);
 				
 				$matchGame = new MatchGame();
 				
@@ -820,6 +820,8 @@ class TournamentController extends Controller
 		if(isset($_POST['Tournament']))
 		{
 			$model->attributes=$_POST['Tournament'];
+			
+			$model->STATUS = $this->getOverViewStatus($model);
 							
 			if($model->save()){
 				Yii::app()->user->setFlash('success', '<strong>!Listo.</strong> Guardado Correctamente.');
@@ -894,8 +896,14 @@ class TournamentController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			//$this->loadModel($id)->delete();
 
+			$model = $this->loadModel($id);
+			
+			$model->ACTIVE = 0;
+			
+			$model->save();
+			
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -995,7 +1003,7 @@ class TournamentController extends Controller
 
 		$oDBC = new CDbCriteria();
 
-		$oDBC->condition = '((t.ID NOT IN (SELECT ID_TEAM FROM tbl_tournament_team WHERE ACTIVE=1)) AND (t.ID_CATEGORY = '.$tournament->ID_CATEGORY.') AND (t.ACTIVE = 1))';
+		$oDBC->condition = '((t.ID NOT IN (SELECT tot.ID_TEAM FROM tbl_tournament_team tot, tbl_tournament tour WHERE tot.ID_TOURNAMENT = tour.ID AND tour.ACTIVE = 1 AND tot.ACTIVE=1)) AND (t.ID_CATEGORY = '.$tournament->ID_CATEGORY.') AND (t.ACTIVE = 1))';
 		//$oDBC->join = 'LEFT JOIN TBL_TEAM_PLAYER PT ON t.ID = PT.PLAYER_ID AND PT.ID_TEAM=6';
 
 		$team= new Team();
@@ -1014,13 +1022,20 @@ class TournamentController extends Controller
 	 */
 	public function actionAddTeamTournament($tournamentId,$teamId){
 
+		$model = $this->loadModel($tournamentId);
+		
 		$tt = new TournamentTeam();
 		$tt->ID_TOURNAMENT = $tournamentId;
 		$tt->ID_TEAM = $teamId;
 		$tt->STATUS = 0;
 		$tt->ACTIVE = 1;
 
-		if($tt->save()){
+		
+			$model->STATUS = $this->getOverViewStatus($model);
+		
+		
+				
+		if($tt->save()  && $model->save()){
 				
 			$this->redirect(array('manageTeams','tournamentId'=>$tournamentId));
 		}
@@ -1034,12 +1049,15 @@ class TournamentController extends Controller
 
 	public function actionUnsubscribeTeam($tournamentId,$teamId){
 
-
+		$model = $this->loadModel($tournamentId);
 
 		$tt = TournamentTeam::model()->findByAttributes(array('ID_TEAM'=>$teamId,'ID_TOURNAMENT'=>$tournamentId));
 
-
-		if($tt->delete()){
+		$model->STATUS = $this->getOverViewStatus($model);
+		
+		
+		
+		if($tt->delete() && $model->save()){
 				
 			$this->redirect(array('manageTeams','tournamentId'=>$tournamentId));
 		}
@@ -1781,7 +1799,7 @@ class TournamentController extends Controller
 	
 	
 	function flip($match) {
-		$components = split(' v ', $match);
+		$components = explode(' v ', $match);
 		return $components[1] . " v " . $components[0];
 	}
 	
@@ -2022,13 +2040,17 @@ main();
 
 		$state  = 0;
 		$nTeams = count($model->teams);
+		$infoMessage = "";
+		$warningMessage = "";
 		
-		if($model->STATUS > 3 ) return $model->STATUS;
+		//if($model->STATUS > 3 ) return $model->STATUS;
 		
 				
 		if ($model->RULES == null || $model->BASES == null || $model->PROMO == null ){
 			
 			Yii::app()->user->setFlash('info', '<strong>Perfil. </strong>Complete BASE, PROMO, REGLAS. ');
+			
+			$infoMessage = $infoMessage."<strong>Perfil.</strong><br />Complete BASE, PROMO, REGLAS. ";
 			
 		}
 		
@@ -2036,30 +2058,37 @@ main();
 
 		if ($model->SCHEDULE_CONFIG == null || $model->SCHEDULE_D == null  ){
 				
-			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Complete: Horarios');
+		//	Yii::app()->user->setFlash('warning', '<strong>Configuracion. </strong><br />Complete Horarios');
+			
+			$warningMessage = $warningMessage."<li>Defina horarios para los encuentros</li>";
 				
 		}
 		
 		if (!$this->validateDate($model->START_DATE, 'Y-m-d')){
 		
-			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>No ha definido fecha de inicio para el torneo');
+		//	Yii::app()->user->setFlash('warning', '<strong>Configuracion. </strong>No ha definido fecha de inicio para el torneo');
+			
+			$warningMessage = $warningMessage."<li>Defina fecha de inicio para el torneo</li>";
 		
 		}
 		
 		if ($model->TYPE == 0 ){
 		
-			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Seleccione el tipo de torneo');
+		//	Yii::app()->user->setFlash('warning', '<strong>Configuracionn. </strong>Seleccione el tipo de torneo');
 			
+			$warningMessage = $warningMessage."<li>Defina tipo de torneo</li>";
 		
 		}
 		
 		if ($model->START_E == null || $model->ELI_CONF == null || $model->WIN_PLACE == null  ){
 		
-			Yii::app()->user->setFlash('warning', '<strong>ConfiguraciÃ³n. </strong>Complete: EliminatorÃ­a');
+		//	Yii::app()->user->setFlash('warning', '<strong>Configuracion. </strong>Complete: EliminatorÃƒÂ­a');
+			
+			$warningMessage = $warningMessage."<li>Defina la configuracion para la eliminatoria</li>";
 		
 		}
 		
-		if ($nTeams >= $model->START_E && $model->TYPE != 4 ){
+		if ($nTeams >= $model->START_E && $nTeams >= $model->TYPE ){
 			
 			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
@@ -2073,11 +2102,24 @@ main();
 				
 				
 				
-				Yii::app()->user->setFlash('warning', '<strong>Equipos.</strong> Es necesario agregar mas equipos. ');
+		//		Yii::app()->user->setFlash('warning', '<strong>Equipos.</strong> Es necesario agregar mas equipos. ');
+				
+				$warningMessage = $warningMessage."<li>Es necesario agregar mas equipos para cerrar el torneo</li>";
+				
 				$state = 2;
 				
 			}
-		
+			
+			
+			if (strcmp($warningMessage, "")){
+				
+				$warningMessage = "<strong>Configuracion. </strong><br /><ul>".$warningMessage."</ul>";
+				
+				Yii::app()->user->setFlash('warning',$warningMessage);
+			}
+				
+				
+	
 		
 		return 	$state; //CERRADO
 	} 

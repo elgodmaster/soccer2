@@ -37,10 +37,9 @@ class Tournament extends CActiveRecord
 	 */
 	
 	public $typeTournament = array(
-			1=>'Todos vs todos',
-			2=>'Eliminatoria',
-			3=>'Relampago',
-			4=>'Grupos',
+			2=>'Eliminacion directa',
+			4=>'Todos vs todos',
+			6=>'Grupos',
 			
 	);
 	
@@ -52,9 +51,9 @@ class Tournament extends CActiveRecord
 
 			1=>'ABIERTO',
 			2=>'CONFIGURACION',
-			3=>'LISTO CERRAR',
+			3=>'LISTO PARA CERRAR',
 			4=>'CERRADO-CONFIGURANDO JORNADAS',
-			5=>'OPERACION',
+			5=>'CERRADO- OPERACION',
 			6=>'ELIMINATORIA',
 			7=>'FINALIZADO',
 			
@@ -66,6 +65,15 @@ class Tournament extends CActiveRecord
 			8=>'Cuartos de final',
 			4=>'Semifinal',
 			2=>'Final',
+			
+	);
+	
+	
+	private $aWinPlace = array(
+		
+			1=>'Primer lugar',
+			2=>'Primer y segundo lugar',
+			4=>'Primero, Segundo y Tercer Lugar',
 			
 	);
 	
@@ -117,7 +125,7 @@ class Tournament extends CActiveRecord
 				'documents' => array(self::HAS_MANY, 'DocumentTournament', 'ID_OWNER', 'condition'=>'STATUS=1'),
 				'matchGames' => array(self::HAS_MANY, 'MatchGame', 'TOURNAMENT_ID'),
 				'iDCATEGORY' => array(self::BELONGS_TO, 'Category', 'ID_CATEGORY'),
-				'teams' => array(self::HAS_MANY, 'TournamentTeam', 'ID_TOURNAMENT'),
+				'teams' => array(self::HAS_MANY, 'TournamentTeam', 'ID_TOURNAMENT', 'condition'=>'ACTIVE=1'),
 		);
 	}
 
