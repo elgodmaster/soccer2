@@ -16,7 +16,7 @@
 	<legend>Inicio Eliminatoria</legend>
 	
 	<div class="span-20">
-	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf()) ?>
+	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>(!$model->STATUS < 4))) ?>
 	</div>	
 		
 	
@@ -30,7 +30,7 @@
 	 <?php echo $form->radioButtonListRow($model, 'ELI_CONF', array(
         'Solo un encuentro',
         'Ida y vuelta',
-    )); ?>
+    ), array('disabled'=>!($model->STATUS < 4))); ?>
 	</div>	
 		
 	</fieldset>
@@ -44,7 +44,7 @@
        1=> 'Primer Lugar',
        2=> 'Primer y Segundo lugar',
 	   4 => 'Primer, Segundo y Tercer lugar ',
-    )); ?>
+    ), array('disabled'=>!($model->STATUS < 4))); ?>
    		
 		</div>	
 		
@@ -55,7 +55,7 @@
 	
 		
 	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit',  'type'=>'primary','label'=> $model->isNewRecord ?'Create' : 'Guardar')); ?>
+		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit',  'type'=>!($model->STATUS < 4) ?'info' : 'primary','label'=>!($model->STATUS < 4) ?'Listo' : 'Guardar')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

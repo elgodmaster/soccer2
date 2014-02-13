@@ -221,18 +221,10 @@ class Tournament extends CActiveRecord
 	 * @return string
 	 */
 	public function isEnabledToGenerateMatch(){
-	
 		
 		$nTeams = count($this->teams);
-
 		
-		
-		
-		if($nTeams >= $this->START_E ) return true;
-		
-		
-		
-		return false;
+		return ($nTeams && $this->TYPE && $this->START_E && $nTeams > 3 && $nTeams > $this->TYPE && $nTeams > $this->START_E);
 	
 	}
 	
@@ -243,7 +235,17 @@ class Tournament extends CActiveRecord
 	 */
 	public function getEliConf(){
 		
-		return $this->eliConfig;
+		$nteams = count($this->teams);
+		$avaliable = array();
+		
+		foreach ($this->eliConfig as $key=>$value){
+			
+			if ($nteams >= $key) {
+				$avaliable[$key] = $value;
+			}
+		}
+		
+		return $avaliable;
 		
 	}
 	

@@ -20,11 +20,11 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'type'=>'horizontal',
 )); ?>
  
- <?php $this->widget('bootstrap.widgets.TbAlert', array(
-        'block'=>false, // display a larger alert block?
-        'fade'=>true, // use transitions?
-        'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-        )); 
+<?php $this->widget('bootstrap.widgets.TbAlert', array(
+		'block'=>false, // display a larger alert block?
+		'fade'=>true, // use transitions?
+		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+));
 
 ?>
 
@@ -46,14 +46,14 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  
  	$menuOptions = array();
  	
- 	$matchGames = array();
+ 	$matchGamesArray = array();
  	
  	
  	$currentRound = 1;
  	
  	$switchVar = 0;
  	
- 	foreach ($model->matchGames as $matchGame){
+ 	foreach ($matchGames as $matchGame){
  		
 		if($switchVar != $matchGame->GROUP){
 			
@@ -64,7 +64,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		
 		if($roundId == $matchGame->GROUP){
 			
-			$matchGames[] = $matchGame; 
+			$matchGamesArray[] = $matchGame; 
 
 		}
 
@@ -82,7 +82,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 ));
 
-echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGames,'playGround'=>$playGround));
+echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGamesArray,'playGround'=>$playGround));
  
  
  ?>
