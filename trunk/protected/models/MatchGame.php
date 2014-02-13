@@ -70,14 +70,14 @@ class MatchGame extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NAME, TIME, PLAY_GROUND_ID', 'required'),
-			array('PLAY_GROUND_ID, VISITOR, STATUS,TOURNAMENT_ID, LOCAL, ACTIVE, ID_REFEREE', 'numerical', 'integerOnly'=>true),
+			array('NAME', 'required'),
+			array('PLAY_GROUND_ID, VISITOR, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE, PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0),
 			array('GROUP', 'length', 'max'=>10),
 			array('NAME', 'length', 'max'=>100),
 			array('TIME', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID, PLAY_GROUND_ID,STATUS, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
+			array('ID, STATUS, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
 		);
 	}
 

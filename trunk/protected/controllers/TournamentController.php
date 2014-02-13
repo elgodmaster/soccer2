@@ -264,7 +264,7 @@ class TournamentController extends Controller
 	public function actionManageResults($id){
 		
 		$model = $this->loadModel($id);
-		$currentRound = 1;
+		
 		
 		$currentRound = isset($_GET['roundId']) ? $_GET['roundId'] : 1;
 		
@@ -275,9 +275,9 @@ class TournamentController extends Controller
 		
 		$ACTIVE = 1;
 		
-		$matchGame = MatchGame::model()->findByPk(109);
+	//	$matchGame = MatchGame::model()->findByPk(109);
 		
-		$results = $matchGame->matchResults;
+	//	$results = $matchGame->matchResults;
 		
 		/**
 		 * Validate if exists more than 1 match
@@ -358,6 +358,12 @@ class TournamentController extends Controller
 
 				$matchArray = $_POST['MatchGame'];
 
+				
+				$success_message =  '';
+				$warning_message = '';
+				$flagValidation = false;
+				$matchs = array();
+				
 				foreach ($matchArray as $match){
 						
 
@@ -374,20 +380,39 @@ class TournamentController extends Controller
 					}					
 						
 					$dbMatch->attributes = $match;
-					
+					$dbMatch->STATUS = 2;
 					
 					/*Send to match validation*/
-					if ($this->performMatchValidation($dbMatch, $model)){
-											
-						$dbMatch->STATUS = 2;
-						$dbMatch->save();
+					if ($this->performMatchValidation($dbMatch, $model, $message) && $dbMatch->save()){
+						
+						$matchs[] = $dbMatch;
+						Yii::app()->user->setFlash('success', '<strong>Listo. </strong>Guardado correctamente. ');
+						
+					}else {
+						
+						$matchs[] = $dbMatch;
+						$flagValidation = true;
 						
 					}
 						
 					
+					
 						
 				}
 
+				
+				if($flagValidation){/*Form validation*/
+				
+					$this->render('matchs',array(
+							'model'=>$model,
+							'matchGames'=>$matchs,
+							'playGround'=>$playGround,
+							'roundId'=>$roundId,
+					));
+				
+					return;
+				}
+				
 			} else if (isset($_POST['publishRound'])) {
 				
 
@@ -813,6 +838,7 @@ class TournamentController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$catCategory = new Category();
+		$CERRADO_CONFIGURANDO_JORNADAS = 4;
 	
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -821,12 +847,18 @@ class TournamentController extends Controller
 		{
 			$model->attributes=$_POST['Tournament'];
 			
-			$model->STATUS = $this->getOverViewStatus($model);
+			
 							
-			if($model->save()){
+			if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS && $model->save()){
 				Yii::app()->user->setFlash('success', '<strong>!Listo.</strong> Guardado Correctamente.');
-				$this->redirect(array('manage','id'=>$model->ID));
+				$model->STATUS = $this->getOverViewStatus($model);
 			}
+			
+			$this->redirect(array('manage','id'=>$model->ID));
+		}elseif (isset($_POST['yt0'])){ // validar esto
+			
+			$this->redirect(array('manage','id'=>$model->ID));
+			
 		}
 	
 		$this->render('update',array(
@@ -922,20 +954,17 @@ class TournamentController extends Controller
 		
 		$model = $this->loadModel($id);
 		
+		
+		if ($model->STATUS < 4)
 		$model->STATUS = $this->getOverViewStatus($model);
-		
-		$model->save();
-		
 		
 		$activeMatch =  isset($_GET['matchId']) ? $_GET['matchId'] : 1 ;
 		
 		
-		if($model->STATUS  ==  3 && isset($_POST['Tournament'])){
+		if($model->STATUS  ==  3 && isset($_POST['Tournament']) && $model->isEnabledToGenerateMatch()){
 			
 			
 			$model->STATUS = 4; // CERRADO
-		
-			
 			
 			$matchs = $this->generateMatchs($id);
 			
@@ -943,7 +972,7 @@ class TournamentController extends Controller
 				
 				$match->LOCAL = $match->lOCAL->ID;
 				$match->VISITOR= $match->vISITOR->ID;
-				$match->save();// Verificar transaccionalidad
+				$match->save();
 				
 			}
 		
@@ -952,12 +981,15 @@ class TournamentController extends Controller
 			$this->redirect(array('manage','id'=>$id));
 			
 			
-		}
+		}else{
 		
-		
+		$model->save();
+			
 		$this->render('manage',array(
 				'model'=>$model,
 		));
+		
+		}
 		
 	
 	}
@@ -1023,6 +1055,15 @@ class TournamentController extends Controller
 	public function actionAddTeamTournament($tournamentId,$teamId){
 
 		$model = $this->loadModel($tournamentId);
+		$CERRADO_CONFIGURANDO_JORNADAS = 4;
+		
+		if($model->STATUS > 3){
+			
+			Yii::app()->user->setFlash('error', '<strong>No disponible. </strong>El torneo esta cerrado. ');
+			$this->redirect(array('manageTeams','tournamentId'=>$tournamentId)); //Validacion torneo cerrado
+		}
+		
+		
 		
 		$tt = new TournamentTeam();
 		$tt->ID_TOURNAMENT = $tournamentId;
@@ -1031,7 +1072,8 @@ class TournamentController extends Controller
 		$tt->ACTIVE = 1;
 
 		
-			$model->STATUS = $this->getOverViewStatus($model);
+			
+		$model->STATUS = $this->getOverViewStatus($model);
 		
 		
 				
@@ -2088,12 +2130,12 @@ main();
 		
 		}
 		
-		if ($nTeams >= $model->START_E && $nTeams >= $model->TYPE ){
+		if ($nTeams > 3 && $nTeams >= $model->START_E && $nTeams >= $model->TYPE ){
 			
 			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
 			
-		}elseif($model->TYPE == 4 && $nTeams >= ($model->START_E*2) ){
+		}elseif($nTeams > 3 && $model->TYPE == 4 && $nTeams >= ($model->START_E*2) ){
 
 			Yii::app()->user->setFlash('success', '<strong>Listo.</strong> Ya puede generar el torneo. ');
 			$state = 3;
@@ -2146,10 +2188,12 @@ main();
 	 * Does  business validation between Tournament and MatchGame
 	 * @param MatchGame $match
 	 * @param Tournament $tournament
+	 * @param string $message
 	 * @return boolean
 	 */
-	function performMatchValidation($match, $tournament){
+	function performMatchValidation($match, $tournament, &$message){
 			
+		
 		
 		
 		return true;

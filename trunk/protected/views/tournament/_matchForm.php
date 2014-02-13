@@ -1,15 +1,10 @@
 
-
-
-
-
 <?php 
 
 echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
-echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>';
-echo "<br />";
 
 ?>
+
 
 
 <div class="view">
@@ -17,17 +12,21 @@ echo "<br />";
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
 			'type'=>'striped bordered condensed',
 			'data'=>$matchGames[0],
-			'attributes'=>array(
-        array('name'=>'ID', 'label'=>'ID'),
+			'attributes'=>array(      
      	array('name'=>'STATUS', 'label'=>'ESTATUS', 'value'=>MatchGame::model()->aStatus[$matchGames[0]->STATUS]),
+		array('name'=>'START', 'label'=>'Inicio Torneo', 'value'=>$model->START_DATE),
 
 
     ),
-)); ?>
+)); 
 
-
+	
+	
+	?>
 
 </div>
+
+
 
 <div class="form">
 
@@ -36,20 +35,10 @@ echo "<br />";
 			'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-
-
-
-
-
-
-
-	<?php echo $form->errorSummary($model); ?>
-	<?php echo $form->errorSummary($matchGames[0]); ?>
-
-
+<?php echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>'; ?>
 
 	<fieldset>
-		<table border="0" class="table table-hover">
+		<table  class="table table-hover">
 
 			<thead>
 				<tr>
@@ -61,18 +50,36 @@ echo "<br />";
 					<th>ARBITRO</th>
 
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td colspan="6">&nbsp;</td>
-				</tr>
+				</tr> -->
 			</thead>
 			<tbody>
 				<?php 
 				$readyToPublish = true;
 				$switchVar = 0;
 				$numeroPartidos = sizeof($matchGames);
+				$aDays = explode(",", $model->SCHEDULE_D);
+				$stringADays = '';
+				$i = 0;
+				
+				if(strlen($model->SCHEDULE_D) && ($numItems = count($aDays)) > 0) // incluir expresion regular para validar formato
+									
+				foreach ($aDays as $day){
+					
+					if(++$i === $numItems) {
+							$stringADays = $stringADays. 'day=='.$day;
+					}else 	$stringADays = $stringADays. 'day=='.$day.' ||';
+				}
+				
+				else $stringADays = 'true';
+				
+				
 				for($i=0; $i<$numeroPartidos; $i++) //START FOR
 				{
 					?>
+					
+				<tr><td colspan="6"><?php echo $form->errorSummary($matchGames[$i]); ?></td></tr>	
 				<tr>
 
 
@@ -111,9 +118,16 @@ echo "<br />";
 								'attribute'=>"[$i]TIME", //attribute name
 								'language'=>'es',
 								'mode'=>'datetime', //use "time","date" or "datetime" (default)
-								'options'=>array( "dateFormat"=>'yy-mm-dd', 'timeFormat'=>'hh:mm'),
+								'options'=>array( "dateFormat"=>'yy-mm-dd', 
+										'timeFormat'=>'hh:mm',
+										'minDate'=>$model->START_DATE,
+										'beforeShowDay'=> 'js:function(date){
+                                          var day = date.getDay();
+                                          return ['.$stringADays.', ""];
+                                        }',
+											),
 
-								'htmlOptions'=>array('class'=>'input-medium',),
+								'htmlOptions'=>array('class'=>'input-medium','placeholder'=>"Fecha del encuentro"),
 						));
 
 
@@ -145,7 +159,7 @@ echo "<br />";
 
 
 						echo "<td>";
-						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
+						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('class'=>'form-control seleccione',));
 						echo "</td>";
 
 						echo "<td>";
@@ -168,20 +182,23 @@ echo "<br />";
 
 				</tr>
 
-				<tr>
-					<td colspan="6">&nbsp;</td>
-				</tr>
-
 				<?php }//end for?>
 
 			</tbody>
 		</table>
 	</fieldset>
+	
+</div>
+<!-- form -->	
+	
 	<div class="form-actions">
 		<?php if (!$readyToPublish)
 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
-		else if($matchGames[0]->STATUS < 3)
+		else if($matchGames[0]->STATUS < 3){
+			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
+			echo "&nbsp; &nbsp; &nbsp;";
 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
+			}
 		else if($matchGames[0]->STATUS == 3){
 			$this->widget('bootstrap.widgets.TbButton', array(
 					'label'=>'Publicar',
@@ -189,24 +206,23 @@ echo "<br />";
 					'size'=>'small', // null, 'large', 'small' or 'mini'
 					'url'=>array('publish', 'id'=>$model->ID),
 			));
-	echo "<br />";
-	echo "<br />";
 	
+	?>
+	<br />
+	
+<?php 
 	
 	$this->widget('ext.yii-facebook-opengraph.plugins.LikeButton', array(
 			'href' => array('manageMatchs','id'=>$model->ID),//'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
 			'show_faces'=>true,
 			'send' => true,
 	));
-	
-
 
 }
-			?>
+?>
+	
 	</div>
-
 
 	<?php $this->endWidget(); ?>
 
-</div>
-<!-- form -->
+
