@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create PlayGround', 'url'=>array('create')),
-	array('label'=>'Manage PlayGround', 'url'=>array('admin')),
+	array('label'=>'Crear descanso', 'url'=>array('create')),
+	array('label'=>'Gestionar descanso', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Play Grounds</h1>
+<h1>Juego estrategico</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

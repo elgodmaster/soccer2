@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PlayGround', 'url'=>array('index')),
-	array('label'=>'Create PlayGround', 'url'=>array('create')),
-	array('label'=>'View PlayGround', 'url'=>array('view', 'id'=>$model->ID)),
-	array('label'=>'Manage PlayGround', 'url'=>array('admin')),
+	array('label'=>'Lista descanso', 'url'=>array('index')),
+	array('label'=>'Crear descanso', 'url'=>array('create')),
+	array('label'=>'Ver descanso', 'url'=>array('view', 'id'=>$model->ID)),
+	array('label'=>'Gestionar descanso', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update PlayGround <?php echo $model->ID; ?></h1>
+<h1>Actualizar descansos <?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
