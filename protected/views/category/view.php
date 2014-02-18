@@ -5,15 +5,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'Update Category', 'url'=>array('update', 'id'=>$model->ID_CATEGORY)),
-	array('label'=>'Delete Category', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID_CATEGORY),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
+	array('label'=>'Lista categoria', 'url'=>array('index')),
+	array('label'=>'Crear categoria', 'url'=>array('create')),
+	array('label'=>'Actualizar categoria', 'url'=>array('update', 'id'=>$model->ID_CATEGORY)),
+	array('label'=>'Borrar categoria', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID_CATEGORY),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Gestionar categoria', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Category #<?php echo $model->ID_CATEGORY; ?></h1>
+<h1>Ver categoria #<?php echo $model->ID_CATEGORY; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
