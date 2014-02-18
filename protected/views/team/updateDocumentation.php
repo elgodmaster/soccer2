@@ -81,7 +81,7 @@ $this->menu=array(
             			<td class="name">
                 			<!-- <a href="<?php // echo $document->PATH;?>" title="<?php  // echo $document->NAME;?>" rel="{%=file.thumbnail_url&&'gallery'%}" download="<?php //echo $document->NAME;?>"><?php echo $document->NAME;?></a> -->
                 			
-                			<span><?php echo $document->DESCRIPTION;?></span>
+                			<span><?php echo $document->DESCRIPCION;?></span>
                 			
             			</td>
 	           			 <td class="size">
