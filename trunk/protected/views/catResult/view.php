@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List CatResult', 'url'=>array('index')),
-	array('label'=>'Create CatResult', 'url'=>array('create')),
-	array('label'=>'Update CatResult', 'url'=>array('update', 'id'=>$model->ID)),
-	array('label'=>'Delete CatResult', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage CatResult', 'url'=>array('admin')),
+	array('label'=>'Lista resultados', 'url'=>array('index')),
+	array('label'=>'Crer resultados', 'url'=>array('create')),
+	array('label'=>'Actualizar resultados', 'url'=>array('update', 'id'=>$model->ID)),
+	array('label'=>'Borrar resultados', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Gestionar resultados', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View CatResult #<?php echo $model->ID; ?></h1>
+<h1>Ver resultados #<?php echo $model->ID; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
