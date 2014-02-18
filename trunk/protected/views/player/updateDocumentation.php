@@ -115,16 +115,16 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'List Player', 'url'=>array('index')),
-		array('label'=>'Create Player', 'url'=>array('create')),
-		array('label'=>'View Player', 'url'=>array('view', 'id'=>$model->ID)),
-		array('label'=>'Manage Player', 'url'=>array('admin')),
+		array('label'=>'Lista jugador', 'url'=>array('index')),
+		array('label'=>'Crear jugador', 'url'=>array('create')),
+		array('label'=>'Ver jugador', 'url'=>array('view', 'id'=>$model->ID)),
+		array('label'=>'Gestionar jugador', 'url'=>array('admin')),
 		array('label'=>'Administrar Documentacion','url'=>array('update', 'id'=>$model->ID)),
 );
 ?>
  								   
 <h1>
-	Update Player Documentation:
+	Actualizar documentación :
 	<?php echo $model->NAME; ?>
 </h1>
 <div class="form">
