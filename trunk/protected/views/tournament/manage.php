@@ -93,7 +93,7 @@ $this->menu=array(
 	<div class="span-10">
 
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
-				'type'=>'list',
+		    	'type'=>'list',
 				'items'=>array(
         array('label'=>'Configuracion'),
 		array('label'=>'Horarios', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
@@ -126,7 +126,7 @@ $this->menu=array(
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
 array('label'=>'Estadisticas'),
-array('label'=>'Tabla de pocisiones', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
+array('label'=>'Tabla de posiciones', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
 array('label'=>'Estadisticas por Equipos', 'icon'=>'list', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_categoryForm')),
 array('label'=>'Estadisticas por Jugadores', 'icon'=>'list-alt', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_confForm')),
 array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
