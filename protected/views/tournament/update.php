@@ -14,6 +14,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Tournament <?php echo $model->ID; ?></h1>
+<h1>Actualizar Torneo <?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial($form, array('model'=>$model,	'catCategory'=>$catCategory)); ?>
