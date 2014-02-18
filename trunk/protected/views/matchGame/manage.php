@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Player', 'url'=>array('index')),
-	array('label'=>'Manage Player', 'url'=>array('admin')),
+	array('label'=>'Lista jugador', 'url'=>array('index')),
+	array('label'=>'Gestionar jugador', 'url'=>array('admin')),
 );
 ?>
 
