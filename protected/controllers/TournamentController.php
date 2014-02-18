@@ -256,7 +256,7 @@ class TournamentController extends Controller
 
 
 	/**
-	 * Manages march results of tournament
+	 * Manages match results of tournament
 	 * it support post and get methods
 	 * @param integer $id
 	 * @return multitype:
@@ -973,6 +973,35 @@ class TournamentController extends Controller
 				$match->LOCAL = $match->lOCAL->ID;
 				$match->VISITOR= $match->vISITOR->ID;
 				$match->save();
+				
+			}
+			
+			$group = $match->GROUP;
+			
+			/**
+			 * Classification
+			 */
+			for ($i = 1; $i<$model->START_E; $i*=2){
+
+				$group++;
+				
+				for ($j = 0; $j<($i*2) / 2; $j++ ){
+					
+					$matchGame = new MatchGame();
+					
+					$matchGame->ACTIVE = 1;
+					$matchGame->LOCAL = 0;
+					$matchGame->VISITOR = 0;
+					$matchGame->TOURNAMENT_ID = $model->ID;
+					$matchGame->NAME = 'FINAL';
+					$matchGame->GROUP = $group;
+					$matchGame->save();
+					
+					
+				}
+				
+				
+				
 				
 			}
 		
@@ -2241,16 +2270,53 @@ main();
 				
 				Yii::app()->user->setFlash('warning', '<strong>No disponible. </strong> Aun no termina la temporada regular');
 				$this->redirect(array('manage','id'=>$id));
+				return;
 				
 			}
 			
 		}
 		
 		
+	
 		
 		
 		
 	}
+	
+	/**
+	 * retrieves classification
+	 * @param unknown $model
+	 * @return number|multitype:
+	 */
+	public function  getClasification($model){
+	
+			
+		$CERRADO_LISTO_ELIMINATORIA = 9; 
+		$a_matchs = array();
+		$nMatchs = 0;		
+		$nMatchs = $model->START_E / 2;
+		$r_matchs = array();
+		
+		if ($model->STATUS < $CERRADO_LISTO_ELIMINATORIA){
+			return 0;
+		}else {
+			
+			$a_matchs = $this->getRankingBoard($model);
+			
+			for ($i = 0; $i<$nMatchs; $i++ ){
+				
+				$r_matchs = $a_matchs[$i];
+				$r_matchs = $a_matchs[($model->START_E-1) - $i];
+				
+			}
+
+		}
+		
+		
+		
+		return $r_matchs;
+	}
+	
 	
 	/**
 	 * Retrieves a board ranking
