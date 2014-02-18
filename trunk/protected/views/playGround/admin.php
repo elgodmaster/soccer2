@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PlayGround', 'url'=>array('index')),
-	array('label'=>'Create PlayGround', 'url'=>array('create')),
+	array('label'=>'Lista descanso', 'url'=>array('index')),
+	array('label'=>'Crear descanso', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Play Grounds</h1>
+<h1>Gestionar descanso</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
