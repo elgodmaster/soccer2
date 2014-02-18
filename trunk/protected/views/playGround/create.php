@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PlayGround', 'url'=>array('index')),
-	array('label'=>'Manage PlayGround', 'url'=>array('admin')),
+	array('label'=>'Lista descanso', 'url'=>array('index')),
+	array('label'=>'gestionar descanso', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create PlayGround</h1>
+<h1>Crear descanso</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
