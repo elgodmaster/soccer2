@@ -53,9 +53,9 @@ class Tournament extends CActiveRecord
 			2=>'CONFIGURACION',
 			3=>'LISTO PARA CERRAR',
 			4=>'CERRADO-CONFIGURANDO JORNADAS',
-			5=>'CERRADO- OPERACION',
-			6=>'ELIMINATORIA',
-			7=>'FINALIZADO',
+			5=>'CERRADO-OPERACION',
+			6=>'CERRADO-LISTO-ELIMINATORIA',
+			7=>'CERRADO-ELIMINATORIA',
 			
 	);
 	
@@ -224,7 +224,7 @@ class Tournament extends CActiveRecord
 		
 		$nTeams = count($this->teams);
 		
-		return ($nTeams && $this->TYPE && $this->START_E && $nTeams > 3 && $nTeams > $this->TYPE && $nTeams > $this->START_E);
+		return ($nTeams && $this->TYPE && $this->START_E && $nTeams > 3 && $nTeams >= $this->TYPE && $nTeams >= $this->START_E);
 	
 	}
 	
