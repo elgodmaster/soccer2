@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List CatResult', 'url'=>array('index')),
-	array('label'=>'Manage CatResult', 'url'=>array('admin')),
+	array('label'=>'Lista resultados', 'url'=>array('index')),
+	array('label'=>'Gestionar resultados', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create CatResult</h1>
+<h1>Crear resultados</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
