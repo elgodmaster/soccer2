@@ -1,5 +1,5 @@
 <?php
-//
+////
 // uncomment the following to define a path alias
  //Yii::setPathOfAlias('UploadHandler','../../blue/server/php');
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
