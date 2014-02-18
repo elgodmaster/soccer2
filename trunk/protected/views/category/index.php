@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Crear categoria', 'url'=>array('create')),
-	array('label'=>'Gestionar Categoria', 'url'=>array('admin')),
+	array('label'=>'Gestionar categoria', 'url'=>array('admin')),
 );
 ?>
 
