@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Crear descanso</h1>
+<h1>Crear descansos</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
