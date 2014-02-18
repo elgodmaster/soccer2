@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Player', 'url'=>array('index')),
-	array('label'=>'Manage Player', 'url'=>array('admin')),
+	array('label'=>'Lista jugador', 'url'=>array('index')),
+	array('label'=>'Gestionar jugador', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Player</h1>
+<h1>Crear jugador</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
