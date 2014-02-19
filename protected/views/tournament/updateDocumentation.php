@@ -12,7 +12,7 @@ $this->menu=array(
 		array('label'=>'Inicio', 'url'=>array('index')),
 		array('label'=>'Crear', 'url'=>array('create')),
 		array('label'=>'Ver', 'url'=>array('manage', 'id'=>$model->ID)),
-		array('label'=>'Administrar', 'url'=>array('admin')),
+		//array('label'=>'Administrar', 'url'=>array('admin')),
 );
 ?>
  								   
@@ -27,7 +27,7 @@ $this->menu=array(
 )); ?>
 
 	<p class="note">
-	Los campos con <span class="required">*</span> son requeridos.
+	Los campos con: <span class="required">*</span> son requeridos.
 	</p>
 
 	
@@ -58,7 +58,7 @@ $this->menu=array(
 				<thead>
 				<tr>
 					<th colspan="2">Archivo</th>
-					<th>Descripcion</th>
+					<th>Descripción</th>
 					<th>Tipo de Archivo</th>
 					<th />					
 				</tr>	

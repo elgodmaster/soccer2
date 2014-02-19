@@ -13,16 +13,16 @@ $CERRADO_CONFIGURANDO_JORNADAS = 4;
 );
 
 $this->menu=array(
-		array('label'=>'Crear torneo', 'url'=>array('create')),
-		array('label'=>'Gestionar torneo', 'url'=>array('admin')),
+		array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
+		
 );
 
 ?>
 
 
-<h3><?php echo $model->NAME; ?></h3>
+<h2> <?php echo $model->NAME; ?></h2>
 
-<h4>Equipos participantes</h4>
+<h3>Equipos participantes</h3>
 
 
 <?php $this->widget('bootstrap.widgets.TbAlert', array(

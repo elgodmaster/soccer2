@@ -6,10 +6,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista torneo', 'url'=>array('index')),
-	array('label'=>'Crear torneo', 'url'=>array('create')),
+	array('label'=>'Crear nuevo torneo', 'url'=>array('create')),
 	array('label'=>'Actualizar torneo', 'url'=>array('update', 'id'=>$model->ID)),
 	array('label'=>'Borrar torneo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
 	array('label'=>'Equipos', 'url'=>array('manageTeams', 'tournamentId'=>$model->ID)),
 );

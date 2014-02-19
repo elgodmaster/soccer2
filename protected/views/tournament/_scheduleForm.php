@@ -5,7 +5,7 @@
     'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -44,7 +44,7 @@
 	</fieldset>
 	
 	<fieldset>
-	<legend><b>Dias juego</b></legend>
+	<legend><b>Días de juego</b></legend>
 	
 	
 	<div class="span-20"> 
@@ -52,10 +52,10 @@
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_D", array(
         '1'=>'LUNES',
         '2'=>'MARTES',
-       '3'=>'MIERCOLES',
+       '3'=>'MIÉRCOLES',
 	    '4'=>'JUEVES',
 	  '5'=> 'VIERNES',
-	   '6'=> 'SABADO',
+	   '6'=> 'SÁBADO',
 	   '0'=>	'DOMINGO',
     ), array('hint'=>'<strong>Nota:</strong> Seleccionar solo los deseados.', 'disabled'=>!($model->STATUS < 4))); ?>
    		

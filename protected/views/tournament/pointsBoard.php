@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 $this->menu=array(
 	array('label'=>'Lista torneo', 'url'=>array('index')),
-	array('label'=>'gestinar torneo', 'url'=>array('admin')),
+	//array('label'=>'gestinar torneo', 'url'=>array('admin')),
 );
 ?>
 

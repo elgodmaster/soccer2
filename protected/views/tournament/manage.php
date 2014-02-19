@@ -6,9 +6,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'Crear torneo', 'url'=>array('create')),
-		//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
-		array('label'=>'Borrar torneo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
+		array('label'=>'Crear nuevo torneo', 'url'=>array('create')),
+		array('label'=>'Borrar este torneo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
 		
 );
 ?>
@@ -54,7 +53,7 @@ $this->menu=array(
         array('name'=>'ID_CATEGORY', 'label'=>'Categoria', 'value'=>$model->iDCATEGORY->NAME),
 		array('name'=>'START_DATE', 'label'=>'Fecha Inicio'),
 		array('name'=>'TYPE', 'label'=>'Tipo de torneo' , 'value'=>$model->getStringTournamentType()),
-    	array('name'=>'TYPE', 'label'=>'Equipos en el torneo'.' ('.count($model->teams).') ' , 'value'=>$allTeams),
+    	array('name'=>'TYPE', 'label'=>'Equipos del torneo'.' ('.count($model->teams).') ' , 'value'=>$allTeams),
 		array('name'=>'STATUS', 'label'=>'Estatus', 'value'=>$model->aStatus[$model->STATUS]),
 
 
@@ -65,7 +64,7 @@ $this->menu=array(
 
 
 <fieldset>
-	<legend>Menu</legend>
+	<legend>Men&uacute;</legend>
 
 
 
@@ -76,7 +75,7 @@ $this->menu=array(
 				'type'=>'list',
 				'items'=>array(
         array('label'=>'Equipos'),
-        array('label'=>'Equipos en el torneo', 'icon'=>'bullhorn', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
+        array('label'=>'Equipos del torneo', 'icon'=>'bullhorn', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
         array('label'=>'todos', 'icon'=>'book', 'url'=>'' ),
     	array('label' =>'Ayuda', 'icon'=>'flag','url' => 'http://www.someurl.com',),
 
@@ -95,9 +94,9 @@ $this->menu=array(
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 		    	'type'=>'list',
 				'items'=>array(
-        array('label'=>'Configuracion'),
+        array('label'=>'Configuración'),
 		array('label'=>'Horarios', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
-		array('label'=>'Categoria y tipo de torneo', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
+		array('label'=>'Categoría y tipo de torneo', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
 		array('label'=>'Eliminatoria', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
@@ -119,16 +118,16 @@ $this->menu=array(
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 				'type'=>'list',
 				'items'=>array(
-        array('label'=>'Publicaciones'),
+        array('label'=>'Publicaciónes'),
 		array('label'=>'Facebook', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
 		array('label'=>'Correo electronico', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
 		array('label'=>'Twitter', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
-array('label'=>'Estadisticas'),
-array('label'=>'Tabla de posiciones', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
-array('label'=>'Estadisticas por Equipos', 'icon'=>'list', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_categoryForm')),
-array('label'=>'Estadisticas por Jugadores', 'icon'=>'list-alt', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_confForm')),
+array('label'=>'Estadísticas'),
+array('label'=>'Tabla de posiciónes', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
+array('label'=>'Estadistícas por Equipos', 'icon'=>'list', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_categoryForm')),
+array('label'=>'Estadistícas por Jugadores', 'icon'=>'list-alt', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_confForm')),
 array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
 
