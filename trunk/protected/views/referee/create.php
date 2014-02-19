@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista arbitro','url'=>array('index')),
-	array('label'=>'Gestionar arbitro','url'=>array('admin')),
+	array('label'=>'Lista árbitros','url'=>array('index')),
+	
 );
 ?>
 
-<h1>Crear arbitro</h1>
+<h3>Crear nuevo árbitro</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

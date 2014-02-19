@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista arbiro','url'=>array('index')),
-	array('label'=>'Crear arbitro','url'=>array('create')),
+	array('label'=>'Lista árbitros','url'=>array('index')),
+	array('label'=>'Crear nuevo árbitro','url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Gestionar arbitros</h1>
+<h3>Administrar árbitros</h3>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

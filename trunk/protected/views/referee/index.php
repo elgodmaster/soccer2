@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear arbitro','url'=>array('create')),
-	array('label'=>'Gestionar arbitro','url'=>array('admin')),
+	array('label'=>'Crear nuevo árbitro','url'=>array('create')),
+
 );
 ?>
 
-<h1>Arbitros</h1>
+<h3>Árbitros</h3>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,
