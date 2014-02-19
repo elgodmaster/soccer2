@@ -34,15 +34,15 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 		array('label'=>'Inicio', 'url'=>array('index')),
-		array('label'=>'Crear', 'url'=>array('create')),
-		array('label'=>'Ver', 'url'=>array('view', 'id'=>$model->ID)),
-		array('label'=>'Administrar', 'url'=>array('admin')),
+		array('label'=>'Crear nuevo jugador', 'url'=>array('create')),
+		array('label'=>'Ver jugador ', 'url'=>array('view', 'id'=>$model->ID)),
+		
 );
 ?>
  								   
-<h1>
-	DOCUMENTOS	
-</h1>
+<h3>
+	ANEXAR DOCUMENTOS	
+</h3>
 	<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'player-form',
 			'enableAjaxValidation'=>false,
@@ -51,7 +51,7 @@ $this->menu=array(
 )); ?>
 
 	<p class="note">
-		Campos con <span class="required">*</span> son requeridos.
+		Los campos con: <span class="required">*</span> son requeridos.
 	</p>
 
 	

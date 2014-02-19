@@ -7,16 +7,16 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Inicio', 'url'=>array('index')),
-	array('label'=>'Crear', 'url'=>array('create')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->ID)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar', 'url'=>array('admin')),
-	array('label'=>'Documentos','url'=>array('updateDocumentation', 'id'=>$model->ID)),
+	array('label'=>'Crear nuevo jugador', 'url'=>array('create')),
+	array('label'=>'Modificar Jugador', 'url'=>array('update', 'id'=>$model->ID)),
+	array('label'=>'Eliminar jugador', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+	
+	array('label'=>'Modificar Documentos','url'=>array('updateDocumentation', 'id'=>$model->ID)),
 	array('label'=>'Generar Credencial','url'=>array('report', 'id'=>$model->ID), 'linkOptions'=>array('target'=>'_blank')),
 );
 ?>
 
-<h2><?php echo $model->NAME; ?></h2>
+<h3><?php echo $model->NAME; ?></h3>
 
 <br />
 
