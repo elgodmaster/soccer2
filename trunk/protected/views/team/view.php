@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Team', 'url'=>array('index')),
-	array('label'=>'Create Team', 'url'=>array('create')),
+	array('label'=>'Lista equipo', 'url'=>array('index')),
+	array('label'=>'Crear equipo', 'url'=>array('create')),
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->ID)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administrar', 'url'=>array('admin')),
@@ -18,7 +18,7 @@ $this->menu=array(
 
 
 
-<h1>View Team #<?php echo $model->ID; ?></h1>
+<h1>Ver equipo #<?php echo $model->ID; ?></h1>
 
 
 <div class="span-5">

@@ -15,7 +15,7 @@ $this->menu=array(
 ?>
 
 
-<h1>Jugadores en <?php echo $model->NAME; ?></h1>
+<h1>Jugadores  <?php echo $model->NAME; ?></h1>
 
 <?php echo CHtml::ajaxLink(Yii::t('job','Agregar Jugador'),$this->createUrl('team/addPlayer',array('id'=>$model->ID)),array(
         'onclick'=>'$("#jobDialog").dialog("open"); return false;',
