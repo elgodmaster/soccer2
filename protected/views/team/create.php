@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Team', 'url'=>array('index')),
-	array('label'=>'Manage Team', 'url'=>array('admin')),
+	array('label'=>'Lista equipo', 'url'=>array('index')),
+	array('label'=>'Gestionar equipo', 'url'=>array('admin')),
 );
 ?>
 
