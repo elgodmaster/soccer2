@@ -5,15 +5,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Referee','url'=>array('index')),
-	array('label'=>'Create Referee','url'=>array('create')),
-	array('label'=>'Update Referee','url'=>array('update','id'=>$model->ID)),
-	array('label'=>'Delete Referee','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Referee','url'=>array('admin')),
+	array('label'=>'Lista arbitro','url'=>array('index')),
+	array('label'=>'Crear arbitro','url'=>array('create')),
+	array('label'=>'actualizar arbitro','url'=>array('update','id'=>$model->ID)),
+	array('label'=>'Borrar arbitro','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Gestionar arbitro','url'=>array('admin')),
 );
 ?>
 
-<h1>View Referee #<?php echo $model->ID; ?></h1>
+<h1>Ver arbitro #<?php echo $model->ID; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
