@@ -4,8 +4,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Role', 'url'=>array('create')),
-	array('label'=>'Gestionar Role', 'url'=>array('admin')),
+	array('label'=>'Crear rol', 'url'=>array('create')),
+	array('label'=>'Gestionar  rol', 'url'=>array('admin')),
 );
 ?>
 
