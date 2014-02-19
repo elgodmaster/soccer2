@@ -8,14 +8,14 @@
 <?php
 $this->menu=array(
 		array('label'=>'Inicio', 'url'=>array('index')),
-		array('label'=>'Crear', 'url'=>array('create')),
-		array('label'=>'Ver', 'url'=>array('view', 'id'=>$model->ID)),
-		array('label'=>'Administrar', 'url'=>array('admin')),
+		array('label'=>'Crear nuevo equipo', 'url'=>array('create')),
+		array('label'=>'Ver equipo ', 'url'=>array('view', 'id'=>$model->ID)),
+		
 );
 ?>
 
 
-<h1>Jugadores  <?php echo $model->NAME; ?></h1>
+<h3>Jugadores  <?php echo $model->NAME; ?></h3>
 
 <?php echo CHtml::ajaxLink(Yii::t('job','Agregar Jugador'),$this->createUrl('team/addPlayer',array('id'=>$model->ID)),array(
         'onclick'=>'$("#jobDialog").dialog("open"); return false;',

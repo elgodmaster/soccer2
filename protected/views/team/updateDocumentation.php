@@ -10,9 +10,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 		array('label'=>'Inicio', 'url'=>array('index')),
-		array('label'=>'Crear', 'url'=>array('create')),
-		array('label'=>'Ver', 'url'=>array('view', 'id'=>$model->ID)),
-		array('label'=>'Administrar', 'url'=>array('admin')),
+		array('label'=>'Crear nuevo equipo', 'url'=>array('create')),
+		array('label'=>'Ver equipo ', 'url'=>array('view', 'id'=>$model->ID)),
+		
 );
 ?>
  								   
@@ -27,7 +27,7 @@ $this->menu=array(
 )); ?>
 
 	<p class="note">
-		Campos con <span class="required">*</span> son requeridos.
+		Los campos con: <span class="required">*</span> son requeridos.
 	</p>
 
 	

@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista equipo', 'url'=>array('index')),
-	array('label'=>'Gestionar equipo', 'url'=>array('admin')),
+	
 );
 ?>
 
-<h1>Crear un Equipo</h1>
+<h3>Crear nuevo Equipo</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model,'catCategory'=>$catCategory)); ?>
