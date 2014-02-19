@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Crear equipo', 'url'=>array('create')),
-	array('label'=>'Administrar equipo', 'url'=>array('admin')),
+	array('label'=>'Gestionar equipo', 'url'=>array('admin')),
 );
 ?>
 
