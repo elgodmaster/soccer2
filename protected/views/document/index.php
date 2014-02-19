@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Documento', 'url'=>array('create')),
-	array('label'=>'Gestinar Documento', 'url'=>array('admin')),
+	array('label'=>'Crear nuevo documento', 'url'=>array('create')),
+
 );
 ?>
 
-<h1>Documentos</h1>
+<h3>Documentos</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
