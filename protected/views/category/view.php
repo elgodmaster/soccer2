@@ -15,6 +15,13 @@ $this->menu=array(
 
 <h1>Ver categoria #<?php echo $model->ID_CATEGORY; ?></h1>
 
+<p class="note">
+	Los campos con <span class="required">*</span> son requeridos.
+	</p>
+
+	
+
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
