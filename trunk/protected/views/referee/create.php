@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Referee','url'=>array('index')),
-	array('label'=>'Manage Referee','url'=>array('admin')),
+	array('label'=>'Lista arbitro','url'=>array('index')),
+	array('label'=>'Gestionar arbitro','url'=>array('admin')),
 );
 ?>
 
-<h1>Create Referee</h1>
+<h1>Crear arbitro</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

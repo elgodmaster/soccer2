@@ -6,13 +6,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Referee','url'=>array('index')),
-	array('label'=>'Create Referee','url'=>array('create')),
-	array('label'=>'View Referee','url'=>array('view','id'=>$model->ID)),
-	array('label'=>'Manage Referee','url'=>array('admin')),
+	array('label'=>'Lista arbitro','url'=>array('index')),
+	array('label'=>'Crear arbitro','url'=>array('create')),
+	array('label'=>'Ver arbitro','url'=>array('view','id'=>$model->ID)),
+	array('label'=>'Gestionar arbitro','url'=>array('admin')),
 );
 ?>
 
-<h1>Update Referee <?php echo $model->ID; ?></h1>
+<h1>Actualizar arbitro<?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
