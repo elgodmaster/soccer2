@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista documento', 'url'=>array('index')),
-	array('label'=>'Gestionar documento', 'url'=>array('admin')),
+	array('label'=>'Lista documentos', 'url'=>array('index')),
+	
 );
 ?>
 
-<h1>Crear documento</h1>
+<h3>Crear nuevo documento</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

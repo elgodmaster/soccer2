@@ -6,13 +6,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista documento', 'url'=>array('index')),
-	array('label'=>'Crear documento', 'url'=>array('create')),
+	array('label'=>'Lista documentos', 'url'=>array('index')),
+	array('label'=>'Crear nuevo documento', 'url'=>array('create')),
 	array('label'=>'Ver documento', 'url'=>array('view', 'id'=>$model->ID)),
-	array('label'=>'Gestionar documento', 'url'=>array('admin')),
+	
 );
 ?>
 
-<h1> Documentos <?php echo $model->ID; ?></h1>
+<h3> Documentos <?php echo $model->ID; ?></h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
