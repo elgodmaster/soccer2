@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 	'Estadisticas'
 );
 $this->menu=array(
-	array('label'=>'List Tournament', 'url'=>array('index')),
-	array('label'=>'Manage Tournament', 'url'=>array('admin')),
+	array('label'=>'Lista torneo', 'url'=>array('index')),
+	array('label'=>'gestinar torneo', 'url'=>array('admin')),
 );
 ?>
 

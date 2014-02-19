@@ -23,13 +23,13 @@
 	);
 	$this->menu = array (
 			array (
-					'label' => 'List Tournament',
+					'label' => 'Lista torneo',
 					'url' => array (
 							'index' 
 					) 
 			),
 			array (
-					'label' => 'Manage Tournament',
+					'label' => 'Gestionar torneo',
 					'url' => array (
 							'admin' 
 					) 
@@ -86,7 +86,7 @@ $this->widget ( 'bootstrap.widgets.TbTabs', array (
 				$menuOptions [] = array (
 						'label' => 'J' . $switchVar,
 						'url' => array (
-								'manageResults',
+								'Gestionar resultados',
 								'id' => $model->ID,
 								'roundId' => $switchVar 
 						),

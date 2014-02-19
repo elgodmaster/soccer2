@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Torneo', 'url'=>array('create')),
-	array('label'=>'Manage Torneo', 'url'=>array('admin')),
+	array('label'=>'Crear torneo', 'url'=>array('create')),
+	array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Toneos</h1>
+<h1>Torneos</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

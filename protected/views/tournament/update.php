@@ -6,11 +6,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Tournament', 'url'=>array('index')),
-	array('label'=>'Create Tournament', 'url'=>array('create')),
-	array('label'=>'View Tournament', 'url'=>array('view', 'id'=>$model->ID)),
+	array('label'=>'Lista torneo', 'url'=>array('index')),
+	array('label'=>'Crear torneo', 'url'=>array('create')),
+	array('label'=>'Ver torneo', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
-	array('label'=>'Manage Tournament', 'url'=>array('admin')),
+	array('label'=>'Gestionar torrneo', 'url'=>array('admin')),
 );
 ?>
 

@@ -6,9 +6,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'Crear Torneo', 'url'=>array('create')),
-		array('label'=>'Manage Torneo', 'url'=>array('admin')),
-		array('label'=>'Delete Tournament', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
+		array('label'=>'Crear torneo', 'url'=>array('create')),
+		array('label'=>'Gestionar torneo', 'url'=>array('admin')),
+		array('label'=>'Borrar torneo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
 		
 );
 ?>
@@ -76,7 +76,7 @@ $this->menu=array(
 				'type'=>'list',
 				'items'=>array(
         array('label'=>'Equipos'),
-        array('label'=>'Equpos en el torneo', 'icon'=>'bullhorn', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
+        array('label'=>'Equipos en el torneo', 'icon'=>'bullhorn', 'url'=>array('manageTeams','tournamentId'=>$model->ID), ),
         array('label'=>'todos', 'icon'=>'book', 'url'=>'' ),
     	array('label' =>'Ayuda', 'icon'=>'flag','url' => 'http://www.someurl.com',),
 
