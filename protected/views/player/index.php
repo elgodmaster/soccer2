@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear jugador', 'url'=>array('create')),
-	array('label'=>'Gestionar jugador', 'url'=>array('admin')),
+	array('label'=>'Crear nuevo jugador', 'url'=>array('create')),
+	
 );
 ?>
 
-<h1>Jugadores</h1>
+<h3>Jugadores</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

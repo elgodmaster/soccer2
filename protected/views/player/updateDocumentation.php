@@ -115,18 +115,18 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'Lista jugador', 'url'=>array('index')),
-		array('label'=>'Crear jugador', 'url'=>array('create')),
+		array('label'=>'Lista jugadores', 'url'=>array('index')),
+		array('label'=>'Crear nuevo jugador', 'url'=>array('create')),
 		array('label'=>'Ver jugador', 'url'=>array('view', 'id'=>$model->ID)),
-		array('label'=>'Gestionar jugador', 'url'=>array('admin')),
-		array('label'=>'Administrar Documentacion','url'=>array('update', 'id'=>$model->ID)),
+		
+		array('label'=>'Administrar Documentación','url'=>array('update', 'id'=>$model->ID)),
 );
 ?>
  								   
-<h1>
-	Actualizar documentaci�n :
+<h3>
+	Modificar documentación :
 	<?php echo $model->NAME; ?>
-</h1>
+</h3>
 <div class="form">
 
 	<?php $form=$this->beginWidget('CActiveForm', array(
@@ -135,7 +135,8 @@ $this->menu=array(
 )); ?>
 
 	<p class="note">
-		Fields with <span class="required">*</span> are required.
+	
+		los campos con: <span class="required">*</span> son requeridos.
 	</p>
 
 	<div id="_archives"></div>
