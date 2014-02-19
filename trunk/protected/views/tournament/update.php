@@ -7,13 +7,15 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista torneo', 'url'=>array('index')),
-	array('label'=>'Crear torneo', 'url'=>array('create')),
+	array('label'=>'Crear nuevo torneo', 'url'=>array('create')),
 	array('label'=>'Ver torneo', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
-	array('label'=>'Gestionar torneo', 'url'=>array('admin')),
+	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Actualizar torneo <?php echo $model->ID; ?></h1>
+<h1> <?php echo $model->NAME; ?></h1>
+
+<h3>Modificar torneo </h3>
 
 <?php echo $this->renderPartial($form, array('model'=>$model,	'catCategory'=>$catCategory)); ?>

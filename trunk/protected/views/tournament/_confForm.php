@@ -5,7 +5,7 @@
     'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -13,7 +13,7 @@
 	<br />
 	
 	<fieldset>
-	<legend>Inicio Eliminatoria</legend>
+	<legend>Inicio eliminatoria</legend>
 	
 	<div class="span-20">
 	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>(!$model->STATUS < 4))) ?>

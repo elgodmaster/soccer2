@@ -5,7 +5,7 @@
     'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -13,7 +13,7 @@
 	<br />
 	
 	<fieldset>
-	<legend><b>Categoria del torneo</b></legend>
+	<legend><b>Categoría del torneo</b></legend>
 	
 	
 	<div class="span-20"> 
@@ -26,7 +26,7 @@
 	</fieldset>
 	
 	<fieldset>
-	<legend><b>Tipo Torneo</b></legend>
+	<legend><b>Tipo de Torneo</b></legend>
 	
 	
 	<div class="span-20"> 

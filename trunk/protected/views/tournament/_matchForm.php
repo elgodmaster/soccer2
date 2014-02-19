@@ -14,7 +14,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 			'data'=>$matchGames[0],
 			'attributes'=>array(      
      	array('name'=>'STATUS', 'label'=>'ESTATUS', 'value'=>MatchGame::model()->aStatus[$matchGames[0]->STATUS]),
-		array('name'=>'START', 'label'=>'Inicio Torneo', 'value'=>$model->START_DATE),
+		array('name'=>'START', 'label'=>'Inicio torneo', 'value'=>$model->START_DATE),
 
 
     ),
@@ -35,7 +35,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 			'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-<?php echo '<p class="note">Los campos con <span class="required">*</span> son requeridos</p>'; ?>
+<?php echo '<p class="note">Los campos con: <span class="required">*</span> son requeridos</p>'; ?>
 
 	<fieldset>
 		<table  class="table table-hover">
@@ -47,7 +47,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 					<th>VISITANTE</th>
 					<th>FECHA</th>
 					<th>CANCHA</th>
-					<th>ARBITRO</th>
+					<th>ÁRBITRO</th>
 
 				</tr>
 				<!-- <tr>

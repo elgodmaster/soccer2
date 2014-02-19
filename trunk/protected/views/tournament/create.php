@@ -5,11 +5,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista torneo', 'url'=>array('index')),
-	array('label'=>'Gestionar torneo', 'url'=>array('admin')),
+	array('label'=>'Lista  torneo', 'url'=>array('index')),
+	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
+
 ?>
 
-<h1>Crear torneo</h1>
+
+<h3>Crear nuevo torneo</h3>
+
 
 <?php echo $this->renderPartial('_createForm', array('model'=>$model,'catCategory'=>$catCategory)); ?>
