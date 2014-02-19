@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista equipo', 'url'=>array('index')),
-	array('label'=>'Crear equipo', 'url'=>array('create')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->ID)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar', 'url'=>array('admin')),
+	array('label'=>'Crear nuevo  equipo', 'url'=>array('create')),
+	array('label'=>'Modificar equipo', 'url'=>array('update', 'id'=>$model->ID)),
+	array('label'=>'Eliminar equipo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+	
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
 	array('label'=>'Jugadores', 'url'=>array('manageTeamPlayer','id'=>$model->ID)),
 );
@@ -18,7 +18,7 @@ $this->menu=array(
 
 
 
-<h1>Ver equipo #<?php echo $model->ID; ?></h1>
+<h3>Ver equipo #<?php echo $model->ID; ?></h3>
 
 
 <div class="span-5">

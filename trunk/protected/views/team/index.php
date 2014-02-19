@@ -4,12 +4,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear equipo', 'url'=>array('create')),
-	array('label'=>'Gestionar equipo', 'url'=>array('admin')),
-);
+	array('label'=>'Crear nuevo  equipo', 'url'=>array('create')),
+	);
 ?>
 
-<h1>Equipo</h1>
+<h3>Equipos</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

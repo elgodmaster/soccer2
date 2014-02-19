@@ -7,9 +7,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista equipo', 'url'=>array('index')),
-	array('label'=>'Crear equipo', 'url'=>array('create')),
+	array('label'=>'Crear nuevo equipo', 'url'=>array('create')),
 	array('label'=>'Ver equipo', 'url'=>array('view', 'id'=>$model->ID)),
-	array('label'=>'gestionar equipo', 'url'=>array('admin')),
+	
 	array('label'=>'Jugadores', 'url'=>array('manageTeamPlayer','id'=>$model->ID)),
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
 );
