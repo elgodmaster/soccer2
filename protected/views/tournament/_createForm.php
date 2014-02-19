@@ -5,7 +5,7 @@
     'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-	<p class="note">Los campos que lleven <span class="required">*</span> son requeridos.</p>
+	<p class="note">Los campos con  <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 

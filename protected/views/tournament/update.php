@@ -10,10 +10,10 @@ $this->menu=array(
 	array('label'=>'Crear torneo', 'url'=>array('create')),
 	array('label'=>'Ver torneo', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
-	array('label'=>'Gestionar torrneo', 'url'=>array('admin')),
+	array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Actualizar Torneo <?php echo $model->ID; ?></h1>
+<h1>Actualizar torneo <?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial($form, array('model'=>$model,	'catCategory'=>$catCategory)); ?>
