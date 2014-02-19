@@ -13,8 +13,8 @@ $CERRADO_CONFIGURANDO_JORNADAS = 4;
 );
 
 $this->menu=array(
-		array('label'=>'Crear Torneo', 'url'=>array('create')),
-		array('label'=>'Administrar Torneos', 'url'=>array('admin')),
+		array('label'=>'Crear torneo', 'url'=>array('create')),
+		array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 
 ?>

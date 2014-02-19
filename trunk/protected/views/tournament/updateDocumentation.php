@@ -27,7 +27,7 @@ $this->menu=array(
 )); ?>
 
 	<p class="note">
-		Campos con <span class="required">*</span> son requeridos.
+	Los campos con <span class="required">*</span> son requeridos.
 	</p>
 
 	

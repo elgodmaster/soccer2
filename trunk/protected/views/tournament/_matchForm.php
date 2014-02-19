@@ -35,7 +35,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 			'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-<?php echo '<p class="note">Campos  con <span class="required">*</span> son Requeridos</p>'; ?>
+<?php echo '<p class="note">Los campos con <span class="required">*</span> son Requeridos</p>'; ?>
 
 	<fieldset>
 		<table  class="table table-hover">
