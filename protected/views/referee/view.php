@@ -5,15 +5,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista arbitro','url'=>array('index')),
-	array('label'=>'Crear arbitro','url'=>array('create')),
-	array('label'=>'actualizar arbitro','url'=>array('update','id'=>$model->ID)),
-	array('label'=>'Borrar arbitro','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Gestionar arbitro','url'=>array('admin')),
+	array('label'=>'Lista árbitros','url'=>array('index')),
+	array('label'=>'Crear nuevo árbitro','url'=>array('create')),
+	array('label'=>'Modificar árbitro','url'=>array('update','id'=>$model->ID)),
+	array('label'=>'Borrar árbitro','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+
 );
 ?>
 
-<h1>Ver arbitro #<?php echo $model->ID; ?></h1>
+<h3>Ver árbitro #<?php echo $model->ID; ?></h3>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
