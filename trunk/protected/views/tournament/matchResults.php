@@ -86,7 +86,7 @@ $this->widget ( 'bootstrap.widgets.TbTabs', array (
 				$menuOptions [] = array (
 						'label' => 'J' . $switchVar,
 						'url' => array (
-								'Gestionar resultados',
+								'manageResults',
 								'id' => $model->ID,
 								'roundId' => $switchVar 
 						),
