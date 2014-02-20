@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Crear nueva categoría</h1>
+<h2>Crear nueva categoría</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>Ver categoría #<?php echo $model->ID_CATEGORY; ?></h3>
+<h2>Ver categoría #<?php echo $model->ID_CATEGORY; ?></h2>
 
 <p class="note">
 	Los campos con: <span class="required">*</span> son requeridos.
