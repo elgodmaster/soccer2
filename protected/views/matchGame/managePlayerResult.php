@@ -2,7 +2,7 @@
 
 ?>
 
-<h1>gestionar resultados </h1>
+<h3>Administrar resultados </h3>
 
 <?php echo $this->renderPartial('_playerResultForm', array('model'=>$model,
 				'playerModel'=>$playerModel,
