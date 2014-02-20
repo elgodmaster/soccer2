@@ -7,7 +7,13 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista equipo', 'url'=>array('index')),
 	
+
+		
+
 );
+
+
+
 ?>
 
 <h3>Crear nuevo Equipo</h3>
