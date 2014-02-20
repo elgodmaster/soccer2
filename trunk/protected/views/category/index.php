@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear categoria', 'url'=>array('create')),
-	array('label'=>'Gestionar categoria', 'url'=>array('admin')),
+	array('label'=>'Crear nueva categoría', 'url'=>array('create')),
+	
 );
 ?>
 
-<h1>Categorias</h1>
+<h3>Categorías</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

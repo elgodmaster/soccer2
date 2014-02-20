@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista Categoria', 'url'=>array('index')),
-	array('label'=>'Crear Categor�a', 'url'=>array('create')),
+	array('label'=>'Lista categorías', 'url'=>array('index')),
+	array('label'=>'Crear nueva categoría', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -25,7 +25,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Gestionar categoria</h1>
+<h3>Administrar categoría</h3>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
