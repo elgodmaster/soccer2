@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista categoria', 'url'=>array('index')),
-	array('label'=>'Gestionar categoria', 'url'=>array('admin')),
+	array('label'=>'Lista categorías', 'url'=>array('index')),
+
 );
 ?>
 
-<h1>Crear categoria</h1>
+<h1>Crear nueva categoría</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

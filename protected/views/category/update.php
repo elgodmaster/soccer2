@@ -6,13 +6,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista categoria', 'url'=>array('index')),
-	array('label'=>'Crear categoria', 'url'=>array('create')),
-	array('label'=>'Ver categoria', 'url'=>array('view', 'id'=>$model->ID_CATEGORY)),
-	array('label'=>'Gestionar categoria', 'url'=>array('admin')),
+	array('label'=>'Lista categoría', 'url'=>array('index')),
+	array('label'=>'Crear nuva categoría', 'url'=>array('create')),
+	array('label'=>'Ver categoría', 'url'=>array('view', 'id'=>$model->ID_CATEGORY)),
+	
 );
 ?>
 
-<h1>Actualizar categoria <?php echo $model->ID_CATEGORY; ?></h1>
+<h3>Modificar categoría <?php echo $model->ID_CATEGORY; ?></h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
