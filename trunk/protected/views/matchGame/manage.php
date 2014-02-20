@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista jugador', 'url'=>array('index')),
-	array('label'=>'Gestionar jugador', 'url'=>array('admin')),
+	array('label'=>'Lista jugadores', 'url'=>array('index')),
+	
 );
 ?>
 
-<h3>Asignar Resultados</h3>
+<h3>Asignar resultados</h3>
 
 <div class="view">
 	
