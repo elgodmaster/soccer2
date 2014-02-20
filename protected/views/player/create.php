@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h3>Crear nuevo jugador</h3>
+<h2>Crear nuevo jugador</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

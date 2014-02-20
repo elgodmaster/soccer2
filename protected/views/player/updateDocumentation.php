@@ -119,14 +119,13 @@ $this->menu=array(
 		array('label'=>'Crear nuevo jugador', 'url'=>array('create')),
 		array('label'=>'Ver jugador', 'url'=>array('view', 'id'=>$model->ID)),
 		
-		array('label'=>'Administrar Documentación','url'=>array('update', 'id'=>$model->ID)),
+		array('label'=>'Administrar documentación','url'=>array('update', 'id'=>$model->ID)),
 );
 ?>
  								   
-<h3>
-	Modificar documentación :
+<h2>Modificar documentación :
 	<?php echo $model->NAME; ?>
-</h3>
+</h2>
 <div class="form">
 
 	<?php $form=$this->beginWidget('CActiveForm', array(
