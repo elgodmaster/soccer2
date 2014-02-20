@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear resultados ', 'url'=>array('create')),
-	array('label'=>'Gestionar resultados', 'url'=>array('admin')),
+	array('label'=>'Obtener resultados ', 'url'=>array('create')),
+	
 );
 ?>
 
-<h1>Resultado categorias</h1>
+<h3>Resultado categorias</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
