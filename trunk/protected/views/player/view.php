@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h3><?php echo $model->NAME; ?></h3>
+<h2><?php echo $model->NAME; ?></h2>
 
 <br />
 

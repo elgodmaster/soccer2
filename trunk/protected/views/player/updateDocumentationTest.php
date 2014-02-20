@@ -40,9 +40,9 @@ $this->menu=array(
 );
 ?>
  								   
-<h3>
+<h2>
 	ANEXAR DOCUMENTOS	
-</h3>
+</h2>
 	<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'player-form',
 			'enableAjaxValidation'=>false,
