@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h3>Obtener resultados</h3>
+<h2>Obtener resultados</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
