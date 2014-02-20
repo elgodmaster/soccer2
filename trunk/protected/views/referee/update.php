@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h3>Modificar árbitro<?php echo $model->ID; ?></h3>
+<h2>Modificar árbitro<?php echo $model->ID; ?></h2>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
