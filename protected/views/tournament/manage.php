@@ -104,7 +104,7 @@ $this->menu=array(
         array('label'=>'Jornadas'),
         ($model->isEnabledToGenerateMatch() && $model->STATUS < 4) ? array('label'=>'Pre Visualizar jornadas', 'icon'=>'eye-open', 'url'=>array('manageMatchs','id'=>$model->ID), ): (($model->STATUS > 3)? array('label'=>'Horarios', 'icon'=>'time', 'url'=>array('manageMatchs','id'=>$model->ID), ) : null),
 		($model->STATUS > 3 )? array('label'=>'Temporada regular', 'icon'=>'retweet', 'url'=>array('manageResults','id'=>$model->ID), ) : null,
-		($model->STATUS > 3 )? array('label'=>'Clasificacion', 'icon'=>'random', 'url'=>array('clasification','id'=>$model->ID), ) : null,
+		($model->STATUS > 3 )? array('label'=>'Clasificación', 'icon'=>'random', 'url'=>array('clasification','id'=>$model->ID), ) : null,
 		array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
     ),
 )); ?>
