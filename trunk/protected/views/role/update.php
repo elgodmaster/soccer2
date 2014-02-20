@@ -6,13 +6,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista rol', 'url'=>array('index')),
-	array('label'=>'Crear role', 'url'=>array('create')),
+	array('label'=>'Lista roles', 'url'=>array('index')),
+	array('label'=>'Crear rol', 'url'=>array('create')),
 	array('label'=>'Ver role', 'url'=>array('view', 'id'=>$model->ID)),
-	array('label'=>'Gestionar Rol', 'url'=>array('admin')),
+	
 );
 ?>
 
-<h1>Actualizar rol <?php echo $model->ID; ?></h1>
+<h3>Modificar  rol <?php echo $model->ID; ?></h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

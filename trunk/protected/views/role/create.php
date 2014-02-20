@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista rol', 'url'=>array('index')),
-	array('label'=>'Gestionar rol', 'url'=>array('admin')),
+	array('label'=>'Lista roles', 'url'=>array('index')),
+	
 );
 ?>
 
-<h1>Crear rol</h1>
+<h3>Crear rol</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
