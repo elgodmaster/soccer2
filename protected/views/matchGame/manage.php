@@ -14,7 +14,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>Asignar resultados</h3>
+<h2>Asignar resultados</h2>
 
 <div class="view">
 	

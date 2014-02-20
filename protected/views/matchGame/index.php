@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 	'Match Game',
 );
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+<h2><?php echo $this->id . '/' . $this->action->id; ?></h2>
 
 <p>
 	You may change the content of this page by modifying
