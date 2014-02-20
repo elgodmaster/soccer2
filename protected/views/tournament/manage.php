@@ -12,9 +12,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>
+<h2>
 	<?php echo $model->NAME;?>
-</h1>
+</h2>
 
 <?php $this->widget('bootstrap.widgets.TbAlert', array(
 		'block'=>false, // display a larger alert block?
@@ -50,7 +50,7 @@ $this->menu=array(
 			'attributes'=>array(
         array('name'=>'ID', 'label'=>'ID'),
      //	   array('name'=>'NAME', 'label'=>'Nombre del torneo'),
-        array('name'=>'ID_CATEGORY', 'label'=>'Categoria', 'value'=>$model->iDCATEGORY->NAME),
+        array('name'=>'ID_CATEGORY', 'label'=>'Categoría', 'value'=>$model->iDCATEGORY->NAME),
 		array('name'=>'START_DATE', 'label'=>'Fecha Inicio'),
 		array('name'=>'TYPE', 'label'=>'Tipo de torneo' , 'value'=>$model->getStringTournamentType()),
     	array('name'=>'TYPE', 'label'=>'Equipos del torneo'.' ('.count($model->teams).') ' , 'value'=>$allTeams),
@@ -118,14 +118,14 @@ $this->menu=array(
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 				'type'=>'list',
 				'items'=>array(
-        array('label'=>'Publicaciónes'),
+        array('label'=>'Publicaciones'),
 		array('label'=>'Facebook', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
-		array('label'=>'Correo electronico', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
+		array('label'=>'Correo eléctronico', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
 		array('label'=>'Twitter', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
         array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
 array('label'=>'Estadísticas'),
-array('label'=>'Tabla de posiciónes', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
+array('label'=>'Tabla de posiciones', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
 array('label'=>'Estadistícas por Equipos', 'icon'=>'list', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_categoryForm')),
 array('label'=>'Estadistícas por Jugadores', 'icon'=>'list-alt', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_confForm')),
 array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),

@@ -10,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>Tabla de pocisiones</h3>
+<h2>Tabla de pocisiones</h2>
 
 <br />
  

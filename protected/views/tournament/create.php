@@ -12,7 +12,7 @@ $this->menu=array(
 ?>
 
 
-<h3>Crear nuevo torneo</h3>
+<h2>Crear nuevo torneo</h2>
 
 
 <?php echo $this->renderPartial('_createForm', array('model'=>$model,'catCategory'=>$catCategory)); ?>
