@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h3>Crear rol</h3>
+<h2>Crear rol</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
