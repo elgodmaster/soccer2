@@ -10,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Jornadas</h1>
+<h2>Jornadas</h2>
 
 <br />
 

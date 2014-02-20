@@ -16,9 +16,9 @@ $this->menu=array(
 );
 ?>
  								   
-<h1>
-	DOCUMENTOS	
-</h1>
+<h2>
+	Documentos	
+</h2>
 	<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'player-form',
 			'enableAjaxValidation'=>false,

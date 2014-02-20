@@ -16,6 +16,6 @@ $this->menu=array(
 
 <h1> <?php echo $model->NAME; ?></h1>
 
-<h3>Modificar torneo </h3>
+<h3>Modificar eliminatoria </h3>
 
 <?php echo $this->renderPartial($form, array('model'=>$model,	'catCategory'=>$catCategory)); ?>
