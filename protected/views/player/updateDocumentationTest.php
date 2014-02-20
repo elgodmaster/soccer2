@@ -41,7 +41,7 @@ $this->menu=array(
 ?>
  								   
 <h2>
-	ANEXAR DOCUMENTOS	
+	Adjuntar documentos	
 </h2>
 	<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'player-form',
