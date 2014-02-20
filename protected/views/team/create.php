@@ -16,6 +16,6 @@ $this->menu=array(
 
 ?>
 
-<h3>Crear nuevo Equipo</h3>
+<h2>Crear nuevo equipo</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model,'catCategory'=>$catCategory)); ?>

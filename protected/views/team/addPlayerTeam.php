@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?> 
 
-<h1>Jugador en el equipo<?php //echo $model->NAME; ?></h1>
+<h2>Jugador en el equipo<?php //echo $model->NAME; ?></h2>
 
 <?php echo $this->renderPartial('_formPlayerTeam', array('model'=>$model,'team'=>$team, 'playerTeam'=>$playerTeam)); ?>

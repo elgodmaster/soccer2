@@ -16,9 +16,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>#<?php echo $model->pLAYER->ID; ?>&nbsp;&nbsp; <?php echo $model->pLAYER->NAME; ?>  
+<h2>#<?php echo $model->pLAYER->ID; ?>&nbsp;&nbsp; <?php echo $model->pLAYER->NAME; ?>  
 
-</h1>
+</h2>
 
 
 
@@ -30,7 +30,7 @@ $this->menu=array(
 				array('name'=>'GENDER', 'value'=>($model->pLAYER->GENDER === 1) ?'Hombre' : 'MUJER' , 'label'=>'Sexo'),
 				array('name'=>'PHONE', 'value'=>$model->pLAYER->PHONE, 'label'=>'Teléfono'),
 				array('name'=>'ADDRESS', 'value'=>$model->pLAYER->ADDRESS, 'label'=>'Dirección'),
-				array('name'=>'EMAIL', 'value'=>$model->pLAYER->EMAIL, 'label'=>'Correo Electronico'),
+				array('name'=>'EMAIL', 'value'=>$model->pLAYER->EMAIL, 'label'=>'Correo Eléctronico'),
 					
 				array('name'=>'NUMBER','value'=>$model->NUMBER, 'label'=>'Numero en el equipo'),
 				array('name'=>'ALIAS','value'=>$model->ALIAS, 'label'=>'Alias en el equipo'),
