@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear descanso', 'url'=>array('create')),
-	array('label'=>'Gestionar descanso', 'url'=>array('admin')),
+	array('label'=>'Obtener descanso', 'url'=>array('create')),
+	
 );
 ?>
 
-<h1>Juego estrategico</h1>
+<h3>lista descansos</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
