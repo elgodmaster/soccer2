@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>Ver documento #<?php echo $model->ID; ?></h3>
+<h2>Ver documento #<?php echo $model->ID; ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
