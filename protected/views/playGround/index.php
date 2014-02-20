@@ -12,7 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>lista descansos</h3>
+<h2>lista descansos</h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

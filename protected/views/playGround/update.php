@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Administrar descansos <?php echo $model->ID; ?></h1>
+<h2>Administrar descansos <?php echo $model->ID; ?></h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
