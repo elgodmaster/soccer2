@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista descanso', 'url'=>array('index')),
-	array('label'=>'Crear descanso', 'url'=>array('create')),
-	array('label'=>'Actualizar descanso', 'url'=>array('update', 'id'=>$model->ID)),
+	array('label'=>'Lista descansso', 'url'=>array('index')),
+	array('label'=>'Obtener descanso', 'url'=>array('create')),
+	array('label'=>'Modificar descanso', 'url'=>array('update', 'id'=>$model->ID)),
 	array('label'=>'Borrar descanso', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Gestionar descanso', 'url'=>array('admin')),
+	
 );
 ?>
 
-<h1>Ver descansos #<?php echo $model->ID; ?></h1>
+<h3>Ver descansos #<?php echo $model->ID; ?></h3>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
