@@ -53,12 +53,15 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  	
  	$switchVar = 0;
  	
+ 	
+ 	
  	foreach ($matchGames as $matchGame){
  		
 		if($switchVar != $matchGame->GROUP){
 			
 				$switchVar = $matchGame->GROUP;
-				$menuOptions[] =  array('label'=>'J'.$switchVar, 'url'=>array('manageMatchs', 'id'=>$model->ID,'roundId'=>$switchVar), 'active'=> ($roundId==$switchVar));
+				
+				$menuOptions[] =  array('label'=>($matchGame->TYPE == 1)?'J'.$switchVar : $matchGame->getTypeDescription(), 'url'=>array('manageMatchs', 'id'=>$model->ID,'roundId'=>$switchVar), 'active'=> ($roundId==$switchVar));
 		}
 
 		
