@@ -23,13 +23,13 @@
 	);
 	$this->menu = array (
 			array (
-					'label' => 'Lista torneo',
+					'label' => 'List Tournament',
 					'url' => array (
 							'index' 
 					) 
 			),
 			array (
-					'label' => 'Gestionar torneo',
+					'label' => 'Manage Tournament',
 					'url' => array (
 							'admin' 
 					) 
@@ -84,9 +84,9 @@ $this->widget ( 'bootstrap.widgets.TbTabs', array (
 				
 				$switchVar = $matchGame->GROUP;
 				$menuOptions [] = array (
-						'label' => 'J' . $switchVar,
+						'label' => ($matchGame->TYPE == 1)?'J'.$switchVar : $matchGame->getTypeDescription(),
 						'url' => array (
-								'manageResults',
+								'manageResults', 
 								'id' => $model->ID,
 								'roundId' => $switchVar 
 						),

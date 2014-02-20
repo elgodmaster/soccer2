@@ -590,6 +590,8 @@ class TournamentController extends Controller
 				
 				$matchGame->NAME = $matchName;
 				
+				$matchGame->TYPE = 1; //Regular
+				
 				
 				$matchGameMirror = new MatchGame();			
 				
@@ -603,6 +605,8 @@ class TournamentController extends Controller
 				$matchGameMirror->vISITOR =$equipos[intval( $components[0])]->iDTEAM;
 				
 				$matchGameMirror->NAME = $matchName;
+				
+				$matchGameMirror->TYPE = 1; //Regular
 				
 				$mirror [] = $matchGameMirror;
 				
@@ -981,6 +985,10 @@ class TournamentController extends Controller
 			/**
 			 * Classification
 			 */
+			
+			$j = 0;
+			$a_class = array();
+			
 			for ($i = 1; $i<$model->START_E; $i*=2){
 
 				$group++;
@@ -993,17 +1001,25 @@ class TournamentController extends Controller
 					$matchGame->LOCAL = 0;
 					$matchGame->VISITOR = 0;
 					$matchGame->TOURNAMENT_ID = $model->ID;
-					$matchGame->NAME = 'FINAL';
+					$matchGame->NAME = ''.$j+1;
 					$matchGame->GROUP = $group;
-					$matchGame->save();
+					$matchGame->TYPE = ($i*2);
+					//$matchGame->save();
+					$a_class[] = $matchGame;
 					
 					
 				}
 				
-				
-				
-				
 			}
+			
+			$i = count($a_class)-1;
+			
+			for($i; $i>=0; $i--){
+								
+				$a_class[$i]->save();
+								
+			}
+			
 		
 			$model->save(); // Unir en transaccionalidad
 			

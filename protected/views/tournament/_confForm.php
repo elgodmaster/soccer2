@@ -16,7 +16,7 @@
 	<legend>Inicio eliminatoria</legend>
 	
 	<div class="span-20">
-	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>(!$model->STATUS < 4))) ?>
+	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>!($model->STATUS < 4))) ?>
 	</div>	
 		
 	

@@ -14,6 +14,7 @@
  * @property integer $ID_REFEREE
  * @property integer $ACTIVE
  * @property string $NAME
+ * @property integer $TYPE
  * @property integer $STATUS
  *
  * The followings are the available model relations:
@@ -53,6 +54,19 @@ class MatchGame extends CActiveRecord
 	);
 	
 	
+	/**
+	 * Match Type
+	 * @var unknown
+	 */
+	private $types = array(
+				
+			16=>'Octavos de final',
+			8=>'Cuartos de final',
+			4=>'Semifinal',
+			2=>'Final',
+				
+	);
+	
 	
 	/**
 	 * @return string the associated database table name
@@ -71,13 +85,13 @@ class MatchGame extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NAME', 'required'),
-			array('PLAY_GROUND_ID, VISITOR, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE, PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0),
+			array('PLAY_GROUND_ID, VISITOR,TYPE, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE, PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0),
 			array('GROUP', 'length', 'max'=>10),
 			array('NAME', 'length', 'max'=>100),
 			array('TIME', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID, STATUS, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
+			array('ID, STATUS, TYPE, VISITOR, TOURNAMENT_ID,ID_REFEREE, LOCAL, TIME, GROUP, ACTIVE, NAME', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -114,7 +128,8 @@ class MatchGame extends CActiveRecord
 			'GROUP' => 'Group',
 			'ACTIVE' => 'Active',
 			'NAME' => 'Name',
-				'ID_REFEREE' => 'Arbitro',
+			'ID_REFEREE' => 'Arbitro',
+			'TYPE' => 'Tipo partido',
 				
 		);
 	}
@@ -144,4 +159,16 @@ class MatchGame extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	
+	
+	/**
+	 * 
+	 */
+	public function  getTypeDescription(){
+		
+		return isset($this->types[$this->TYPE]) ? $this->types[$this->TYPE] : '-';
+		
+	}
+	
 }
