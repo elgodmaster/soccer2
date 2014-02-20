@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista rol', 'url'=>array('index')),
-	array('label'=>'Crear rol', 'url'=>array('create')),
+	array('label'=>'Lista roles', 'url'=>array('index')),
+	array('label'=>'Crear nuevo rol', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Gestionar roles</h1>
+<h3> roles</h3>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
