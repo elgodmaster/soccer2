@@ -9,7 +9,7 @@ $this->menu=array(
 	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
-
+<h1> <?php echo $model->NAME; ?></h1>
 <h2>Jornadas</h2>
 
 <br />
