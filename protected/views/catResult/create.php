@@ -12,6 +12,7 @@ $this->menu=array(
 	
 );
 ?>
+<h1> <?php echo $model->NAME; ?></h1>
 
 <h2>Obtener resultados</h2>
 

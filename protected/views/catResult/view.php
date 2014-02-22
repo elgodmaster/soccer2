@@ -15,6 +15,7 @@ $this->menu=array(
 	
 );
 ?>
+<h1> <?php echo $model->NAME; ?></h1>
 
 <h2>Ver resultados #<?php echo $model->ID; ?></h2>
 
