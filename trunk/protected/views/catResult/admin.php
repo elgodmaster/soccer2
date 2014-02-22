@@ -26,6 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
+
 <h2>Administrar resultados </h2>
 
 <p>
