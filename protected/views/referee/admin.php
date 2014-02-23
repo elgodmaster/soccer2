@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista árbitros','url'=>array('index')),
+	array('label'=>'Lista árbitros ','url'=>array('index')),
 	array('label'=>'Crear nuevo árbitro','url'=>array('create')),
 );
 
