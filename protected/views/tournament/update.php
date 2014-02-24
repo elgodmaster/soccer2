@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	//array('label'=>'Lista torneo', 'url'=>array('index')),
+array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
 	//array('label'=>'Ver torneo', 'url'=>array('view', 'id'=>$model->ID)),
 	//array('label'=>'Documentos', 'url'=>array('manageDocuments','id'=>$model->ID)),
 	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
