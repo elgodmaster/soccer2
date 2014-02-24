@@ -6,13 +6,11 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista  torneo', 'url'=>array('index')),
-	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
-		//array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
 );
 
 ?>
 
-
+//<h3><?php echo $model->NAME;?></h3>
 <h2>Crear nuevo torneo</h2>
 
 
