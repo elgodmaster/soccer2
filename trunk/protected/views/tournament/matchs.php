@@ -5,7 +5,9 @@ $this->breadcrumbs=array(
 	'JORNADAS'
 );
 $this->menu=array(
-	array('label'=>'Lista torneo', 'url'=>array('index')),
+		
+	array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
+	//array('label'=>'Lista torneo', 'url'=>array('index')),
 	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
