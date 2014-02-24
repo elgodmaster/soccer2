@@ -9,9 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'Inicio', 'url'=>array('index')),
-		array('label'=>'Crear', 'url'=>array('create')),
-		array('label'=>'Ver', 'url'=>array('manage', 'id'=>$model->ID)),
+		//array('label'=>'Inicio', 'url'=>array('index')),
+		array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
+		//array('label'=>'Crear', 'url'=>array('create')),
+		//array('label'=>'Ver', 'url'=>array('manage', 'id'=>$model->ID)),
 		//array('label'=>'Administrar', 'url'=>array('admin')),
 );
 ?>
