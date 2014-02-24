@@ -5,12 +5,13 @@ $this->breadcrumbs=array(
 	'Estadisticas'
 );
 $this->menu=array(
-	array('label'=>'Lista torneo', 'url'=>array('index')),
+	//array('label'=>'Lista torneo', 'url'=>array('index')),
+    array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
 	//array('label'=>'gestinar torneo', 'url'=>array('admin')),
 );
 ?>
-
-<h2>Tabla de pocisiones</h2>
+<h2><?php echo $model->NAME;?></h2>
+<h3>Tabla de posiciones</h3>
 
 <br />
  
