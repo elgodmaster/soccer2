@@ -22,22 +22,26 @@
 			'Resultados' 
 	);
 	$this->menu = array (
-			array (
-					'label' => 'List Tournament',
-					'url' => array (
-							'index' 
-					) 
-			),
-			array (
-					'label' => 'Manage Tournament',
-					'url' => array (
-							'admin' 
-					) 
-			) 
+			
+					//'label' => 'List Tournament',
+					//'url' => array (
+						//	'index'
+
+					array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
+					
+			//),
+			//array (
+				//	'label' => 'Manage Tournament',
+					//'url' => array (
+						//	'admin' 
+					//) 
+			//) 
 	);
 	?>
+<h2><?php echo $model->NAME;?></h2>
+<h3>Resultados</h3>
 
-<h1>Resultados</h1>
+
 
 <br />
 
