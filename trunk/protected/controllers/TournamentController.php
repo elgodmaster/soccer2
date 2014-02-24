@@ -2272,8 +2272,8 @@ main();
 	
 	/**
 	 * Retrieves  the clasification games
-	 * @param integer $id
-	 */
+	 * @param integer $id 
+	 *///please erase this
 	public function actionClasification($id){
 		
 		$model = $this->loadModel($id);
@@ -2301,28 +2301,28 @@ main();
 	
 	/**
 	 * retrieves classification
-	 * @param unknown $model
+	 * @param Tournament $model
 	 * @return number|multitype:
 	 */
-	public function  getClasification($model){
+	public function  getClasification($model, $clasification){
 	
 			
 		$CERRADO_LISTO_ELIMINATORIA = 9; 
 		$a_matchs = array();
 		$nMatchs = 0;		
-		$nMatchs = $model->START_E / 2;
+		$nMatchs = ($clasification > 1)? $clasification / 2 : $model->START_E / 2;
 		$r_matchs = array();
 		
 		if ($model->STATUS < $CERRADO_LISTO_ELIMINATORIA){
-			return 0;
+			return array();
 		}else {
 			
 			$a_matchs = $this->getRankingBoard($model);
 			
 			for ($i = 0; $i<$nMatchs; $i++ ){
 				
-				$r_matchs = $a_matchs[$i];
-				$r_matchs = $a_matchs[($model->START_E-1) - $i];
+				$r_matchs[$i]['LOCAL'] = $a_matchs[$i]; //Local
+				$r_matchs[$i]['VISITOR'] = $a_matchs[($model->START_E-1) - $i]; //Visitor
 				
 			}
 
@@ -2331,6 +2331,71 @@ main();
 		
 		
 		return $r_matchs;
+	}
+	
+	
+	
+	/**
+	 * Does the Tournament clasification
+	 * @param MatchGame $id
+	 */
+	public function buildClasification($matchGameModel){
+
+	$STATUS_CERRRADO = 6;
+	$CERRADO_LISTO_ELIMINATORIA = 9;
+	$model = $this->loadModel($matchGameModel->TOURNAMENT_ID);
+	$clasificationMatchs = array();
+	
+		
+	
+	/**
+	 * Change this, instead of use the query to determyne that
+	 */
+		foreach ($model->matchGames as $match){
+			
+			if($match->STATUS < $STATUS_CERRRADO && $match->TYPE == $matchGameModel->TYPE){
+							
+				return;
+				
+			}
+			
+		}
+		
+		$model->STATUS = $CERRADO_LISTO_ELIMINATORIA;
+		
+		//$model->save(); // Save status  ready to Clasification
+		
+		$clasificationMatchs = $this->getClasification($model, $matchGameModel->TYPE);
+		
+		//do this
+		//$matchSearch->ACTIVE = 1;  
+		
+		/**
+		 * Add more search attributes to do the search 
+		 */
+		$matchResults = MatchGame::model()->findAllByAttributes(array('TOURNAMENT_ID'=>$matchGameModel->TOURNAMENT_ID,'TYPE'=>($matchGameModel->TYPE =! 1)? $matchGameModel->TYPE : $model->START_E));
+		
+		$i = 0;
+		
+		if(count($matchResults) != count($clasificationMatchs)) return false;
+		
+		foreach ($matchResults as $resultMatch){
+			
+			$local = $clasificationMatchs[$i]['LOCAL']['ID'];
+			$visitor = $clasificationMatchs[$i++]['VISITOR']['ID'];
+			
+			
+			$resultMatch->LOCAL = $local;
+			$resultMatch->VISITOR = $visitor;
+			
+			if (!$resultMatch->save()) 
+				return  false;
+			
+			
+		}
+		
+		$X = 2;
+		
 	}
 	
 	
@@ -2368,7 +2433,8 @@ main();
 						
 					$board[$matchGame->LOCAL]['JJ'] += 1;
 					$board[$matchGame->VISITOR]['JJ'] += 1;
-						
+					$board[$matchGame->LOCAL]['ID'] = $matchGame->LOCAL;
+					$board[$matchGame->VISITOR]['ID']= $matchGame->VISITOR;
 		
 						
 					if($result->TOTAL_LOCAL > $result->TOTAL_VISITOR){
