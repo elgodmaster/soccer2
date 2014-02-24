@@ -130,7 +130,13 @@ class MatchGameController extends Controller
 				
 				$model->STATUS = $CERRADO;
 				echo "true";
+				
 				$model->save();
+
+				$controller=Yii::app()->createController('Tournament')[0];
+
+				$controller->buildClasification($model);
+				
 				return ;
 				
 			}
