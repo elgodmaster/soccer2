@@ -620,7 +620,7 @@ class TournamentController extends Controller
 		}
 		
 		
-		if(1) //Secong half. you have to configure it
+		if(0){ //Secong half. you have to configure it
 		
 		$tMatchs = sizeof($mirror);
 		
@@ -633,6 +633,7 @@ class TournamentController extends Controller
 			
 		}
 		
+		}
 		
 		
 		
@@ -2259,7 +2260,9 @@ main();
 		
 		$model = $this->loadModel($id);
 		
-		$board = $this->getRankingBoard($model);
+		$regularMatch = 1;
+		
+		$board = $this->getRankingBoard($model, $regularMatch);
 		
 		$this->render('pointsBoard',array(
 				'model'=>$model,
@@ -2310,19 +2313,22 @@ main();
 		$CERRADO_LISTO_ELIMINATORIA = 9; 
 		$a_matchs = array();
 		$nMatchs = 0;		
-		$nMatchs = ($clasification > 1)? $clasification / 2 : $model->START_E / 2;
+		$nMatchs = ($clasification > 1)? $clasification / 4 : $model->START_E / 2;
 		$r_matchs = array();
 		
 		if ($model->STATUS < $CERRADO_LISTO_ELIMINATORIA){
 			return array();
 		}else {
 			
-			$a_matchs = $this->getRankingBoard($model);
+			$a_matchs = $this->getRankingBoard($model, $clasification);
 			
 			for ($i = 0; $i<$nMatchs; $i++ ){
 				
 				$r_matchs[$i]['LOCAL'] = $a_matchs[$i]; //Local
-				$r_matchs[$i]['VISITOR'] = $a_matchs[($model->START_E-1) - $i]; //Visitor
+				
+				$topIndex = ($clasification > 1)? $clasification/2 : $model->START_E;  
+				
+				$r_matchs[$i]['VISITOR'] = $a_matchs[($topIndex - 1) - $i]; //Visitor
 				
 			}
 
@@ -2337,7 +2343,7 @@ main();
 	
 	/**
 	 * Does the Tournament clasification
-	 * @param MatchGame $id
+	 * @param MatchGame $matchGameModel
 	 */
 	public function buildClasification($matchGameModel){
 
@@ -2345,8 +2351,6 @@ main();
 	$CERRADO_LISTO_ELIMINATORIA = 9;
 	$model = $this->loadModel($matchGameModel->TOURNAMENT_ID);
 	$clasificationMatchs = array();
-	
-		
 	
 	/**
 	 * Change this, instead of use the query to determyne that
@@ -2373,7 +2377,7 @@ main();
 		/**
 		 * Add more search attributes to do the search 
 		 */
-		$matchResults = MatchGame::model()->findAllByAttributes(array('TOURNAMENT_ID'=>$matchGameModel->TOURNAMENT_ID,'TYPE'=>($matchGameModel->TYPE =! 1)? $matchGameModel->TYPE : $model->START_E));
+		$matchResults = MatchGame::model()->findAllByAttributes(array('TOURNAMENT_ID'=>$matchGameModel->TOURNAMENT_ID,'TYPE'=>($matchGameModel->TYPE > 1)? ($matchGameModel->TYPE/2) : $model->START_E));
 		
 		$i = 0;
 		
@@ -2404,12 +2408,14 @@ main();
 	 * @param integer $id
 	 * @return multitype:
 	 */
-	protected function getRankingBoard($model){
+	protected function getRankingBoard($model, $matchType){
 		
 		
 		$SCORE_KEY = 1;	
 		$board = array();
 		$sortList = array();
+		
+		$matchs = MatchGame::model()->findAllByAttributes(array('TOURNAMENT_ID'=>$model->ID,'TYPE'=>$matchType));
 		
 		foreach ($model->teams as $team){
 				
@@ -2424,7 +2430,7 @@ main();
 				
 		}
 		
-		foreach ($model->matchGames as $matchGame){
+		foreach ($matchs as $matchGame){
 				
 				
 			foreach ($matchGame->matchResults as $result) {
