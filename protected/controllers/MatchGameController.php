@@ -129,14 +129,21 @@ class MatchGameController extends Controller
 			if ($result->RESULT_ID == $SCORE_RESULT && $result->TOTAL_LOCAL != null && $result->TOTAL_VISITOR != null){
 				
 				$model->STATUS = $CERRADO;
+				
 				echo "true";
 				
 				$model->save();
 
-				$controller=Yii::app()->createController('Tournament')[0];
+				if($model->TYPE != 2){
 
-				$controller->buildClasification($model);
+					$controller=Yii::app()->createController('Tournament')[0];
+					
+					$controller->buildClasification($model);
+						
+					
+				}
 				
+								
 				return ;
 				
 			}
