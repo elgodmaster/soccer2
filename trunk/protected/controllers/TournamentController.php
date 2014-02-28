@@ -2360,7 +2360,6 @@ main();
 			if($match->STATUS < $STATUS_CERRRADO && $match->TYPE == $matchGameModel->TYPE){
 							
 				return;
-				
 			}
 			
 		}
@@ -2386,10 +2385,11 @@ main();
 		foreach ($matchResults as $resultMatch){
 			
 			$local = $clasificationMatchs[$i]['LOCAL']['ID'];
+			
 			$visitor = $clasificationMatchs[$i++]['VISITOR']['ID'];
-			
-			
+
 			$resultMatch->LOCAL = $local;
+			
 			$resultMatch->VISITOR = $visitor;
 			
 			if (!$resultMatch->save()) 
