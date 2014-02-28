@@ -7,6 +7,7 @@
 	$PROGRAMADO = 3;
 	$EVALUANDO = 4;
 	$LISTO_PARA_PROGRAMAR = 2;
+	$CERRADO = 6;
 	
 	?>
 	
@@ -147,9 +148,9 @@ $this->widget ( 'bootstrap.widgets.TbMenu', array (
 
  			}?>	
 			</td>
-			<td><?php if ($match->STATUS > $LISTO_PARA_PROGRAMAR) {
+			<td><?php if ($match->STATUS > $LISTO_PARA_PROGRAMAR  && $match->STATUS < $CERRADO) {
 				$this->widget ( 'bootstrap.widgets.TbButton', array (
-						'label' => 'Editar',
+						'label' => 'Evaluar',
 						'type' => 'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 						'size' => 'mini', // null, 'large', 'small' or 'mini'
 						'url' => array (
@@ -167,7 +168,7 @@ $this->widget ( 'bootstrap.widgets.TbMenu', array (
 								'matchGame/validate',
 								'id' => $match->ID 
 						),
-						'label' => ($match->STATUS != 6) ? 'Listo' : 'Evaluado',
+						'label' => ($match->STATUS != 6) ? 'Autorizar' : 'Autorizado',
 						'buttonType' => 'ajaxButton',
 						'type' => ($match->STATUS != 6) ? 'warning' : 'success',
 						'disabled' => ($match->STATUS == 6),
@@ -179,7 +180,7 @@ $this->widget ( 'bootstrap.widgets.TbMenu', array (
 								'type' => 'get',
 								'success' => "js:function(vals){
                             	 								
-																	$('#_listo$match->ID').html('Evaluado');
+																	$('#_listo$match->ID').html('Autorizado');
 																	$('#_listo$match->ID').attr('disabled','true');
 																	$('#_listo$match->ID').attr('class','btn btn-success btn-mini');
 																																    
