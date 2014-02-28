@@ -349,7 +349,7 @@ class TournamentController extends Controller
 		
 		$roundId = isset($_GET['roundId']) ? $_GET['roundId'] : 1; 
 
-		if(isset($_POST['MatchGame']) && $model->STATUS == 4){
+		if(isset($_POST['MatchGame']) && $model->STATUS >= 4){
 				
 			$matchArray = array();
 				
@@ -2310,13 +2310,13 @@ main();
 	public function  getClasification($model, $clasification){
 	
 			
-		$CERRADO_LISTO_ELIMINATORIA = 9; 
+		$TEMPORADA_REGULAR = 4; 
 		$a_matchs = array();
 		$nMatchs = 0;		
 		$nMatchs = ($clasification > 1)? $clasification / 4 : $model->START_E / 2;
 		$r_matchs = array();
 		
-		if ($model->STATUS < $CERRADO_LISTO_ELIMINATORIA){
+		if ($model->STATUS < $TEMPORADA_REGULAR){
 			return array();
 		}else {
 			
@@ -2348,7 +2348,8 @@ main();
 	public function buildClasification($matchGameModel){
 
 	$STATUS_CERRRADO = 6;
-	$CERRADO_LISTO_ELIMINATORIA = 9;
+	$REGULAR_MATCH = 1;
+	
 	$model = $this->loadModel($matchGameModel->TOURNAMENT_ID);
 	$clasificationMatchs = array();
 	
@@ -2364,7 +2365,7 @@ main();
 			
 		}
 		
-		$model->STATUS = $CERRADO_LISTO_ELIMINATORIA;
+		
 		
 		//$model->save(); // Save status  ready to Clasification
 		
@@ -2397,6 +2398,11 @@ main();
 			
 			
 		}
+		
+		$model->STATUS = ($matchGameModel->TYPE != $REGULAR_MATCH)? ($matchGameModel->TYPE / 2) * 10 : $model->START_E * 10;
+		
+		$model->SAVE();
+		
 		
 		$X = 2;
 		
