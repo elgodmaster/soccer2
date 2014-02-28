@@ -53,9 +53,12 @@ class Tournament extends CActiveRecord
 			2=>'CONFIGURACION',
 			3=>'LISTO PARA CERRAR',
 			4=>'TEMPORADA REGULAR',
-			5=>'CERRADO-OPERACION',
-			6=>'CERRADO-LISTO-ELIMINATORIA',
-			7=>'CERRADO-ELIMINATORIA',
+			6=>'FINAL',
+			8=>'SEMIFINAL',
+			12=>'CUARTOS DE FINAL',
+			20=>'OCTAVOS DE FINAL',
+			
+			
 			
 	);
 	
