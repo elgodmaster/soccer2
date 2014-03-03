@@ -88,14 +88,13 @@ table tfoot td {
  -->
 
 
-	<table class="items" width="40%"
-		style="font-size: 9pt; border-collapse: collapse;" cellpadding="2">
+	<table class="table" >
 		<thead>
 			<tr>
-				<td colspan="5">LIGA DE FUTBOL LOS REYES S.A de C.V <br />
+				<th colspan="5">LIGA DE FUTBOL LOS REYES S.A de C.V <br />
 				C. E.Zapata s/n Mz. 2 Lt. 31, Col Los Reyes. <br />
 				La paz Edo. de Mexico, CP 56507
-				</td>
+				</th>
 				<!--  <td width="10%">QUANTITY</td>
 				<td width="45%">DESCRIPTION</td>
 				<td width="15%">UNIT PRICE</td>

@@ -85,7 +85,8 @@ class MatchGame extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NAME', 'required'),
-			array('PLAY_GROUND_ID, VISITOR,TYPE, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE, PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0),
+			array('VISITOR,TYPE, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE', 'numerical', 'integerOnly'=>true, 'min'=>0),
+			array('PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0, 'message'=>'Debe seleccionar una cancha'),
 			array('GROUP', 'length', 'max'=>10),
 			array('NAME', 'length', 'max'=>100),
 			array('TIME', 'safe'),
