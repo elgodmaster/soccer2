@@ -326,6 +326,8 @@ class PlayerController extends Controller
 		$documentPlayer->STATUS = 1;
 		$documentPlayer->ID_DOCUMENT = 1;
 		$document = null;
+		
+		
 		foreach ($documentPlayer->search()->getData() as $document){
 		}
 	
