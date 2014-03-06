@@ -79,7 +79,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 				{
 					?>
 					
-				<tr><td colspan="6"><?php echo $form->errorSummary($matchGames[$i]); ?></td></tr>	
+				<tr><td colspan="6"><?php echo $form->errorSummary($matchGames[$i], 'Por favor corrija los siguientes errores.'); ?></td></tr>	
 				<tr>
 
 
@@ -159,11 +159,11 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 
 
 						echo "<td>";
-						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('class'=>'form-control seleccione',));
+						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('prompt'=>'Seleccione',));
 						echo "</td>";
 
 						echo "<td>";
-						echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium'));
+						echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium', 'prompt'=>'Seleccione'));
 						echo "</td>";
 
 					}else {
