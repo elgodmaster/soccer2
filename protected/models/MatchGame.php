@@ -84,9 +84,9 @@ class MatchGame extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NAME', 'required'),
-			array('VISITOR,TYPE, STATUS,TOURNAMENT_ID, LOCAL, ID_REFEREE', 'numerical', 'integerOnly'=>true, 'min'=>0),
-			array('PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'min'=>0, 'message'=>'Debe seleccionar una cancha'),
+			array('NAME, ID_REFEREE', 'required', 'message'=>'{attribute}, no puede ir en blanco'),
+			array('VISITOR,TYPE, STATUS,TOURNAMENT_ID, LOCAL', 'numerical', 'integerOnly'=>true, ),
+			array('PLAY_GROUND_ID', 'numerical', 'integerOnly'=>true, 'tooSmall'=>'Debes seleccionar una cancha.', 'min'=>0, ),
 			array('GROUP', 'length', 'max'=>10),
 			array('NAME', 'length', 'max'=>100),
 			array('TIME', 'safe'),
