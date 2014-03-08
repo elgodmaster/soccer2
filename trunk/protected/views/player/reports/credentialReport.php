@@ -51,7 +51,7 @@ table tfoot td {
 	<!--mpdf
 				<htmlpageheader name="myheader">
 				<table width="100%"><tr>
-				<td width="50%" style="color:#0000BB;"><span style="font-weight: bold; font-size: 14pt;">Liga de Futbol</span><br />123 Anystreet<br />Your City<br />GD12 4LP<br /><span style="font-size: 15pt;">&#9742;</span> 01777 123 567</td>
+				<td width="50%" style="color:#0000BB;"><span style="font-weight: bold; font-size: pt;">ORGANIZACION MEXICANA DE FUTBOL </span><br /><br />SOCCER2PINFO<br />Temporada Oficial 2014-2015<br /><span style="font-size: 15pt;">&#9742;</span> 01777 123 567</td>
 				<td width="50%" style="text-align: right;">Invoice No.<br /><span style="font-weight: bold; font-size: 12pt;">0012345</span></td>
 				</tr></table>
 				</htmlpageheader>
@@ -91,8 +91,8 @@ table tfoot td {
 	<table class="table" >
 		<thead>
 			<tr>
-				<th colspan="5">LIGA DE FUTBOL LOS REYES S.A de C.V <br />
-				C. E.Zapata s/n Mz. 2 Lt. 31, Col Los Reyes. <br />
+				<th colspan="5">ORGANIZACION MEXICANA DE FUTBOL, <br />
+				SOCCER2PINFO, Col Los Reyes. <br />
 				La paz Edo. de Mexico, CP 56507
 				</th>
 				<!--  <td width="10%">QUANTITY</td>
@@ -119,6 +119,7 @@ table tfoot td {
 					
 					?>
 				</td>
+				
 				<!-- <td align="center">10</td>  -->
 				<td colspan="4"><?php echo $model->NAME; ?></td>
 				<!--<td align="right">&pound;2.56</td> -->
@@ -131,6 +132,15 @@ table tfoot td {
 				<!--<td align="right">&pound;25.60</td> -->
 			</tr>
 			<tr>
+			
+			
+			<!-- <td align="center">10</td>  -->
+				<td colspan="4">Telefono <br /><?php echo $model->PHONE; ?></td>
+				<!--<td align="right">&pound;2.56</td> -->
+				<!--<td align="right">&pound;25.60</td> -->
+			</tr>
+			<tr>
+			
 				<!-- <td align="center">10</td>  -->
 				<td colspan="4">Sexo: <?php echo ($model->GENDER == 1)? 'HOMBRE' : 'MUJER'; ?></td>
 				<!--<td align="right">&pound;2.56</td> -->
