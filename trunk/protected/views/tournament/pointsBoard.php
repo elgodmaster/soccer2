@@ -27,8 +27,8 @@ $this->menu=array(
  <thead>
  	<tr>
 		<th>#</th>
-		<th>Equipo</th>
-		<th>Puntos</th>
+		<th>EQUIPO</th>
+		<th>PUNTOS</th>
 		<th>JJ</th> 	
 		<th>JG</th>
 		<th>JE</th>
@@ -42,7 +42,7 @@ $this->menu=array(
 		<tr>
 			<td><?php echo $i+1;?></td>
 			<td><?php echo $reg['NAME'];?></td>
-			<td><?php echo $reg['POINTS'];?></td>
+			<td><strong><?php echo $reg['POINTS'];?></strong></td>
 			<td><?php echo $reg['JJ'];?></td>
 			<td><?php echo $reg['JG'];?></td>
 			<td><?php echo $reg['JE'];?></td>
