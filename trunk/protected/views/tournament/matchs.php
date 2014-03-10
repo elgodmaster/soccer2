@@ -11,10 +11,8 @@ $this->menu=array(
 	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
-<h1> <?php echo $model->NAME; ?></h1>
-<h2>Jornadas</h2>
-
-<br />
+<h2> <?php echo $model->NAME; ?></h2>
+<h3>Horarios</h3>
 
 <?php /** @var TbActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -22,13 +20,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'type'=>'horizontal',
 )); ?>
  
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
-		'block'=>false, // display a larger alert block?
-		'fade'=>true, // use transitions?
-		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-));
 
-?>
 
  
  <?php if ($model->STATUS<4) {?>
@@ -87,7 +79,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 ));
 
-echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGamesArray,'playGround'=>$playGround));
+echo $this->renderPartial('_matchForm', array('model'=>$model,'matchGames'=>$matchGamesArray));
  
  
  ?>

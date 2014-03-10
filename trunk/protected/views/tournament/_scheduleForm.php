@@ -82,6 +82,9 @@
 		
 		
 	</fieldset>
+
+	
+	<?php echo $form->textFieldRow($model,'MATCH_LONG_TIME', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
 	
 		
 	<div class="form-actions">

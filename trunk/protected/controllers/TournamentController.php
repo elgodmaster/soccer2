@@ -357,7 +357,6 @@ class TournamentController extends Controller
 
 
 				$matchArray = $_POST['MatchGame'];
-
 				
 				$success_message =  '';
 				$warning_message = '';
@@ -379,14 +378,21 @@ class TournamentController extends Controller
 
 					}					
 						
+					$dbMatch->scenario='register';
+					
 					$dbMatch->attributes = $match;
-					$dbMatch->STATUS = 2;
+									
+					
+					$dbMatch->TIME = ($dbMatch->TIME == NULL)? NULL :  date('Y-m-d H:i:s', strtotime(str_replace('/', '.', $dbMatch->TIME))); //& DateTime::createFromFormat('d/m/Y', $dbMatch->TIME)->format('Y-m-d');
+					
 					
 					/*Send to match validation*/
-					if ($this->performMatchValidation($dbMatch, $model, $message) && $dbMatch->save()){
+					if ($dbMatch->validate()){
 						
+						$dbMatch->STATUS = 2;
+						$dbMatch->save();
 						$matchs[] = $dbMatch;
-						Yii::app()->user->setFlash('success', '<strong>Listo. </strong>Guardado correctamente. ');
+						
 						
 					}else {
 						
@@ -403,15 +409,19 @@ class TournamentController extends Controller
 				
 				if($flagValidation){/*Form validation*/
 				
+					Yii::app()->user->setFlash('error', '<strong>Error. </strong>Revise las observaciones. ');
+					
 					$this->render('matchs',array(
 							'model'=>$model,
 							'matchGames'=>$matchs,
 							'playGround'=>$playGround,
 							'roundId'=>$roundId,
 					));
+					
+				
 				
 					return;
-				}
+				}else Yii::app()->user->setFlash('success', '<strong>Listo. </strong>Guardado correctamente. ');
 				
 			} else if (isset($_POST['publishRound'])) {
 				
