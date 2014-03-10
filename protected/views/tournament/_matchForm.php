@@ -5,7 +5,13 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 
 ?>
 
+<?php $this->widget('bootstrap.widgets.TbAlert', array(
+		'block'=>false, // display a larger alert block?
+		'fade'=>true, // use transitions?
+		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+));
 
+?>
 
 <div class="view">
 
@@ -62,6 +68,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 				$aDays = explode(",", $model->SCHEDULE_D);
 				$stringADays = '';
 				$i = 0;
+				$model->START_DATE = date("d/m/Y",strtotime($model->START_DATE ));
 				
 				if(strlen($model->SCHEDULE_D) && ($numItems = count($aDays)) > 0) // incluir expresion regular para validar formato
 									
@@ -77,6 +84,12 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 				
 				for($i=0; $i<$numeroPartidos; $i++) //START FOR
 				{
+					
+					if(count($matchGames[$i]->getErrors()))
+						$matchGames[$i]->STATUS = 1; 
+
+						
+					
 					?>
 					
 				<tr><td colspan="6"><?php echo $form->errorSummary($matchGames[$i], 'Por favor corrija los siguientes errores.'); ?></td></tr>	
@@ -112,13 +125,15 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 							
 						echo "<td>";
 						Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
-
+						$matchGames[$i]->TIME = ($matchGames[$i]->TIME == NULL)? NULL : date("d/m/Y H:i:s",strtotime($matchGames[$i]->TIME ));
+						
+						
 						$this->widget('CJuiDateTimePicker',array(
 								'model'=>$matchGames[$i], //Model object
 								'attribute'=>"[$i]TIME", //attribute name
 								'language'=>'es',
 								'mode'=>'datetime', //use "time","date" or "datetime" (default)
-								'options'=>array( "dateFormat"=>'yy-mm-dd', 
+								'options'=>array( "dateFormat"=>'dd/mm/yy', 
 										'timeFormat'=>'hh:mm',
 										'minDate'=>$model->START_DATE,
 										'beforeShowDay'=> 'js:function(date){
@@ -159,11 +174,11 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 
 
 						echo "<td>";
-						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData($playGround::model()->findAll(),'ID','NAME'),array('prompt'=>'Seleccione',));
+						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData(PlayGround::model()->findAll(),'ID','NAME'),array('prompt'=>'SELECCIONE',));
 						echo "</td>";
 
 						echo "<td>";
-						echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium', 'prompt'=>'Seleccione'));
+						echo $form->dropDownList($matchGames[$i],"[$i]ID_REFEREE",CHtml::listData(Referee::model()->findAll(),'ID','NAME'),array('class'=>'input-medium', 'prompt'=>'SELECCIONE'));
 						echo "</td>";
 
 					}else {

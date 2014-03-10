@@ -21,6 +21,7 @@
  * @property integer $START_E
  * @property integer $WIN_PLACE
  * @property integer $ELI_CONF
+ * @property integer $MATCH_LONG_TIME
  * @property integer $ACTIVE
  *
  * The followings are the available model relations:
@@ -102,7 +103,7 @@ class Tournament extends CActiveRecord
 		// will receive user inputs.
 		return array(
 				array('ID_CATEGORY, NAME', 'required'),
-				array('ID_CATEGORY, ACTIVE, TYPE, LAP_CONF, START_E, WIN_PLACE, ELI_CONF', 'numerical', 'integerOnly'=>true),
+				array('ID_CATEGORY,MATCH_LONG_TIME, ACTIVE, TYPE, LAP_CONF, START_E, WIN_PLACE, ELI_CONF', 'numerical', 'integerOnly'=>true),
 				array('NAME', 'length', 'max'=>100),
 				array('DESCRIPTION', 'length', 'max'=>500),
 				array('BASES', 'length', 'max'=>500),
@@ -113,7 +114,7 @@ class Tournament extends CActiveRecord
 				array('START_DATE, END_DATE', 'safe'),
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
-				array('ID, ID_CATEGORY,START_E,WIN_PLACE NAME,TYPE,ELI_CONF, DESCRIPTION,LAP_CONF, START_DATE, END_DATE, ACTIVE, SCHEDULE_CONFIG, SCHEDULE_D', 'safe', 'on'=>'search'),
+				array('ID,MATCH_LONG_TIME, ID_CATEGORY,START_E,WIN_PLACE NAME,TYPE,ELI_CONF, DESCRIPTION,LAP_CONF, START_DATE, END_DATE, ACTIVE, SCHEDULE_CONFIG, SCHEDULE_D', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -155,6 +156,7 @@ class Tournament extends CActiveRecord
 				'START_E'=> 'Disponibles',
 				'WIN_PLACE'=> 'Lugares disponible',
 				'ELI_CONF'=>'Disponibles',
+				'MATCH_LONG_TIME'=>'Duracion de los encuentros',
 				'ACTIVE' => 'Activo',
 		);
 	}
