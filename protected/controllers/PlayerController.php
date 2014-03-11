@@ -314,7 +314,7 @@ class PlayerController extends Controller
 		$mPDF1->SetProtection(array('print'));
 		$mPDF1->SetTitle("Acme Trading Co. - Invoice");
 		$mPDF1->SetAuthor("Acme Trading Co.");
-		$mPDF1->SetWatermarkText("SOCCER 2");
+		$mPDF1->SetWatermarkText("SOCCER");
 		$mPDF1->showWatermarkText = true;
 		$mPDF1->watermark_font = 'DejaVuSansCondensed';
 		$mPDF1->watermarkTextAlpha = 0.1;
