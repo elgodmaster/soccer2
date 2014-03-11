@@ -51,7 +51,7 @@ table tfoot td {
 	<!--mpdf
 				<htmlpageheader name="myheader">
 				<table width="100%"><tr>
-				<td width="50%" style="color:#0000BB;"><span style="font-weight: bold; font-size: pt;">ORGANIZACION MEXICANA DE FUTBOL </span><br /><br />SOCCER2PINFO<br />Temporada Oficial 2014-2015<br /><span style="font-size: 15pt;">&#9742;</span> 01777 123 567</td>
+				<td width="50%" style="color:#0000BB;"><span style="font-weight: bold; font-size: pt;">ORGANIZACI&Oacute;N MEXICANA DE FUTBOL </span><br /><br />SOCCER2PINFO<br />Temporada Oficial 2014-2015<br /><span style="font-size: 15pt;">&#9742;</span> 01777 123 567</td>
 				<td width="50%" style="text-align: right;">Invoice No.<br /><span style="font-weight: bold; font-size: 12pt;">0012345</span></td>
 				</tr></table>
 				</htmlpageheader>
@@ -91,7 +91,7 @@ table tfoot td {
 	<table class="table" >
 		<thead>
 			<tr>
-				<th colspan="5">ORGANIZACION MEXICANA DE FUTBOL, <br />
+				<th colspan="5">ORGANIZACI&Oacute;N MEXICANA DE FUTBOL, <br />
 				SOCCER2PINFO, Col Los Reyes. <br />
 				La paz Edo. de Mexico, CP 56507
 				</th>
