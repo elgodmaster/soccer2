@@ -2,21 +2,21 @@
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'verticalForm',
-    'htmlOptions'=>array('class'=>'well'),
+    'htmlOptions'=>array(),
 )); ?>
 
-	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
+	
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<br />
-	<br />
 	
+	<legend>Configuración de horarios</legend>
+	<p class="muted">Los campos con: <span class="required">*</span> son requeridos.</p>
 	<fieldset>
-	<legend><b>Fechas del torneo</b></legend>
 	
 	
-	<div class="span-20"> 
+	
+	<div class="span-12"> 
 	
 	 	<?php echo $form->labelEx($model,'START_DATE'); ?>
 		<?php //echo $form->textField($model,'START_DATE'); ?>
@@ -41,13 +41,9 @@
 		</div>	
 		
 		
-	</fieldset>
+
 	
-	<fieldset>
-	<legend><b>Días de juego</b></legend>
-	
-	
-	<div class="span-20"> 
+	<div class="span-12"> 
 	
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_D", array(
         '1'=>'LUNES',
@@ -61,14 +57,9 @@
    		
 		</div>	
 		
-		
-	</fieldset>
-	
-	<fieldset>
-	<legend><b>Horarios</b></legend>
-	
-	
-	<div class="span-20"> 
+
+
+	<div class="span-12"> 
 	
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_CONFIG", array(
         'Matutino',
@@ -80,11 +71,12 @@
    		
 		</div>	
 		
+	<?php echo $form->textFieldRow($model,'MATCH_LONG_TIME', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
 		
 	</fieldset>
 
 	
-	<?php echo $form->textFieldRow($model,'MATCH_LONG_TIME', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
+	
 	
 		
 	<div class="form-actions">

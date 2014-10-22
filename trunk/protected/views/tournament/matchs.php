@@ -11,8 +11,9 @@ $this->menu=array(
 	//array('label'=>'Gestionar torneo', 'url'=>array('admin')),
 );
 ?>
-<h1>Horarios <small> <?php echo $model->NAME; ?> </small></h1>
+<h1>Torneo <small><?php echo $model->NAME; ?></small></h1>
 
+<legend>Configuración de horarios</legend>
 
 <?php /** @var TbActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -76,6 +77,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'type'=>'tabs', // '', 'tabs', 'pills' (or 'list')
     'stacked'=>false, // whether this is a stacked menu
     'items'=> $menuOptions,
+ 		
 
 ));
 

@@ -102,7 +102,7 @@ class Tournament extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-				array('ID_CATEGORY, NAME', 'required'),
+				array('ID_CATEGORY, NAME, TYPE', 'required'),
 				array('ID_CATEGORY,MATCH_LONG_TIME, ACTIVE, TYPE, LAP_CONF, START_E, WIN_PLACE, ELI_CONF', 'numerical', 'integerOnly'=>true),
 				array('NAME', 'length', 'max'=>100),
 				array('DESCRIPTION', 'length', 'max'=>500),
@@ -140,23 +140,23 @@ class Tournament extends CActiveRecord
 	{
 		return array(
 				'ID' => 'ID',
-				'ID_CATEGORY' => 'Categoria',
+				'ID_CATEGORY' => '¿Que categoría?',
 				'NAME' => 'Nombre',
-				'DESCRIPTION' => 'Descripcion',
+				'DESCRIPTION' => 'Descripción',
 				'START_DATE' => 'Fecha de Inicio',
 				'END_DATE' => 'Fecha de Fin',
 				'BASES' => 'Bases',
 				'RULES' => 'Reglas',
 				'PROMO' => 'Convocatoria',
 				'STATUS' => 'Estatus',
-				'SCHEDULE_CONFIG' => 'Horarios disponibles',
-				'SCHEDULE_D' => 'Dias disponibles',
-				'TYPE' => 'Tipos disponibles',
+				'SCHEDULE_CONFIG' => '¿En que horario?',
+				'SCHEDULE_D' => '¿Cuando se juega?',
+				'TYPE' => '¿Que tipo de torneo?',
 				'LAP_CONF'=> 'Clasificacion disponible',
-				'START_E'=> 'Disponibles',
-				'WIN_PLACE'=> 'Lugares disponible',
-				'ELI_CONF'=>'Disponibles',
-				'MATCH_LONG_TIME'=>'Duracion de los encuentros',
+				'START_E'=> '¿Apartir de donde es la Clasificación?',
+				'WIN_PLACE'=> '¿Que premiación tendra?',
+				'ELI_CONF'=>'¿Cuantos encuentros?',
+				'MATCH_LONG_TIME'=>'¿Cuanto duran los encuentros?',
 				'ACTIVE' => 'Activo',
 		);
 	}

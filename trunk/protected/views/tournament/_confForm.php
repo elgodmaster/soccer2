@@ -1,30 +1,24 @@
-<div class="form">
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'verticalForm',
-    'htmlOptions'=>array('class'=>'well'),
+    'htmlOptions'=>array(),
 )); ?>
 
-	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<br />
-	<br />
 	
+
+<legend>Configuración Eminiatoria</legend>
+<p class="muted">Los campos con: <span class="required">*</span> son requeridos.</p>
+
 	<fieldset>
-	<legend>Inicio eliminatoria</legend>
+	<?php echo $form->errorSummary($model); ?>
+	
+	
 	
 	<div class="span-20">
 	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>!($model->STATUS < 4))) ?>
-	</div>	
-		
+	</div>		
 	
-		
-	</fieldset>
-	
-	<fieldset>
-	<legend>Encuentros de eliminatoria</legend>
+
 	
 	<div class="span-20">
 	 <?php echo $form->radioButtonListRow($model, 'ELI_CONF', array(
@@ -33,10 +27,7 @@
     ), array('disabled'=>!($model->STATUS < 4))); ?>
 	</div>	
 		
-	</fieldset>
-	
-	<fieldset>
-	<legend>Lugares finales</legend>
+
 		
 	<div class="span-20"> 
 	
@@ -60,4 +51,3 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

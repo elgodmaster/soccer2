@@ -1,35 +1,29 @@
-<div class="form">
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'verticalForm',
-    'htmlOptions'=>array('class'=>'well'),
+    'htmlOptions'=>array(),
 )); ?>
 
-	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
+	
+	<legend>Categoría del torneo</legend>
+	<p class="muted">Los campos con: <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model); ?>
 
-	<br />
-	<br />
+
 	
 	<fieldset>
-	<legend><b>Categoría del torneo</b></legend>
+	<?php echo $form->errorSummary($model); ?>
 	
 	
-	<div class="span-20"> 
+	
+	<div class="span3"> 
 		
 		<?php echo $form->radioButtonListRow($model, 'ID_CATEGORY', CHtml::listData($catCategory::model()->findAll(array("condition"=>"ID_CATEGORY !=  0")),'ID_CATEGORY','NAME'), array('disabled'=>!($model->STATUS < 4)) ); ?> 
    		
 	</div>	
 		
-		
-	</fieldset>
 	
-	<fieldset>
-	<legend><b>Tipo de Torneo</b></legend>
-	
-	
-	<div class="span-20"> 
+	<div class="span3"> 
 	
 	 <?php echo $form->radioButtonListRow($model, 'TYPE',$model->typeTournament, array('disabled'=>!($model->STATUS < 4))); ?>
 	   
@@ -47,4 +41,3 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
