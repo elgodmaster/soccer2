@@ -12,9 +12,9 @@ $this->menu=array(
 );
 ?>
 
-<h2>
+<h1>
 	<?php echo $model->NAME;?>
-</h2>
+</h1>
 
 <?php $this->widget('bootstrap.widgets.TbAlert', array(
 		'block'=>false, // display a larger alert block?

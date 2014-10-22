@@ -1,8 +1,8 @@
 
+<div class="row">
 
 
 
-<div class="container showgrid">
 <?php
 $this->breadcrumbs=array(
 	'Jugadores'=>array('index'),
@@ -20,24 +20,26 @@ $this->menu=array(
 );
 ?>
 
-<h2><?php echo $model->NAME; ?></h2>
+<div class="page-header text-center">
+<h1>Jugadores. <small><?php echo $model->NAME; ?></small> </h1>
+</div>
 
-<br />
 
-<div class="span-5">
+<div class="span-3 offset1">
  <?php 
  
  if(isset($documentModel))
 	echo CHtml::image($documentModel->PATH, '', array(
-    'data-original' => 'original',
+    		'data-original' => 'original',
 			'height'=>'150',
-			'width'=>'150'
+			'width'=>'150',
+			'class'=>'img-polaroid'
 ));
 
 ?>
 </div>
- <div class="span-15">
-<?php $this->widget('zii.widgets.CDetailView', array(
+ <div class="span-8">
+<?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'ID',
@@ -60,8 +62,30 @@ $this->menu=array(
 )); ?>
 
 
+</div>
 
 </div>
 
+<div class="row">
+	<div class="span-12">
+	<?php $this->widget('bootstrap.widgets.TbMenu', array(
+				'type'=>'list',
+				'items'=>array(
+      /*  array('label'=>'Publicaciones'),
+		array('label'=>'Facebook', 'icon'=>'calendar', 'url'=>array('updateBySchedule','id'=>$model->ID)),
+		array('label'=>'Correo eléctronico', 'icon'=>'list', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_categoryForm')),
+		array('label'=>'Twitter', 'icon'=>'list-alt', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_confForm')),
+        array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),*/
+
+array('label'=>'Estadísticas'),
+array('label'=>'Goles', 'icon'=>'th-list', 'url'=>array('pointBoard','id'=>$model->ID)),
+array('label'=>'Estadistícas por Equipos', 'icon'=>'list', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_categoryForm')),
+array('label'=>'Estadistícas por Jugadores', 'icon'=>'list-alt', 'url'=>array('#','id'=>$model->ID, 'fm'=>'_confForm')),
+array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
+
+
+            ),
+)); ?>
+	</div>
 
 </div>

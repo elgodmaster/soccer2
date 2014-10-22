@@ -25,7 +25,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ACTIVE')); ?>:</b>
-	<?php echo CHtml::encode($data->ACTIVE); ?>
+	<?php echo CHtml::encode(($data->ACTIVE)?'SI': 'NO'); ?>
 	<br />
 
 

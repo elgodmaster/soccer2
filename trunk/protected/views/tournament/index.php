@@ -5,6 +5,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Crear nuevo torneo', 'url'=>array('create')),
+		array('label'=>'Administrar torneos', 'url'=>array('admin')),
 
 );
 
@@ -19,7 +20,7 @@ $this->menu=array(
 
 
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('bootstrap.widgets.TbListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>

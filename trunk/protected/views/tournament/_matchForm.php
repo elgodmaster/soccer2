@@ -1,7 +1,7 @@
 
 <?php 
 
-echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
+//echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 
 ?>
 
@@ -12,7 +12,9 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 ));
 
 ?>
-
+<p class="text-right">
+	Los campos con: <span class="required">*</span> son requeridos.
+</p>
 <div class="view">
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
@@ -33,7 +35,6 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 </div>
 
 
-
 <div class="form">
 
 	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -41,10 +42,10 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 			'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
-<?php echo '<p class="note">Los campos con: <span class="required">*</span> son requeridos</p>'; ?>
+
 
 	<fieldset>
-		<table  class="table table-hover">
+		<table  class="table table-striped">
 
 			<thead>
 				<tr>
@@ -99,15 +100,18 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 					<?php 	
 
 					echo '<td ><strong>P'. ($i+1). '</strong></td>';
-					echo '<td  align="center" valign="top">';
-					echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;"));
+					echo '<td>';
+					echo '<p class="text-center">';
+					echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"));
 					echo "<br />";
 					echo $matchGames[$i]->lOCAL->NAME;
+					echo '</p>';
 					echo "</td>";
 
 
 
-					echo '<td  align="center" valign="top">';
+					echo '<td>';
+					echo '<p class="text-center">';
 					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;"));
 					echo "<br />";
 					echo $matchGames[$i]->vISITOR->NAME;
@@ -117,6 +121,7 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 					echo $form->hiddenField($matchGames[$i],"[$i]TOURNAMENT_ID",array('value'=>$matchGames[$i]->TOURNAMENT_ID));
 					echo $form->hiddenField($matchGames[$i],"[$i]GROUP");
 					echo $form->hiddenField($matchGames[$i],"[$i]NAME", array('value'=>$i+1));
+					echo "</p>";
 					echo "</td>";
 
 
@@ -204,6 +209,9 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 	</fieldset>
 	
 </div>
+
+
+
 <!-- form -->	
 	
 	<div class="form-actions">
@@ -227,10 +235,10 @@ echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
 	
 <?php 
 	
-	$this->widget('ext.yii-facebook-opengraph.plugins.LikeButton', array(
+	$this->widget('ext.yii-facebook-opengraph.plugins.comments', array(
 			'href' => array('manageMatchs','id'=>$model->ID),//'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
-			'show_faces'=>true,
-			'send' => true,
+			//'show_faces'=>true,
+		//	'send' => true,
 	));
 
 }

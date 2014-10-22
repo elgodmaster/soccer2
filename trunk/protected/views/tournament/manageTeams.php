@@ -20,9 +20,9 @@ $this->menu=array(
 ?>
 
 
-<h2> <?php echo $model->NAME; ?></h2>
+<h1> <?php echo $model->NAME.'&nbsp'; ?><small>Equipos participantes</small></h1>
 
-<h3>Equipos participantes</h3>
+<h3></h3>
 
 
 <?php $this->widget('bootstrap.widgets.TbAlert', array(

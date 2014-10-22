@@ -40,8 +40,8 @@ array(
 				array('label'=>'Menu', 'url'=>'#', 'items'=>array(
 						array('label'=>'Catalogos'),
 						array('label'=>'Torneos', 'url'=>array('tournament/admin'),
-								'items'=>array(	array('label'=>'Administrar', 'url'=>array('tournament/admin')),
-										array('label'=>'Nuevo', 'url'=>array('tournament/create'))),
+								//'items'=>array(	array('label'=>'Administrar', 'url'=>array('tournament/admin')),
+								//		array('label'=>'Nuevo', 'url'=>array('tournament/create'))),
 
 						),
 						array('label'=>'Equipos', 'url'=>array('team/admin')),
@@ -50,9 +50,9 @@ array(
 						array('label'=>'Arbitros', 'url'=>array('referee/admin')),
 						array('label'=>'Documentos', 'url'=>array('document/admin')),
 						array('label'=>'Categorias', 'url'=>array('category/admin')),
-
-						'---',
-						array('label'=>'Separated link', 'url'=>'#'),
+						array('label'=>'Indicador resultado', 'url'=>array('catResult/admin')),
+						//'---',
+						//array('label'=>'Separated link', 'url'=>'#'),
 				)),
 				array('label'=>'Torneos', 'url'=>'#', 'items'=>$items),
 		),

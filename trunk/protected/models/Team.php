@@ -138,9 +138,7 @@ class Team extends CActiveRecord
 	 * retrieves a current logo file
 	 */
 	public function getLogo(){
-		
-		
-		
+				
 		$documents = new DocumentTeam();
 		$documents->ID_TEAM = $this->ID;
 		$documents->STATUS = 1;
