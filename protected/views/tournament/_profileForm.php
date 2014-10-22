@@ -1,19 +1,18 @@
-<div class="form">
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'verticalForm',
-    'htmlOptions'=>array('class'=>'well'),
+    'htmlOptions'=>array(),
 )); ?>
 
-	<p class="note">Los campos con: <span class="required">*</span> son requeridos.</p>
+	<legend>Perfil del torneo</legend>
+	<p class="muted">Los campos con: <span class="required">*</span> son requeridos.</p>
+	
 
-	<?php echo $form->errorSummary($model); ?>
-
-	<br />
-	<br />
+	
 	
 	<fieldset>
 	
+	<?php echo $form->errorSummary($model); ?>
 	<div class="span-20"> 
    		<!--<?php echo $form->labelEx($model,'NAME'); ?>
 		<?php echo $form->textField($model,'NAME',array('size'=>100,'maxlength'=>100, )); ?>
@@ -38,4 +37,3 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

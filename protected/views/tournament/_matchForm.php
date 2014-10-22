@@ -12,7 +12,7 @@
 ));
 
 ?>
-<p class="text-right">
+<p class="muted">
 	Los campos con: <span class="required">*</span> son requeridos.
 </p>
 <div class="view">
@@ -35,21 +35,21 @@
 </div>
 
 
-<div class="form">
+
 
 	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 			'id'=>'verticalForm',
-			'htmlOptions'=>array('class'=>'well'),
+			'htmlOptions'=>array(),
 )); ?>
 
 
 
 	<fieldset>
-		<table  class="table table-striped">
+		<table class="table table-hover">
 
 			<thead>
 				<tr>
-					<td>#</td>
+					<th>PARTIDO</th>
 					<th>LOCAL</th>
 					<th>VISITANTE</th>
 					<th>FECHA</th>
@@ -57,10 +57,7 @@
 					<th>ÁRBITRO</th>
 
 				</tr>
-				<!-- <tr>
-					<td colspan="6">&nbsp;</td>
-				</tr> -->
-			</thead>
+				</thead>
 			<tbody>
 				<?php 
 				$readyToPublish = true;
@@ -93,26 +90,25 @@
 					
 					?>
 					
-				<tr><td colspan="6"><?php echo $form->errorSummary($matchGames[$i], 'Por favor corrija los siguientes errores.'); ?></td></tr>	
 				<tr>
 
 
 					<?php 	
 
-					echo '<td ><strong>P'. ($i+1). '</strong></td>';
+					echo '<td >'. ($i+1). '</td>';
 					echo '<td>';
-					echo '<p class="text-center">';
+					
 					echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"));
 					echo "<br />";
 					echo $matchGames[$i]->lOCAL->NAME;
-					echo '</p>';
+					
 					echo "</td>";
 
 
 
 					echo '<td>';
 					echo '<p class="text-center">';
-					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;"));
+					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;","class"=>"img-polaroid"));
 					echo "<br />";
 					echo $matchGames[$i]->vISITOR->NAME;
 					echo $form->hiddenField($matchGames[$i],"[$i]ID",array('value'=>$matchGames[$i]->ID));
@@ -150,30 +146,7 @@
 								'htmlOptions'=>array('class'=>'input-medium','placeholder'=>"Fecha del encuentro"),
 						));
 
-
-
-							
-							
-							
-						/*
-						 $this->widget('application.extensions.timepicker.BJuiDateTimePicker',array(
-						 		'model'=>$matchGames[$i],
-						 		'attribute'=>"[$i]TIME",
-						 		'type'=>'datetime', // available parameter is datetime or time
-						 		//'language'=>'de', // default to english
-						 		//'themeName'=>'sunny', // jquery ui theme, file is under assets folder
-						 		'options'=>array(
-				// put your js options here check http://trentrichardson.com/examples/timepicker/#slider_examples for more info
-						 				'timeFormat'=>'HH:mm:ss',
-						 				'showSecond'=>true,
-						 				'hourGrid'=>4,
-						 				'minuteGrid'=>10,
-		),
-						 		'htmlOptions'=>array(
-				'class'=>'input-medium'
-		)
-						 ));
-						*/
+			
 						echo "</td>";
 
 
@@ -208,7 +181,7 @@
 		</table>
 	</fieldset>
 	
-</div>
+
 
 
 

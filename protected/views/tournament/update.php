@@ -13,8 +13,6 @@ array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
 );
 ?>
 
-<h1> <?php echo $model->NAME; ?></h1>
-
-<h3>Modificar eliminatoria </h3>
+<h1>Torneo  <small><?php echo $model->NAME; ?></small></h1>
 
 <?php echo $this->renderPartial($form, array('model'=>$model,	'catCategory'=>$catCategory)); ?>

@@ -16,7 +16,7 @@
 			'Tournaments' => array (
 					'index' 
 			),
-			$model->NAME => array (
+			strtoupper($model->NAME) => array (
 					'manage',
 					'id' => $model->ID 
 			),
@@ -24,27 +24,15 @@
 	);
 	$this->menu = array (
 			
-					//'label' => 'List Tournament',
-					//'url' => array (
-						//	'index'
 
 					array('label'=>'Inicio', 'url'=>array('manage','id'=>$model->ID)),
-					
-			//),
-			//array (
-				//	'label' => 'Manage Tournament',
-					//'url' => array (
-						//	'admin' 
-					//) 
-			//) 
+	
 	);
 	?>
-<h2><?php echo $model->NAME;?></h2>
-<h3>Resultados</h3>
+<h1>Torneo <small><?php echo strtoupper($model->NAME);?></small></h1>
 
+<Legend>Asignar resultados</Legend>
 
-
-<br />
 
 <?php
 

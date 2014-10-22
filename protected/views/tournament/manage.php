@@ -13,7 +13,7 @@ $this->menu=array(
 ?>
 
 <h1>
-	<?php echo $model->NAME;?>
+	Torneo <small><?php echo strtoupper($model->NAME);?></small>	
 </h1>
 
 <?php $this->widget('bootstrap.widgets.TbAlert', array(
