@@ -5,40 +5,53 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
-    'heading'=>'Bienvenido a '.CHtml::encode(Yii::app()->name),
+    'heading'=>'Liga de futbol '.CHtml::encode(Yii::app()->name),
 )); ?>
 
-<p>Gestione sus torneos de futbol de manera facil y rapida.</p>
+<p>Administrador de torneos</p>
 <br />
 
- <div class="container">
+ 
      
         <ul class="row">
             <li class="span3">
-                <p><strong>Planee</strong></p>
-                <p>Jornadas &amp; Horarios</p>
-                <p>Notifique el rol de juegos</p>
+                <h2>Mi liga
+                <p class="text text-info"><small>Nombre completo, dirección, Imagen, Documentos, etc... </small></p>
+                </h2>
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+  					      'type'=>'primary',
+     					   'size'=>'large',
+     				   'label'=>'Configurar',
+   				 )); ?>
             </li>
 
             <li class="span3">
-                <p><strong>Estructure</strong></p>
-                <p>Equipos y Jugadores.</p>
+                <h2>Sedes
+                <p><small>Definir donde se jugaran los encuentros</small></p>
+                </h2>
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+  					      'type'=>'primary',
+     					   'size'=>'large',
+     				   'label'=>'Adminitrar',
+   				 )); ?>
             </li>
 
             <li class="span3">
-                <p><strong>Colabore</strong></p>
-                <p>Colabore en equipo para evaluar jornadas, planear torneos  &amp; registrar resultados.</p>
+                <h2>Torneos
+                <p><small>Configurar mis torneos  de futbol, publicar horiarios, crear nuevo torneo, etc...</small></p>
+                </h2>
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+  					      'type'=>'primary',
+     					   'size'=>'large',
+     				   'label'=>'Ver torneos',
+   				 )); ?>
             </li>
 
             
         </ul>
-    </div>
     
-    <p><?php $this->widget('bootstrap.widgets.TbButton', array(
-        'type'=>'primary',
-        'size'=>'large',
-        'label'=>'Registrar torneo!',
-    )); ?></p>
+    
+   
 <?php $this->endWidget(); ?>
 
 <table class="table table-striped">
