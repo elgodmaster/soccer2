@@ -90,8 +90,8 @@ array(
 
 
 
-<div class="container" id="page">
-
+<div class="container-fluid" id="page">
+<div class="row-fluid">
 
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
@@ -115,6 +115,7 @@ array(
 	</div><!-- footer -->
 
 </div><!-- page -->
+</div>
 
 </body>
 </html>
