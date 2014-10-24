@@ -16,7 +16,7 @@
 	
 	
 	
-	<div class="span-12"> 
+	<div class="span4"> 
 	
 	 	<?php echo $form->labelEx($model,'START_DATE'); ?>
 		<?php //echo $form->textField($model,'START_DATE'); ?>
@@ -43,7 +43,7 @@
 		
 
 	
-	<div class="span-12"> 
+	<div class="span4"> 
 	
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_D", array(
         '1'=>'LUNES',
@@ -59,7 +59,7 @@
 		
 
 
-	<div class="span-12"> 
+	<div class="span4"> 
 	
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_CONFIG", array(
         'Matutino',

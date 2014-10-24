@@ -17,9 +17,18 @@ $this->menu=array(
 );
 ?>
  								   
-<h2>
-	Documentos	
-</h2>
+<h1>
+	Torneo <small><?php echo $model->NAME;?></small>	
+</h1>
+
+<legend>Documentos del torneo</legend>
+	<p class="muted">
+	Los campos con: <span class="required">*</span> son requeridos.
+	</p>
+
+	
+
+<div class="span12">	
 	<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'player-form',
 			'enableAjaxValidation'=>false,
@@ -27,11 +36,7 @@ $this->menu=array(
 			
 )); ?>
 
-	<p class="note">
-	Los campos con: <span class="required">*</span> son requeridos.
-	</p>
 
-	
 
 
 
@@ -55,7 +60,7 @@ $this->menu=array(
 			));
 			?>
 			
-			<table class="table table-striped">
+			<table class="table table-striped table-bordered">
 				<thead>
 				<tr>
 					<th colspan="2">Archivo</th>
@@ -108,7 +113,11 @@ $this->menu=array(
 			</table>
 			
 			
-			
+			<?php if(!isset($document)) {?>
+			<p class="text-info">
+				<?php  echo "No hay documentos cargados";?>
+			</p>	
+			<?php }?>
 			
 	<?php $this->endWidget(); ?>
-
+</div>
