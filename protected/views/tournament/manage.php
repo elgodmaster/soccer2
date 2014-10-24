@@ -35,7 +35,7 @@ $this->menu=array(
 	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
-			'type'=>'striped bordered condensed',
+			'type'=>'condensed bordered',
 			'data'=>$model,
 			'attributes'=>array(
         array('name'=>'ID', 'label'=>'ID'),

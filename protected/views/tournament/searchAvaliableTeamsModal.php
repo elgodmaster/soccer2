@@ -10,4 +10,5 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
                 ),
                 ));
 echo $this->renderPartial('_searchTeams', array('team'=>$team,'model'=>$model,'tournament'=>$tournament)); ?>
+
 <?php $this->endWidget('zii.widgets.jui.CJuiDialog');?>

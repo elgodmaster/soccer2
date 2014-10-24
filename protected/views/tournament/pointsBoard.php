@@ -10,10 +10,8 @@ $this->menu=array(
 	//array('label'=>'gestinar torneo', 'url'=>array('admin')),
 );
 ?>
-<h2><?php echo $model->NAME;?></h2>
-<h3>Tabla de posiciones</h3>
-
-<br />
+<h1>Torneo <small><?php echo $model->NAME;?></small></h1>
+<legend>Tabla de posiciones</legend>
  
  <?php $this->widget('bootstrap.widgets.TbAlert', array(
         'block'=>false, // display a larger alert block?
