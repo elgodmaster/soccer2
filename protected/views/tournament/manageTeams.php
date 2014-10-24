@@ -20,11 +20,11 @@ $this->menu=array(
 ?>
 
 
-<h1> <?php echo $model->NAME.'&nbsp'; ?><small>Equipos participantes</small></h1>
+<h1>Torneo <small><?php echo strtoupper($model->NAME); ?></small></h1>
 
-<h3></h3>
+<legend>Equipos participantes</legend>
 
-
+<div class="span12">
 <?php $this->widget('bootstrap.widgets.TbAlert', array(
 		'block'=>false, // display a larger alert block?
 		'fade'=>true, // use transitions?
@@ -40,18 +40,6 @@ $this->menu=array(
 ));
 
 ?>
-
-
-<?php if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS ) echo CHtml::ajaxLink(Yii::t('job','Agregar Equipo'),$this->createUrl('tournament/searchAvaliableTeams',array('tournamentId'=>$model->ID)),array(
-        'onclick'=>'$("#jobDialog").dialog("open"); return false;',
-        'update'=>'#jobDialog'
-        ),array('id'=>'showJobDialog'));
-
-?>
-        
-        
-<div id="jobDialog"></div>
-
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
@@ -79,4 +67,18 @@ array(
 )); ?>
         
    
+</div>
+
+<?php if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS ) echo CHtml::ajaxLink(Yii::t('job','Agregar Equipo'),$this->createUrl('tournament/searchAvaliableTeams',array('tournamentId'=>$model->ID)),array(
+        'onclick'=>'$("#jobDialog").dialog("open"); return false;',
+        'update'=>'#jobDialog'
+        ),array('id'=>'showJobDialog'));
+
+?>
+        
+        
+<div id="jobDialog"></div>
+
+
+
   
