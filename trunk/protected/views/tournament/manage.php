@@ -26,23 +26,13 @@ $this->menu=array(
 
 
 
-<div class="view">
+<div class="span12">
 
 	<?php 
-
-
 	$allTeams = '';
-
 	foreach ($model->teams as $team){
-
-
 		$allTeams = $allTeams.$team->iDTEAM->NAME.', ';
-
-
-	}
-
-
-	?>
+	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
 			'type'=>'striped bordered condensed',
@@ -60,16 +50,13 @@ $this->menu=array(
     ),
 )); ?>
 
+<table class="table">
+</table>
+
 </div>
 
 
-<fieldset>
-	<legend>Men&uacute;</legend>
-
-
-
-
-	<div class="span-10">
+<div class="span4">
 
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 				'type'=>'list',
@@ -79,7 +66,7 @@ $this->menu=array(
         array('label'=>'todos', 'icon'=>'book', 'url'=>'' ),
     	array('label' =>'Ayuda', 'icon'=>'flag','url' => 'http://www.someurl.com',),
 
-        array('label'=>'Perfil'),
+        array('label'=>'Perfil del torneo'),
         array('label'=>'Datos generales', 'icon'=>'user', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_profileForm')),
         array('label'=>'Documentos', 'icon'=>'folder-open', 'url'=>array('manageDocuments','id'=>$model->ID)),
     	array('label'=>'Bases, Reglas y Convocatoria', 'icon'=>'pencil', 'url'=>array('updateByFm','id'=>$model->ID, 'fm'=>'_ruleForm')),
@@ -89,7 +76,7 @@ $this->menu=array(
 
 	</div>
 
-	<div class="span-10">
+	<div class="span4">
 
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 		    	'type'=>'list',
@@ -113,7 +100,7 @@ $this->menu=array(
 	</div>
 
 
-	<div class="span-10">
+	<div class="span4">
 
 		<?php $this->widget('bootstrap.widgets.TbMenu', array(
 				'type'=>'list',
@@ -139,9 +126,8 @@ array('label'=>'Ayuda', 'icon'=>'flag', 'url'=>'#'),
 
 
 
-</fieldset>
 
-<div class="form-actions">
+<div >
 
 	<?php if($model->STATUS == 3) {?>
 
