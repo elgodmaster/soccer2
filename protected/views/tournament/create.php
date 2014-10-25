@@ -9,9 +9,7 @@ $this->menu=array(
 );
 
 ?>
-
-//<h3><?php echo $model->NAME;?></h3>
-<h2>Crear nuevo torneo</h2>
+<h1>Crear nuevo torneo</h1>
 
 
 <?php echo $this->renderPartial('_createForm', array('model'=>$model,'catCategory'=>$catCategory)); ?>
