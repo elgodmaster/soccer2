@@ -14,6 +14,13 @@
  */
 class TournamentTeam extends CActiveRecord
 {
+	
+	private $a_status =  array(
+				'0'=>'SIN CONFIRMAR',
+				'1'=>'CONFIRMADO'			
+		);
+	
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -73,6 +80,12 @@ class TournamentTeam extends CActiveRecord
 		);
 	}
 
+	
+	
+	public function getStatus(){
+		return  (isset($this->a_status[$this->STATUS])?$this->a_status[$this->STATUS]:'Desconocido');
+	}
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
