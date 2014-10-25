@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-		'Tournaments'=>array('admin'),
-		$model->NAME
+		'Torneos'=>array('admin'),
+		strtoupper($model->NAME)
 
 );
 
@@ -16,13 +16,6 @@ $this->menu=array(
 	Torneo <small><?php echo strtoupper($model->NAME);?></small>	
 </h1>
 
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
-		'block'=>false, // display a larger alert block?
-		'fade'=>true, // use transitions?
-		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-));
-
-?>
 
 
 
@@ -31,7 +24,10 @@ $this->menu=array(
 	<?php 
 	$allTeams = '';
 	foreach ($model->teams as $team){
-		$allTeams = $allTeams.$team->iDTEAM->NAME.', ';
+		$allTeams ='<div class="span1 muted">'. CHtml::image ( $team->iDTEAM->getLogo (), '', array (
+					"style" => "width:50px;height:50px;",
+					"class" => "img-polaroid" 
+			) ).strtoupper($team->iDTEAM->NAME).'</div>'.$allTeams;
 	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
@@ -43,7 +39,7 @@ $this->menu=array(
         array('name'=>'ID_CATEGORY', 'label'=>'Categoría', 'value'=>$model->iDCATEGORY->NAME),
 		array('name'=>'START_DATE', 'label'=>'Fecha Inicio'),
 		array('name'=>'TYPE', 'label'=>'Tipo de torneo' , 'value'=>$model->getStringTournamentType()),
-    	array('name'=>'TYPE', 'label'=>'Equipos del torneo'.' ('.count($model->teams).') ' , 'value'=>$allTeams),
+    	array('name'=>'TYPE', 'label'=>'Equipos'.' ('.count($model->teams).') ' , 'value'=>$allTeams,'type'=>'raw'),
 		array('name'=>'STATUS', 'label'=>'Estatus', 'value'=>$model->aStatus[$model->STATUS]),
 
 
