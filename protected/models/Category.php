@@ -111,7 +111,6 @@ public function getYearOptions()
 {
 	return array(
 
-			''=> '-- SELECCIONE --',
 			0 => 'Todos',
 			5 => '5 años',
 			10 => '10 Años',

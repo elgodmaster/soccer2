@@ -51,7 +51,7 @@ class Tournament extends CActiveRecord
 	public $aStatus= array(
 
 			1=>'ABIERTO',
-			2=>'CONFIGURACION',
+			2=>'CONFIGURANDO',
 			3=>'LISTO PARA CERRAR',
 			4=>'TEMPORADA REGULAR',
 			20=>'FINAL',
@@ -156,7 +156,7 @@ class Tournament extends CActiveRecord
 				'START_E'=> '¿Apartir de donde es la Clasificación?',
 				'WIN_PLACE'=> '¿Que premiación tendra?',
 				'ELI_CONF'=>'¿Cuantos encuentros?',
-				'MATCH_LONG_TIME'=>'¿Cuanto duran los encuentros?',
+				'MATCH_LONG_TIME'=>'¿Cuantos minutos duran los encuentros?',
 				'ACTIVE' => 'Activo',
 		);
 	}
