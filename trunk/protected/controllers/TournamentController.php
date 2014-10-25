@@ -1075,9 +1075,22 @@ class TournamentController extends Controller
 		$tt->ID_TOURNAMENT = $tournamentId;
 
 		$tt->ACTIVE = 1;
+		
+		
+		$oDBC = new CDbCriteria();
+		
+		$oDBC->condition = '((t.ID NOT IN (SELECT tot.ID_TEAM FROM tbl_tournament_team tot, tbl_tournament tour WHERE tot.ID_TOURNAMENT = tour.ID AND tour.ACTIVE = 1 AND tot.ACTIVE=1)) AND (t.ID_CATEGORY = '.$tournament->ID_CATEGORY.') AND (t.ACTIVE = 1))';
+		//$oDBC->join = 'LEFT JOIN TBL_TEAM_PLAYER PT ON t.ID = PT.PLAYER_ID AND PT.ID_TEAM=6';
+		
+		$team= new Team();
+		$model = new CActiveDataProvider('Team', array('criteria'=>$oDBC,));
+	
+	//	$this->renderPartial('searchAvaliableTeamsModal',array('team'=>$team,'model'=>$model,'tournament'=>$tournament),false,true);
+		
+		
 
 		$this->render('manageTeams',array(
-				'model'=>$tournament,'dataProvider'=>$tt->search(),
+				'model'=>$tournament,'dataProvider'=>$tt->search(),'team'=>$team,'model2'=>$model,'tournament'=>$tournament
 		));
 	}
 
