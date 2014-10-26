@@ -10,19 +10,14 @@ $this->menu=array(
 
 ?>
 
-<div class="row">
+<div class="row-fluid">
 			 
-		<div class="col-md-12">
+		<div class="span12">
 				
-			<div class="panel">
-					
-				<div class="panel-body">
 					<h1>Crear torneo</h1>	
-					<p class="help-block">
+					<span class="help-block">
 						Creación de un nuevo torneo.
-					</p>
-				</div>	
-			</div>
+					</span>
 		</div>	
 </div>
 
