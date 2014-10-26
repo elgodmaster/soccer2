@@ -16,7 +16,7 @@ $this->menu=array(
 
 
 
-<h3>Lista torneos</h3>
+<h1>Lista torneos</h1>
 
 
 

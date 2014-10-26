@@ -14,7 +14,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>Ver torneos #<?php echo $model->ID; ?></h2>
+<h1>Ver torneos #<?php echo $model->ID; ?></h1>
 
 
 
