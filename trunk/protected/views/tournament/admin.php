@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 	<?php echo $model->NAME;?>
 </h3>
 
-<h2>Administrar torneo</h2>
+<h1>Administrar torneo</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
