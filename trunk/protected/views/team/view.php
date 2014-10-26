@@ -18,7 +18,7 @@ $this->menu=array(
 
 
 
-<h2>Ver equipo </h2> <h3>#<?php echo $model->ID; ?></h3>
+<h1>Ver equipo </h1> <h3>#<?php echo $model->ID; ?></h3>
 
 
 <div class="span-5">
