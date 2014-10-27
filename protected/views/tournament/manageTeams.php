@@ -58,7 +58,7 @@ $this->menu=array(
     	//array('name'=>'ID_CATEGORY','type'=>'raw','value'=>'$data->iDTEAM->iDCATEGORY->NAME', 'header'=>'Categoría'),
     		
 		array('name'=>'STATUS','type'=>'html','value'=>'$data->getStatus()', 'header'=>'Estatus'),
-    	array('name'=>'COMENTARIO','type'=>'raw','value'=>'$data->COMMENT', 'header'=>'Observaciones'),
+    	array('name'=>'COMENTARIO','type'=>'raw','value'=>'"<p class=\'text-info\'>".$data->COMMENT."</p>"', 'header'=>'Detalle'),
 
 array(
 		'header'=>'opciones',
