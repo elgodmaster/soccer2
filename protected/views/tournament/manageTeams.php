@@ -46,16 +46,19 @@ $this->menu=array(
 <?php }?>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
-    'type'=>'striped bordered condensed',
+    'type'=>'table condensed striped bordered',
     'dataProvider'=>$dataProvider,
     'template'=>"{items}",
     'columns'=>array(
-		array('name'=>'TEST','type'=>'html','value'=>'CHtml::image($data->iDTEAM->getLogo(),"",array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"))' , 'header'=>'' ,'htmlOptions'=>array('align'=>'center',
-				'url'=>'test'
-		),),        
-		array('name'=>'ID_TEAM','type'=>'raw','value'=>'strtoupper($data->iDTEAM->NAME)', 'header'=>'Equipo'),
-    	array('name'=>'ID_CATEGORY','type'=>'raw','value'=>'$data->iDTEAM->iDCATEGORY->NAME', 'header'=>'Categoría'),
-		array('name'=>'STATUS','type'=>'raw','value'=>'$data->getStatus()', 'header'=>'Estatus'),
+		array('name'=>'ID_TEAM','type'=>'html','value'=>'CHtml::image($data->iDTEAM->getLogo(),"",array("style"=>"width:30px;height:30px;", "class"=>"img-polaroid"))."<br />".strtoupper($data->iDTEAM->NAME) ' , 'header'=>'Equipo' ,
+				'htmlOptions'=>array('style'=>'text-align: center;', 'url'=>'test'),
+				'headerHtmlOptions'=>array('style'=>'text-align: center;'),
+				 ),        
+		//array('name'=>'ID_TEAM','type'=>'raw','value'=>'strtoupper($data->iDTEAM->NAME)', 'header'=>'Equipo'),
+    	//array('name'=>'ID_CATEGORY','type'=>'raw','value'=>'$data->iDTEAM->iDCATEGORY->NAME', 'header'=>'Categoría'),
+    		
+		array('name'=>'STATUS','type'=>'html','value'=>'$data->getStatus()', 'header'=>'Estatus'),
+    	array('name'=>'COMENTARIO','type'=>'raw','value'=>'$data->COMMENT', 'header'=>'Observaciones'),
 
 array(
 		'header'=>'opciones',
