@@ -43,7 +43,7 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('MAX_YEAR, MIN_YEAR,NAME', 'required'),
+			array('MAX_YEAR, MIN_YEAR,NAME,GENDER,ACTIVE', 'required'),
 			array('MAX_YEAR, MIN_YEAR, ACTIVE,GENDER', 'numerical', 'integerOnly'=>true),
 			array('NAME', 'length', 'max'=>200),
 			array('DESCRIPTION', 'length', 'max'=>300),
