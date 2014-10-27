@@ -82,13 +82,13 @@ class Team extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-			'ID_CATEGORY' => 'Id Category',
-			'NAME' => 'Name',
-			'ADDRESS' => 'Address',
-			'DESCRIPTION' => 'Description',
+			'ID_CATEGORY' => 'Id Categoría',
+			'NAME' => 'Nombre',
+			'ADDRESS' => 'Dirección',
+			'DESCRIPTION' => 'Descripción',
 			'EMAIL' => 'Email',
-			'CREATION_DATE' => 'Creation Date',
-			'ACTIVE' => 'Active',
+			'CREATION_DATE' => 'Fecha de creación',
+			'ACTIVE' => 'Activar',
 		);
 	}
 
