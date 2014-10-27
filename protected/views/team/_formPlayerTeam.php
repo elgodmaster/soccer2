@@ -84,7 +84,7 @@
 <div class="span-9">
 <div class="row buttons">
 
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>
