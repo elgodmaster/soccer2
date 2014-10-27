@@ -142,7 +142,7 @@ class Team extends CActiveRecord
 		$documents = new DocumentTeam();
 		$documents->ID_TEAM = $this->ID;
 		$documents->STATUS = 1;
-		$documents->ID_DOCUMENT = 8;
+		$documents->ID_DOCUMENT = 11;
 		
 		
 		foreach ($documents->search()->getData() as $document){
