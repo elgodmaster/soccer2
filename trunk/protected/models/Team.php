@@ -48,7 +48,7 @@ class Team extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID_CATEGORY', 'required'),
+			array('ID_CATEGORY,NAME,EMAIL,ADDRESS,CREATION_DATE,ACTIVE', 'required'),
 			array('ID_CATEGORY, ACTIVE', 'numerical', 'integerOnly'=>true),
 			array('NAME, EMAIL', 'length', 'max'=>50),
 			array('ADDRESS, DESCRIPTION', 'length', 'max'=>100),
