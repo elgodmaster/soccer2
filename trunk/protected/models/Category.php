@@ -71,13 +71,13 @@ class Category extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ID_CATEGORY' => 'Id Category',
-			'NAME' => 'Name',
-			'DESCRIPTION' => 'Description',
-			'MAX_YEAR' => 'Max Year',
-			'MIN_YEAR' => 'Min Year',
-			'GENDER' => 'SEXO',
-			'ACTIVE' => 'Active',
+			'ID_CATEGORY' => 'Id Categoría',
+			'NAME' => 'Nombre',
+			'DESCRIPTION' => 'Descripción',
+			'MAX_YEAR' => 'Max años',
+			'MIN_YEAR' => 'Min años',
+			'GENDER' => 'Sexo',
+			'ACTIVE' => 'Activar',
 		);
 	}
 
