@@ -15,6 +15,9 @@
 	<?php echo $form->errorSummary($model); ?>
 	
 		<?php echo $form->radioButtonListRow($model, 'STATUS', $model::model()->getAStatus()); ?> 
+		
+		<br />
+		<?php echo $form->textAreaRow($model, 'COMMENT', array( 'class'=>'span10', 'rows'=>5)); ?>
    		
 	</fieldset>
 	
