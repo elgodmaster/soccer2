@@ -16,10 +16,10 @@ class TournamentTeam extends CActiveRecord
 {
 	
 	private $a_status =  array(
-				'0'=>'<h4><i class="icon-ban-circle"></i> Sin confirmar </h4>',
-				'1'=>'<i class="icon-thumbs-down"></i>   No ha completado pago ',
-				'2'=>'<i class="  icon-folder-open"></i> No ha completado documentación',
-				'3'=>'<i class="icon-ok-circle"></i> Confirmado',
+				'0'=>'<h4><i class="icon-ban-circle"></i>Sin confirmar </h4>',
+				'1'=>'<i class="icon-thumbs-down"></i>Falta pago Inscripción',
+				'2'=>'<i class="icon-folder-open"></i>Falta documentación',
+				'3'=>'<i class="icon-ok-circle"></i>Confirmado',
 		);
 	
 	
