@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista categoría', 'url'=>array('index')),
-	array('label'=>'Crear nuva categoría', 'url'=>array('create')),
+	array('label'=>'Crear nueva categoría', 'url'=>array('create')),
 	array('label'=>'Ver categoría', 'url'=>array('view', 'id'=>$model->ID_CATEGORY)),
 	
 );
 ?>
 
-<h2>Modificar categoría <?php echo $model->ID_CATEGORY; ?></h2>
+<h1>Modificar categoría <?php echo $model->ID_CATEGORY; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

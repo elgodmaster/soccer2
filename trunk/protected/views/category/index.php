@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>Categorías</h2>
+<h1>Categorías</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

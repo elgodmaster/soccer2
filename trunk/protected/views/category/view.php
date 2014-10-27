@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista categoria', 'url'=>array('index')),
+	array('label'=>'Lista categoría', 'url'=>array('index')),
 	array('label'=>'Crear nueva categoría', 'url'=>array('create')),
 	array('label'=>'Actualizar categoría', 'url'=>array('update', 'id'=>$model->ID_CATEGORY)),
 	array('label'=>'Borrar categoría', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID_CATEGORY),'confirm'=>'Are you sure you want to delete this item?')),
@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>Ver categoría #<?php echo $model->ID_CATEGORY; ?></h2>
+<h1>Ver categoría #<?php echo $model->ID_CATEGORY; ?></h1>
 
 <p class="note">
 	Los campos con: <span class="required">*</span> son requeridos.
