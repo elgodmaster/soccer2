@@ -36,7 +36,7 @@ class TournamentController extends Controller
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
 						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments',
-								'uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard','clasification'),
+								'uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard','clasification', 'updateTeam'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -812,6 +812,48 @@ class TournamentController extends Controller
 		));
 	}
 
+	
+	
+	
+	
+	/**
+	 * Updates status of a particular team inside of tournament
+	 * @param integer $tournamentId
+	 * @param integer $teamId
+	 */
+	public function actionUpdateTeam($tournamentId, $teamId){
+		
+		$model = $this->loadModel($tournamentId);
+		
+		$tt = TournamentTeam::model()->findByAttributes(array('ID_TEAM'=>$teamId,'ID_TOURNAMENT'=>$tournamentId));
+		
+		if($tt===null) throw new CHttpException(404,'The requested page does not exist.');
+		
+		if(isset($_POST['TournamentTeam']))
+		{
+			
+			$tt->attributes = $_POST['TournamentTeam'];
+			
+			if($tt->save())			
+			Yii::app()->user->setFlash('success', '<strong>¡Correcto!</strong> Ha actualizado el estatus del equipo correctamente.');
+			
+			$this->redirect(array('manageTeams','tournamentId'=>$tournamentId));
+		}
+		
+		//$model->STATUS = $this->getOverViewStatus($model);		
+		
+		//if($tt->delete() && $model->save()){}
+		
+		$this->renderPartial('_updateTeam',array(
+				'model'=>$tt,				
+		));
+	
+	}
+	
+	
+	
+	
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -1751,6 +1793,11 @@ class TournamentController extends Controller
 		$mail->setTo(Yii::app()->params['adminEmail']);
 		$mail->setSubject('Proxima Jornada');*/
 		
+		$matchGame = MatchGame::model()->findByPK($id);
+		
+		if($matchGame===null) throw new CHttpException(404,'The requested page does not exist.');
+		
+		
 		$mail = new YiiMailer();
 		//$mail->clearLayout();//if layout is already set in config
 		/*$mail->setFrom('jesus.nataren@gmail.com', 'Jesus Nataren');
@@ -1806,13 +1853,17 @@ class TournamentController extends Controller
 		//send the message, check for errors
 		if ($mail->send()) {
 		Yii::app()->user->setFlash('info', '<strong>Publicado. </strong>Se envio email a los participantes del torneo. ');
+		$matchGame->STATUS= 4;
+		$matchGame->save();
 		} else {
 		Yii::app()->user->setFlash('error', '<strong>Error. </strong>No se envio el email. ');//$mail->ErrorInfo);
 		}
 		
 		
 		
-		$this->redirect(array('manageMatchs','id'=>$id));
+		
+		
+		$this->redirect(array('manageMatchs','id'=>$matchGame->TOURNAMENT_ID));
 		
 		//return 1;
 		

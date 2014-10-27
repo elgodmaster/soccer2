@@ -91,11 +91,11 @@
 					?>
 					
 				<tr>
-
+					<td ><?php echo ($i+1); ?></td>
 
 					<?php 	
 
-					echo '<td >'. ($i+1). '</td>';
+					
 					echo '<td>';
 					
 					if($matchGames[$i]->lOCAL === null)
@@ -161,7 +161,6 @@
 						echo "</td>";
 
 
-
 						echo "<td>";
 						echo $form->dropDownList($matchGames[$i],"[$i]PLAY_GROUND_ID",CHtml::listData(PlayGround::model()->findAll(),'ID','NAME'),array('prompt'=>'SELECCIONE',));
 						echo "</td>";
@@ -211,7 +210,7 @@
 					'label'=>'Publicar',
 					'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
 					'size'=>'large', // null, 'large', 'small' or 'mini'
-					'url'=>array('publish', 'id'=>$model->ID),
+					'url'=>array('publish', 'id'=>$matchGames[0]->ID),
 			));
 	}
 	?>

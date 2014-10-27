@@ -28,22 +28,7 @@ $this->menu=array(
 
 
 <div class="span12">
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
-		'block'=>false, // display a larger alert block?
-		'fade'=>true, // use transitions?
-		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-));
 
-?>
-
-
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
-		'block'=>false, // display a larger alert block?
-		'fade'=>true, // use transitions?
-		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-));
-
-?>
 
 
 <?php if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS ){ ?> 
@@ -75,8 +60,22 @@ $this->menu=array(
 array(
 		'header'=>'opciones',
 		'class'=>'bootstrap.widgets.TbButtonColumn',
-		'buttons'=>array('delete'=>array('url'=>'Yii::app()->createUrl("tournament/unsubscribeTeam",array("tournamentId"=>$data->ID_TOURNAMENT,"teamId"=>$data->ID_TEAM))'),					
-		),
+		'buttons'=>array('delete'=>array('url'=>'Yii::app()->createUrl("tournament/unsubscribeTeam",array("tournamentId"=>$data->ID_TOURNAMENT,"teamId"=>$data->ID_TEAM))'),
+						
+						'update'=>array('url'=>'Yii::app()->createUrl("tournament/updateTeam",array("tournamentId"=>$data->ID_TOURNAMENT,"teamId"=>$data->ID_TEAM))',
+										'options'=>array('title'=>'Actualizar', 'id'=>'"$row"',  'data-toggle'=>'modal', 'data-target'=>'#updateTeamModal'),
+										'click'=>'function(e) { 
+																	//e.preventDefault();
+																	var target = $(this).attr("data-target");
+	    															var url = $(this).attr("href");
+																    if(url){
+																        $(target).find(".modal-body").load(url);
+																    }
+																}', 
+										)
+										
+
+						),
 		'htmlOptions'=>array('style'=>'width: 50px',
 				'url'=>'test'
 		),
@@ -116,6 +115,32 @@ array(
  
 <?php $this->endWidget(); ?>
 
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'updateTeamModal')); ?>
+ 
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h4>Modificar el estatus del equipo en el Torneo</h4>
+</div>
+ 
+<div class="modal-body">
+    Cargando ...
+</div>
+ 
+<div class="modal-footer">
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'type'=>'primary',
+        'label'=>'Guardar cambios',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal', 'onclick' => '$("#updateTeamForm").submit()'),
+    )); ?>
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Close',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+</div>
+ 
+<?php $this->endWidget(); ?>
 
 
   
