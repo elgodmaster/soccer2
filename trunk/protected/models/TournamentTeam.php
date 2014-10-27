@@ -7,6 +7,7 @@
  * @property integer $ID_TOURNAMENT
  * @property integer $ID_TEAM
  * @property integer $STATUS
+ * @property string $COMMENT
  * @property integer $ACTIVE
  *
  * The followings are the available model relations:
@@ -16,10 +17,10 @@ class TournamentTeam extends CActiveRecord
 {
 	
 	private $a_status =  array(
-				'0'=>'<h4><i class="icon-ban-circle"></i>Sin confirmar </h4>',
-				'1'=>'<i class="icon-thumbs-down"></i>Falta pago Inscripción',
-				'2'=>'<i class="icon-folder-open"></i>Falta documentación',
-				'3'=>'<i class="icon-ok-circle"></i>Confirmado',
+				'0'=>'<h4><i class="icon-ban-circle"></i> Sin confirmar </h4>',
+				'1'=>'<i class="icon-thumbs-down"></i> Falta pago Inscripción',
+				'2'=>'<i class="icon-folder-open"></i> Falta documentación',
+				'3'=>'<i class="icon-ok-circle"></i> Confirmado',
 		);
 	
 	
@@ -78,6 +79,7 @@ class TournamentTeam extends CActiveRecord
 			'ID_TOURNAMENT' => 'Id Tournament',
 			'ID_TEAM' => 'Id Team',
 			'STATUS' => 'Estatus',
+			'COMMENT' => 'Observaciones',
 			'ACTIVE' => 'Active',
 		);
 	}
