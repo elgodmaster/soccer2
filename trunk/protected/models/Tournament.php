@@ -22,6 +22,12 @@
  * @property integer $WIN_PLACE
  * @property integer $ELI_CONF
  * @property integer $MATCH_LONG_TIME
+ * @property integer $MATCH_TIMES
+ * @property integer $WIN_POINTS
+ * @property integer $LOSE_POINTS
+ * @property integer $DRAW_POINTS
+ * @property integer $DRAW_RULE_TYPE
+ * @property integer $BENEFIT_RULE_TYPE
  * @property integer $ACTIVE
  *
  * The followings are the available model relations:
@@ -42,6 +48,27 @@ class Tournament extends CActiveRecord
 			4=>'Todos vs todos',
 			6=>'Grupos',
 			
+	);
+	
+	
+	/**
+	 * Tournament rule for the tie
+	 * @var Integer 
+	 */
+	public $aRuleTypes = array(
+		
+			0=>'Penaltis directo',
+			1=>'Tiempos extra',
+			2=>'Gol de oro',
+	);
+	
+	/**
+	 * Tournament rule for the tie
+	 * @var Integer
+	 */
+	public $aBenefitRuleTypes = array(
+			0=>'Tabla porcentual',
+			1=>'Gol de visitante',
 	);
 	
 	/**
@@ -157,6 +184,13 @@ class Tournament extends CActiveRecord
 				'WIN_PLACE'=> '¿Que premiación tendra?',
 				'ELI_CONF'=>'¿Cuantos encuentros?',
 				'MATCH_LONG_TIME'=>'¿Cuantos minutos duran los encuentros?',
+				'MATCH_TIMES'=>'¿Cuantos tiempos por partido?',
+				'WIN_POINTS'=>'Puntos Ganador',
+				'LOSE_POINTS'=>'Puntos Perdedor',
+				'DRAW_POINTS'=>'Puntos Empate',
+				'BENEFIT_RULE_TYPE'=>'Ventaja en eliminatoria',
+				'DRAW_RULE_TYPE'=>'Opción de desempate',
+				
 				'ACTIVE' => 'Activo',
 		);
 	}
