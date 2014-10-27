@@ -22,8 +22,10 @@
 	</div>
 	<div class="span6"> 
 
-	<?php echo $form->dropDownListRow($model,'ACTIVE',$model->getEnabledOptions());?>
+	
+	
 	<?php echo $form->dropDownListRow($model,'ID_CATEGORY',CHtml::listData($catCategory::model()->findAll(),'ID_CATEGORY','NAME')); ?>
+	<?php echo $form->dropDownListRow($model,'ACTIVE',$model->getEnabledOptions());?>
 	<?php echo $form->textAreaRow($model, 'DESCRIPTION', array('class'=>'span6', 'rows'=>5)); ?>
 	
 	</div>
