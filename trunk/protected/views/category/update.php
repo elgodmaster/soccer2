@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar categoría <?php echo $model->ID_CATEGORY; ?></h1>
+<h1>Actualizar categoría <?php echo $model->ID_CATEGORY; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
