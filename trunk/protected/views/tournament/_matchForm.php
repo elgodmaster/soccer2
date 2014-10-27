@@ -98,9 +98,15 @@
 					echo '<td >'. ($i+1). '</td>';
 					echo '<td>';
 					
-					echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"));
+					if($matchGames[$i]->lOCAL === null)
+						echo CHtml::image(Team::model()->getLogo(), '', array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"));
+					else{ 
+						echo CHtml::image($matchGames[$i]->lOCAL->getLogo(), '', array("style"=>"width:50px;height:50px;", "class"=>"img-polaroid"));
+					
+					
 					echo "<br />";
 					echo $matchGames[$i]->lOCAL->NAME;
+					}
 					
 					echo "</td>";
 
@@ -108,16 +114,21 @@
 
 					echo '<td>';
 					echo '<p class="text-center">';
-					echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;","class"=>"img-polaroid"));
-					echo "<br />";
-					echo $matchGames[$i]->vISITOR->NAME;
-					echo $form->hiddenField($matchGames[$i],"[$i]ID",array('value'=>$matchGames[$i]->ID));
-					echo $form->hiddenField($matchGames[$i],"[$i]LOCAL",array('value'=>$matchGames[$i]->lOCAL->ID));
-					echo $form->hiddenField($matchGames[$i],"[$i]VISITOR",array('value'=>$matchGames[$i]->vISITOR->ID));
-					echo $form->hiddenField($matchGames[$i],"[$i]TOURNAMENT_ID",array('value'=>$matchGames[$i]->TOURNAMENT_ID));
-					echo $form->hiddenField($matchGames[$i],"[$i]GROUP");
-					echo $form->hiddenField($matchGames[$i],"[$i]NAME", array('value'=>$i+1));
-					echo "</p>";
+					if($matchGames[$i]->vISITOR === null)
+						echo CHtml::image(Team::model()->getLogo(), '', array("style"=>"width:50px;height:50px;","class"=>"img-polaroid"));
+					else{
+						echo CHtml::image($matchGames[$i]->vISITOR->getLogo(), '', array("style"=>"width:50px;height:50px;","class"=>"img-polaroid"));
+						echo "<br />";
+						echo $matchGames[$i]->vISITOR->NAME;
+						echo $form->hiddenField($matchGames[$i],"[$i]ID",array('value'=>$matchGames[$i]->ID));
+						echo $form->hiddenField($matchGames[$i],"[$i]LOCAL",array('value'=>$matchGames[$i]->lOCAL->ID));
+						echo $form->hiddenField($matchGames[$i],"[$i]VISITOR",array('value'=>$matchGames[$i]->vISITOR->ID));
+						echo $form->hiddenField($matchGames[$i],"[$i]TOURNAMENT_ID",array('value'=>$matchGames[$i]->TOURNAMENT_ID));
+						echo $form->hiddenField($matchGames[$i],"[$i]GROUP");
+						echo $form->hiddenField($matchGames[$i],"[$i]NAME", array('value'=>$i+1));
+							
+					}
+						echo "</p>";
 					echo "</td>";
 
 
@@ -199,14 +210,23 @@
 			$this->widget('bootstrap.widgets.TbButton', array(
 					'label'=>'Publicar',
 					'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-					'size'=>'small', // null, 'large', 'small' or 'mini'
+					'size'=>'large', // null, 'large', 'small' or 'mini'
 					'url'=>array('publish', 'id'=>$model->ID),
 			));
-	
+	}
 	?>
-	<br />
 	
-<?php 
+
+	
+	</div>
+
+	<?php $this->endWidget(); ?>
+
+
+
+	<div class="row-fluid">
+		
+		<?php 
 	
 	$this->widget('ext.yii-facebook-opengraph.plugins.comments', array(
 			'href' => array('manageMatchs','id'=>$model->ID),//'https://www.facebook.com/pages/Soccer2/591424987617604', // if omitted Facebook will use the OG meta tag
@@ -214,11 +234,8 @@
 		//	'send' => true,
 	));
 
-}
+
 ?>
-	
 	</div>
-
-	<?php $this->endWidget(); ?>
-
-
+	
+	
