@@ -9,18 +9,17 @@
 <legend>Configuración Eminiatoria</legend>
 <p class="muted">Los campos con: <span class="required">*</span> son requeridos.</p>
 
+<div class="span12">
 	<fieldset>
 	<?php echo $form->errorSummary($model); ?>
 	
-	
-	
-	<div class="span-20">
+	<div class="span4">
 	  <?php echo $form->radioButtonListRow($model, 'START_E', $model->getEliconf(), array('disabled'=>!($model->STATUS < 4))) ?>
 	</div>		
 	
 
 	
-	<div class="span-20">
+	<div class="span4">
 	 <?php echo $form->radioButtonListRow($model, 'ELI_CONF', array(
         'Solo un encuentro',
         'Ida y vuelta',
@@ -29,7 +28,7 @@
 		
 
 		
-	<div class="span-20"> 
+	<div class="span4"> 
 	
 	  <?php echo $form->radioButtonListRow($model, 'WIN_PLACE', array(
        1=> 'Primer Lugar',
@@ -37,8 +36,23 @@
 	   4 => 'Primer, Segundo y Tercer lugar ',
     ), array('disabled'=>!($model->STATUS < 4))); ?>
    		
-		</div>	
+	</div>
+	
+	<div class="span4"> 
+	
+	  <?php echo $form->radioButtonListRow($model, 'BENEFIT_RULE_TYPE',$model->aBenefitRuleTypes
+    , array('disabled'=>!($model->STATUS < 4))); ?>
+   		
+	</div>	
 		
+	<div class="span4"> 
+	
+	  <?php echo $form->radioButtonListRow($model, 'DRAW_RULE_TYPE',$model->aRuleTypes
+    , array('disabled'=>!($model->STATUS < 4))); ?>
+   		
+	</div>	
+		
+			
 		
 	</fieldset>
 	
@@ -51,3 +65,4 @@
 
 <?php $this->endWidget(); ?>
 
+</div>

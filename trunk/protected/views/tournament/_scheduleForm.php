@@ -27,17 +27,21 @@
 				'model'=>$model, //Model object
 				'attribute'=>"START_DATE", //attribute name
 				'language'=>'es',
-				'mode'=>'datetime', //use "time","date" or "datetime" (default)
+				'mode'=>'date', //use "time","date" or "datetime" (default)
 				'options'=>array( "dateFormat"=>'yy-mm-dd'),
 		
 				'htmlOptions'=>array('class'=>'input-medium','disabled'=>!($model->STATUS < 4)),
 		));
 		
 		?>
+		 
+		<?php echo $form->textFieldRow($model,'MATCH_LONG_TIME', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
 		
-		
-		
+		<?php echo $form->textFieldRow($model,'MATCH_TIMES', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
+	
 		<?php echo $form->error($model,'START_DATE'); ?>
+		
+		
 		</div>	
 		
 		
@@ -71,7 +75,7 @@
    		
 		</div>	
 		
-	<?php echo $form->textFieldRow($model,'MATCH_LONG_TIME', array('maxlength'=>2, 'class'=>'input-mini', 'disabled'=>!($model->STATUS < 4))); ?>
+	
 		
 	</fieldset>
 
