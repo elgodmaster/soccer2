@@ -1009,8 +1009,8 @@ class TournamentController extends Controller
 					$matchGame = new MatchGame();
 					
 					$matchGame->ACTIVE = 1;
-					$matchGame->LOCAL = 0;
-					$matchGame->VISITOR = 0;
+					$matchGame->LOCAL = null;
+					$matchGame->VISITOR = null;
 					$matchGame->TOURNAMENT_ID = $model->ID;
 					$matchGame->NAME = ''.$j+1;
 					$matchGame->GROUP = $group;
@@ -1778,15 +1778,15 @@ class TournamentController extends Controller
 		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
 		$mail->Port = 587;
 		//Set the encryption system to use - ssl (deprecated) or tls
-		$mail->SMTPSecure = 'tls';
+		//$mail->SMTPSecure = 'ssl';
 		//Set the encryption system to use - ssl (deprecated) or tls
-		//$mail->SMTPSecure = 'tls';
+		$mail->SMTPSecure = 'tls';
 		//Whether to use SMTP authentication
 		$mail->SMTPAuth = true;
 		//Username to use for SMTP authentication - use full email address for gmail
 		$mail->Username = "jesus.nataren@gmail.com";
 		//Password to use for SMTP authentication
-		$mail->Password = "K4r3n621Qu3tz41198";
+		$mail->Password = "Qu3tz41198K4r3n621";
 		//Set who the message is to be sent from
 		$mail->setFrom('jesus.nataren@gmail.com', 'Jesus Nataren');
 		//Set an alternative reply-to address
@@ -1794,12 +1794,12 @@ class TournamentController extends Controller
 		//Set who the message is to be sent to
 		$mail->addAddress('jjnataren@hotmail.com', 'Jesus Nataren');
 		//Set the subject line
-		$mail->Subject = 'Ligas de futbol. Programacion de fechas';
+		$mail->Subject = 'PINFO SYSTEM. Programacion de fechas';
 		//Read an HTML message body from an external file, convert referenced images to embedded,
 		//convert HTML into a basic plain-text alternative body
-		$mail->msgHTML('<html><body><H1>HELLO</H1><body></html>');
+		$mail->msgHTML('<html><body><H1>Publicacion de jornada  <small>2</small></H1><body></html>');
 		//Replace the plain text body with one created manually
-		$mail->AltBody = 'This is a plain-text message body';
+		//$mail->AltBody = 'This is a plain-text message body';
 		//Attach an image file
 		
 		
@@ -1812,15 +1812,9 @@ class TournamentController extends Controller
 		
 		
 		
-		
-		
-		
-		
-		
-		
 		$this->redirect(array('manageMatchs','id'=>$id));
 		
-		return 1;
+		//return 1;
 		
 	}
 	
