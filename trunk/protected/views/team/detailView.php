@@ -16,9 +16,9 @@ $this->menu=array(
 );
 ?>
 
-<h2>#<?php echo $model->pLAYER->ID; ?>&nbsp;&nbsp; <?php echo $model->pLAYER->NAME; ?>  
+<h1>#<?php echo $model->pLAYER->ID; ?>&nbsp;&nbsp; <?php echo $model->pLAYER->NAME; ?>  
 
-</h2>
+</h1>
 
 
 
