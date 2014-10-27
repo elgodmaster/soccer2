@@ -15,7 +15,6 @@
 	<div class="span6">	
 		<?php echo $form->textFieldRow($model,'NAME',array('size'=>60,'maxlength'=>100, 'class'=>'input-xlarge')); ?>
 		<a href="#" rel="tooltip" title="A short name for category">?</a>
-		<?php echo $form->radioButtonListRow($model, 'GENDER', $model->getGenderOptions()); ?>
 		<?php echo $form->textAreaRow($model, 'DESCRIPTION', array('class'=>'span7', 'rows'=>5)); ?>
 		
 	</div>	
@@ -29,7 +28,7 @@
 </fieldset>
 
 	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>$model->isNewRecord?'Crear':'Update'));?>
+		<?php $this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>$model->isNewRecord?'Crear':'Actualizar'));?>
 	</div>
 <?php $this->endWidget(); ?>
 	
