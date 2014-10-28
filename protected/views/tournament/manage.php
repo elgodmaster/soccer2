@@ -10,6 +10,13 @@ $this->menu=array(
 		array('label'=>'Borrar este torneo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Esta seguro de eliminar este torneo')),
 		
 );
+
+$this->notifications=array(
+		array('label' => '<i class="icon-star icon-white"></i> Publicar el torneo', 'url'=>array('create'), 'linkOptions'=>array('class'=>'btn btn-large btn-info'),),
+		
+		array('label'=>'<i class="icon-envelope icon-white"></i> Enviar notificación', 'url'=>'#', 'linkOptions'=>array('class'=>'btn btn-large btn-primary')),
+
+);
 ?>
 
 <h1>
@@ -32,7 +39,7 @@ $this->menu=array(
 	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
-			'type'=>'condensed striped',
+			'type'=>'condensed striped bordered',
 			'data'=>$model,
 			'attributes'=>array(
         
