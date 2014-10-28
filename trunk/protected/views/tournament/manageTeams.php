@@ -29,7 +29,10 @@ $this->menu=array(
 
 <div class="span12">
 
-
+	<div class="form-actions">
+		<a class="btn btn-small" href="#"><i class="icon-comment"></i> Enviar invitación</a>
+		<a class="btn btn-small" href="#"><i class="icon-list-alt"></i> Enviar estatus</a>
+	</div>
 
 <?php if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS ){ ?> 
 
@@ -98,7 +101,8 @@ array(
    		
     ),
 )); ?>
-        
+
+
    
 </div>
 

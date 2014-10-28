@@ -50,11 +50,11 @@ class TournamentTeam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID_TOURNAMENT, ID_TEAM,STATUS', 'required'),
+			array('ID_TOURNAMENT, ID_TEAM,STATUS, COMMENT', 'required'),
 			array('ID_TOURNAMENT, ID_TEAM,STATUS, ACTIVE', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID_TOURNAMENT, ID_TEAM, ACTIVE,STATUS, COMMENT', 'safe', 'on'=>'search'),
+			array('ID_TOURNAMENT, ID_TEAM, ACTIVE,STATUS', 'safe', 'on'=>'search'),
 		);
 	}
 
