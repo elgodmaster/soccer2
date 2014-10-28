@@ -36,7 +36,7 @@ class TournamentController extends Controller
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
 						'actions'=>array('admin','delete','manageTeams','searchAvaliableTeams','addTeamTournament','manageDocuments',
-								'uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard','clasification', 'updateTeam'),
+								'uploadDocument','updateByFm','updateBySchedule', 'manageResults','publish', 'pointBoard','clasification', 'updateTeam', 'viewTeam'),
 						'users'=>array('admin'),
 				),
 				array('deny',  // deny all users
@@ -849,6 +849,30 @@ class TournamentController extends Controller
 		));
 	
 	}
+	
+	/**
+	 * Shows team detail
+	 * @param integer $tournamentId
+	 * @param integer $teamId
+	 */
+	public function actionViewTeam($tournamentId, $teamId){
+	
+		$model = $this->loadModel($tournamentId);
+	
+		$tt = TournamentTeam::model()->findByAttributes(array('ID_TEAM'=>$teamId,'ID_TOURNAMENT'=>$tournamentId));
+	
+		if($tt===null) throw new CHttpException(404,'The requested page does not exist.');
+		
+		//$model->STATUS = $this->getOverViewStatus($model);
+	
+		//if($tt->delete() && $model->save()){}
+	
+		$this->renderPartial('_viewTeam',array(
+				'model'=>$tt,
+		));
+	
+	}
+	
 	
 	
 	

@@ -21,7 +21,7 @@ $this->menu=array(
 <h1>Ver equipo </h1> <h3>#<?php echo $model->ID; ?></h3>
 
 
-<div class="span-5">
+<div class="span5">
  <?php 
  
  if(isset($documentModel))
@@ -34,7 +34,7 @@ $this->menu=array(
 ?>
 </div>
 
- <div class="span-15">
+ <div class="span7">
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
