@@ -149,7 +149,6 @@ class Team extends CActiveRecord
 		foreach ($documents->search()->getData() as $document){
 		}
 		
-		
 		$path = isset($document)? $document->PATH : 	$thumbURL =  Yii::app( )->getBaseUrl( ).'/uploads/default/defaultTeam.jpg';
 		
 		return  $path;
