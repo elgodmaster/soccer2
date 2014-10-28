@@ -75,7 +75,19 @@ array(
 																        $(target).find(".modal-body").load(url);
 																    }
 																}', 
-										)
+										),
+
+						'view'=>array('url'=>'Yii::app()->createUrl("tournament/viewTeam",array("tournamentId"=>$data->ID_TOURNAMENT,"teamId"=>$data->ID_TEAM))',
+									'options'=>array('title'=>'Ver detalle',  'data-toggle'=>'modal', 'data-target'=>'#viewTeamModal'),
+									'click'=>'function(e) {
+																	//e.preventDefault();
+																	var target = $(this).attr("data-target");
+	    															var url = $(this).attr("href");
+																    if(url){
+																        $(target).find(".modal-body").load(url);
+																    }
+																}',
+)
 										
 
 						),
@@ -137,7 +149,30 @@ array(
         'htmlOptions'=>array('data-dismiss'=>'modal', 'onclick' => '$("#updateTeamForm").submit()'),
     )); ?>
     <?php $this->widget('bootstrap.widgets.TbButton', array(
-        'label'=>'Close',
+        'label'=>'Cerrar',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+</div>
+ 
+<?php $this->endWidget(); ?>
+
+
+
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewTeamModal')); ?>
+ 
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h4>Detalle del equipo</h4>
+</div>
+ 
+<div class="modal-body">
+    Cargando ...
+</div>
+ 
+<div class="modal-footer">
+     <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Cerrar',
         'url'=>'#',
         'htmlOptions'=>array('data-dismiss'=>'modal'),
     )); ?>

@@ -54,7 +54,7 @@ class TournamentTeam extends CActiveRecord
 			array('ID_TOURNAMENT, ID_TEAM,STATUS, ACTIVE', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID_TOURNAMENT, ID_TEAM, ACTIVE,STATUS', 'safe', 'on'=>'search'),
+			array('ID_TOURNAMENT, ID_TEAM, ACTIVE,STATUS, COMMENT', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -113,6 +113,7 @@ class TournamentTeam extends CActiveRecord
 		$criteria->compare('ID_TOURNAMENT',$this->ID_TOURNAMENT);
 		$criteria->compare('ID_TEAM',$this->ID_TEAM);
 		$criteria->compare('ACTIVE',$this->ACTIVE);
+		$criteria->compare('COMMENT',$this->COMMENT);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

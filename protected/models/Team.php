@@ -10,6 +10,7 @@
  * @property string $ADDRESS
  * @property string $DESCRIPTION
  * @property string $EMAIL
+ * @property string $CONTACT_PHONE
  * @property string $CREATION_DATE
  * @property integer $ACTIVE
  *
@@ -55,7 +56,7 @@ class Team extends CActiveRecord
 			array('CREATION_DATE', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ID, ID_CATEGORY, NAME, ADDRESS, DESCRIPTION, EMAIL, CREATION_DATE, ACTIVE', 'safe', 'on'=>'search'),
+			array('ID, ID_CATEGORY, NAME, ADDRESS, DESCRIPTION, EMAIL, CREATION_DATE, ACTIVE, CONTACT_PHONE', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -87,12 +88,12 @@ class Team extends CActiveRecord
 			'ADDRESS' => 'Dirección',
 			'DESCRIPTION' => 'Descripción',
 			'EMAIL' => 'Email',
+			'CONTACT_PHONE'=>'Teléfono de contacto',
 			'CREATION_DATE' => 'Fecha de creación',
-			'ACTIVE' => 'Activar',
+			'ACTIVE' => 'Activo',
 		);
 	}
 
-	
 	
 	/**
 	 * Retrieves a list of activeOptions
