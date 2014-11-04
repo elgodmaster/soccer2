@@ -41,7 +41,7 @@ class Document extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('TYPE_DOCUMENT,  NAME','required'),
+			array('TYPE_DOCUMENT, DESCRIPTION ,NAME','required'),
 			array('TYPE_DOCUMENT', 'numerical', 'integerOnly'=>true),
 			array('NAME', 'length', 'max'=>100),
 			array('DESCRIPTION', 'length', 'max'=>200),
@@ -71,9 +71,9 @@ class Document extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-			'NAME' => 'Name',
-			'TYPE_DOCUMENT' => 'Type Document',
-			'DESCRIPTION' => 'Description',
+			'NAME' => 'Nombre',
+			'TYPE_DOCUMENT' => 'Tipo de documento',
+			'DESCRIPTION' => 'Descripción',
 		);
 	}
 
