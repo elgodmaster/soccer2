@@ -42,7 +42,7 @@ class CatResult extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('TYPE_RESULT', 'required'),
+			array('TYPE_RESULT,ACTIVE,NAME	', 'required'),
 			array('TYPE_RESULT, ACTIVE', 'numerical', 'integerOnly'=>true),
 			array('NAME', 'length', 'max'=>50),
 			array('DESCRIPTION', 'length', 'max'=>100),
