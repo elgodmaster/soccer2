@@ -72,10 +72,10 @@ class CatResult extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-			'NAME' => 'Name',
-			'DESCRIPTION' => 'Description',
-			'TYPE_RESULT' => 'Type Result',
-			'ACTIVE' => 'Active',
+			'NAME' => 'Nombre',
+			'DESCRIPTION' => 'Descripción',
+			'TYPE_RESULT' => 'Tipo de resultado',
+			'ACTIVE' => 'Activar',
 		);
 	}
 
