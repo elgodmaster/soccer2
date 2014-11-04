@@ -17,6 +17,6 @@ $this->menu=array(
 ?>
 
 <h1> <?php echo $model->NAME; ?></h1>
-<h2>Actualizar resultados <?php echo $model->ID; ?></h2>
+<h1>Actualizar resultados <?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
