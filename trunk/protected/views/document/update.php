@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h2> Documentos <?php echo $model->ID; ?></h2>
+<h1> Documentos <?php echo $model->ID; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
