@@ -43,7 +43,7 @@ class Referee extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NAME, PHONE, DATE_UP, ACTIVE', 'required'),
+			array('NAME, PHONE, DATE_UP, ACTIVE,ADDRESS,EMAIL', 'required'),
 			array('DATE_UP, ACTIVE', 'numerical', 'integerOnly'=>true),
 			array('NAME, EMAIL', 'length', 'max'=>300),
 			array('ADDRESS', 'length', 'max'=>500),
@@ -73,12 +73,12 @@ class Referee extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-			'NAME' => 'Name',
-			'ADDRESS' => 'Address',
+			'NAME' => 'Nombre',
+			'ADDRESS' => 'Dirección',
 			'EMAIL' => 'Email',
-			'PHONE' => 'Phone',
-			'DATE_UP' => 'Date Up',
-			'ACTIVE' => 'Active',
+			'PHONE' => 'Teléfono',
+			'DATE_UP' => 'Dia ',
+			'ACTIVE' => 'Activar',
 		);
 	}
 
