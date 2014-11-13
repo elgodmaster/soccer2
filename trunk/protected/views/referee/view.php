@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h3>Ver árbitro #<?php echo $model->ID; ?></h3>
+<h1>Ver árbitro #<?php echo $model->ID; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
