@@ -43,6 +43,7 @@ class PlayGround extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('  ACTIVE, NAME, MAP_STRING,PHONE_NUMBER,ADDRESS  ','required'),
 			array('ACTIVE', 'numerical', 'integerOnly'=>true),
 			array('NAME', 'length', 'max'=>50),
 			array('DESCRIPTION, ADDRESS', 'length', 'max'=>100),
@@ -73,12 +74,12 @@ class PlayGround extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-			'NAME' => 'Name',
-			'DESCRIPTION' => 'Description',
-			'ADDRESS' => 'Address',
-			'PHONE_NUMBER' => 'Phone Number',
-			'ACTIVE' => 'Active',
-			'MAP_STRING' => 'Map String',
+			'NAME' => 'Nombre',
+			'DESCRIPTION' => 'Descripción',
+			'ADDRESS' => 'Dirección',
+			'PHONE_NUMBER' => 'Numero Teléfonico',
+			'ACTIVE' => 'Activar',
+			'MAP_STRING' => 'Mapa',
 		);
 	}
 
