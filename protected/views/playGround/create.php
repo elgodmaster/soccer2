@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista descansos', 'url'=>array('index')),
+	array('label'=>'Lista cancha', 'url'=>array('index')),
 	
 );
 ?>
 
-<h2>Obtener tiempo descanso</h2>
+<h2>Obtener cancha</h2>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
