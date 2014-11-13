@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>Árbitros</h2>
+<h1>Árbitros</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,
