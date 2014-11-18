@@ -90,6 +90,14 @@ class Tournament extends CActiveRecord
 			
 	);
 	
+	
+	private $aSchedule = array(
+		0=>array('from'=>'08:30', 'to'=>'13:30'),
+		1=>array('from'=>'13:30', 'to'=>'17:30'),
+		2=>array('from'=>'17:30', 'to'=>'22:30'),
+			
+	);
+	
 	private $eliConfig = array(
 			
 			16=>'Octavos de final',

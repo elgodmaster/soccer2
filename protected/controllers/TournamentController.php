@@ -55,6 +55,27 @@ class TournamentController extends Controller
 				'model'=>$this->loadModel($id),
 		));
 	}
+	
+	
+	/**
+	 * Returns suggested Schedules for specific round
+	 * @param integer $tournamentId
+	 * @param integer $roundId
+	 */
+	public function actionGetSuggestedSchedules($tournamentId, $roundId)
+	{
+		$model = $this->loadModel($tournamentId);
+		
+		$criteria = new CDbCriteria;
+		$criteria->select = 't.*';
+		$criteria->join ='INNER JOIN tbl_tournament ON tbl_tournament.ID = t.TOURNAMENT_ID';
+		$criteria->condition = 'tbl_tournament.active = :value AND';
+		
+		$criteria->params = array(':value' => '1');
+		
+		
+	}
+	
 
 
 
@@ -337,7 +358,7 @@ class TournamentController extends Controller
 
 	/**
 	 * Controlller for manage matchs
-	 * it support post and get methods
+	 * it supports post and get methods
 	 * @param integer $id
 	 * @return multitype:
 	 */

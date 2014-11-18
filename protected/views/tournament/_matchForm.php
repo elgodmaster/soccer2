@@ -5,11 +5,11 @@
 
 ?>
 
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
-		'block'=>false, // display a larger alert block?
-		'fade'=>true, // use transitions?
-		'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
-));
+<?php //$this->widget('bootstrap.widgets.TbAlert', array(
+	//	'block'=>false, // display a larger alert block?
+	//	'fade'=>true, // use transitions?
+	//	'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+//));
 
 ?>
 <p class="muted">
@@ -71,6 +71,8 @@
 				if(strlen($model->SCHEDULE_D) && ($numItems = count($aDays)) > 0) // incluir expresion regular para validar formato
 									
 				foreach ($aDays as $day){
+					
+					$day--; //Due to Jquery calendar
 					
 					if(++$i === $numItems) {
 							$stringADays = $stringADays. 'day=='.$day;
@@ -137,6 +139,7 @@
 							
 						echo "<td>";
 						Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+						
 						$matchGames[$i]->TIME = ($matchGames[$i]->TIME == NULL)? NULL : date("d/m/Y H:i:s",strtotime($matchGames[$i]->TIME ));
 						
 						
@@ -198,9 +201,16 @@
 <!-- form -->	
 	
 	<div class="form-actions">
-		<?php if (!$readyToPublish)
-			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
+		<div class="btn-toolbar">
+			<div class="btn-group">
+		<?php if (!$readyToPublish){
+			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'info','label'=>'Sugerir horarios', 'htmlOptions'=>array('name'=>'saveRound', 'class'=>'btn' )));
+			
+			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound' , 'class'=>'btn')));
+			
+		}
 		else if($matchGames[0]->STATUS < 3){
+			
 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound')));
 			echo "&nbsp; &nbsp; &nbsp;";
 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'success','label'=>'Programar','htmlOptions'=>array('name'=>'publishRound'),)	);
@@ -215,8 +225,8 @@
 	}
 	?>
 	
-
-	
+			</div>
+		</div>
 	</div>
 
 	<?php $this->endWidget(); ?>
