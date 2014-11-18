@@ -33,6 +33,10 @@ return array(
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		
+			'cal' => array(
+					'debug' => true // For first run only!
+			),
+			
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'natax621',
@@ -98,7 +102,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=soccer',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		

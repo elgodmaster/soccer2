@@ -32,10 +32,10 @@ $this->notifications=array(
 	<?php 
 	$allTeams = '';
 	foreach ($model->teams as $team){
-		$allTeams ='<div class="span1 muted">'. CHtml::image ( $team->iDTEAM->getLogo (), '', array (
+		$allTeams ='<div class="span1 muted"><small>'. CHtml::image ( $team->iDTEAM->getLogo (), '', array (
 					"style" => "width:50px;height:50px;",
 					"class" => "img-polaroid" 
-			) ).strtoupper($team->iDTEAM->NAME).'</div>'.$allTeams;
+			) ).strtoupper($team->iDTEAM->NAME).'</small></div>'.$allTeams;
 	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(

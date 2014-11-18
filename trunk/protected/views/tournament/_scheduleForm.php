@@ -1,4 +1,3 @@
-<div class="form">
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'verticalForm',
@@ -50,13 +49,13 @@
 	<div class="span4"> 
 	
 	    <?php echo $form->checkBoxListRow($model, "SCHEDULE_D", array(
-        '1'=>'LUNES',
-        '2'=>'MARTES',
-       '3'=>'MIÉRCOLES',
-	    '4'=>'JUEVES',
-	  '5'=> 'VIERNES',
-	   '6'=> 'SÁBADO',
-	   '0'=>	'DOMINGO',
+        '2'=>'LUNES',
+        '3'=>'MARTES',
+       '4'=>'MIÉRCOLES',
+	    '5'=>'JUEVES',
+	  '6'=> 'VIERNES',
+	   '7'=> 'SÁBADO',
+	   '1'=>	'DOMINGO',
     ), array('hint'=>'<strong>Nota:</strong> Seleccionar solo los deseados.', 'disabled'=>!($model->STATUS < 4))); ?>
    		
 		</div>	
@@ -89,4 +88,3 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
