@@ -91,10 +91,13 @@ class Tournament extends CActiveRecord
 	);
 	
 	
-	private $aSchedule = array(
-		0=>array('from'=>'08:30', 'to'=>'13:30'),
-		1=>array('from'=>'13:30', 'to'=>'17:30'),
-		2=>array('from'=>'17:30', 'to'=>'22:30'),
+	/**
+	 * @var string array
+	 */
+	public $aSchedule = array(
+		0=>array('from'=>'08:00', 'to'=>'14:00'),
+		1=>array('from'=>'14:00', 'to'=>'18:00'),
+		2=>array('from'=>'18:00', 'to'=>'22:00'),
 			
 	);
 	
