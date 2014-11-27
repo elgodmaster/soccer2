@@ -66,18 +66,72 @@ class TournamentController extends Controller
 	{
 		$model = $this->loadModel($tournamentId);
 		
-		$criteria = new CDbCriteria;
-		$criteria->select = 't.*';
-		$criteria->join ='INNER JOIN tbl_tournament ON tbl_tournament.ID = t.TOURNAMENT_ID';
-		$criteria->condition = 'tbl_tournament.active = :value AND';
+		$days_of_game = array();
+		$schedules_of_game = array();
 		
-		$criteria->params = array(':value' => '1');
+		//find another solution for this 
+		$day_of_week = array(
+				1=>'Sun',
+				2=>'Mon',
+				3=>'Tue',
+				4=>'Wed',
+				5=>'Thu',
+				6=>'Fri',
+				7=>'Sat',
+		);
 		
+	
 		
+		$schedules_of_game = explode(",", $model->SCHEDULE_CONFIG);
+		$days_of_game = explode(",", $model->SCHEDULE_D);
+		$nowFormat = date('Y-m-d H:i:s');
+		
+		//Definir tiempo de descanzo entre los tiempos
+		$time_of_match = ($model->MATCH_LONG_TIME * $model->MATCH_TIMES) + 10;
+		$suggested = false;
+		
+		/*Filter time*/
+		/*$period_filter_string = 'AND t.TIME BETWEEN ';
+		foreach ($schedules_of_game as $schedule){
+		
+			$period_filter_string = $period_filter_string.' '.
+			$model->$aSchedule[$schedule]['from'].' AND '.$model->$aSchedule[$schedule]['to'];
+		
+		}*/
+
+		$now = new DateTime();
+		
+		while(!$suggested){
+			
+			foreach ($days_of_game as $day){
+				
+				
+				$now->modify('next '.$day_of_week[$day]);
+				$start_time =  $now->format("Y-m-d").' 00:00:00';
+				$end_time =  $now->format("Y-m-d").' 23:59:59';
+				
+				
+				$criteria = new CDbCriteria;
+				$criteria->select = 't.*';
+				$criteria->join ='INNER JOIN tbl_tournament ON tbl_tournament.ID = t.TOURNAMENT_ID';
+				$criteria->condition = 'tbl_tournament.active = :value AND t.TIME BETWEEN :start_time AND :end_time';
+				
+				$criteria->params = array(':value' => '1',
+										  ':start_time'=>$start_time,
+											':end_time'=>$end_time,
+				);
+
+			}
+	
+		$suggested = true;
+		
+		}
+			
 	}
 	
+	
 
-
+	
 
 
 	/**
