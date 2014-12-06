@@ -252,7 +252,7 @@ class MatchGame extends CActiveRecord
 		
 		$t_array = count($avaliable);
 		if(count($avaliable))
-			$this->addError($attribute, 'Este encuentro interfiere con otro!');
+			$this->addError($attribute, '! Este encuentro interfiere con otro !');
 	}
 	
 	
