@@ -157,7 +157,7 @@
                                         }',
 											),
 
-								'htmlOptions'=>array('class'=>'input-medium','placeholder'=>"Fecha del encuentro"),
+								'htmlOptions'=>array('class'=>'input-medium','placeholder'=>"Fecha del encuentro", ),
 						));
 
 			
@@ -204,7 +204,35 @@
 		<div class="btn-toolbar">
 			<div class="btn-group">
 		<?php if (!$readyToPublish){
-			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'info','label'=>'Sugerir horarios', 'htmlOptions'=>array('name'=>'saveRound', 'class'=>'btn' )));
+			
+			//$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'info','label'=>'Sugerir horarios', 'htmlOptions'=>array('name'=>'saveRound', 'class'=>'btn' )));
+			
+			echo CHtml::ajaxLink(
+					'Sugerir horarios',          // the link body (it will NOT be HTML-encoded.)
+					array('tournament/getSuggestedSchedules', 'tournamentId'=>$model->ID,'group'=>$matchGames[0]->GROUP), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
+					array(
+							'type'=>'POST',
+							'dataType'=>'json',
+							'data'=>'js:{ "ajax":true }',
+							'beforeSend' => 'function() {
+           						$("#maindiv").addClass("loading");
+        					}',
+
+							'success'=>'js:function(data){
+        						//iterate over data array and append option element to select html element.
+							var i  = 0;
+            				for(var key in data){
+           						
+								$("#MatchGame_"+i.toString()+"_TIME").val(data[key]);
+								i++;
+								
+								}
+            				}',
+				
+					),
+array('class'=>'btn')
+			
+			);
 			
 			$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'primary','label'=>'Guardar', 'htmlOptions'=>array('name'=>'saveRound' , 'class'=>'btn')));
 			

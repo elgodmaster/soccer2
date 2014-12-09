@@ -64,11 +64,18 @@ class TournamentController extends Controller
 	 */
 	public function actionGetSuggestedSchedules($tournamentId, $group)
 	{
+		
+		if(Yii::app()->request->isAjaxRequest){
+		
+		$i= 0;	
+		
 		$model = $this->loadModel($tournamentId);
 		
 		$matchs = MatchGame::model()->findAllByAttributes(array('TOURNAMENT_ID'=>$tournamentId, 'GROUP'=>$group));
 		
 		$foundSchedules = array();
+		
+		$grounds = PlayGround::model()->findAllByAttributes(array('ACTIVE'=>'1'));
 		
 		$days_of_game = array();
 		$schedules_of_game = array();
@@ -95,6 +102,14 @@ class TournamentController extends Controller
 		
 		$found = false;
 		
+		$j = 0;
+		
+		$a_end_time = array();
+		$a_start_time = array();
+		$a_start_time_1 = array();
+		
+		$all_limit = false;
+		
 		while(!$found && $i<100){
 			
 			
@@ -112,91 +127,73 @@ class TournamentController extends Controller
 					 
 					 $limit_time = new DateTime( $now->format("Y-m-d").' '.$model->aSchedule[$schedule]['to']);
 					 
-					
+					 foreach ($grounds as $tmpGround){
+					 	
+					 	$a_start_time[$tmpGround->ID] = $start_time;
+					 }
+				
 					 
-					while($start_time < $limit_time && !$found){ 
-					 
-							$end_time = new DateTime($start_time->format('Y-m-d H:i')); 
-							$end_time->modify('+'.$time_of_match.' minutes');
+						while(!$all_limit && !$found){ 
+
+							foreach ($grounds as $playGround) {
 							
-							$start_time_1 = new DateTime($start_time->format('Y-m-d H:i'));
+							//$a_start_time[$playGround->ID] = $a_start_time[$playGround->ID];
 							
-							$start_time_1->modify('+'.'1'.' minutes');
+							$a_end_time[$playGround->ID] = new DateTime($a_start_time[$playGround->ID]->format('Y-m-d H:i')); 
+							
+							$a_end_time[$playGround->ID]->modify('+'.$time_of_match.' minutes');
+							
+							$a_start_time_1[$playGround->ID] = new DateTime($a_start_time[$playGround->ID]->format('Y-m-d H:i'));
+							
+							$a_start_time_1[$playGround->ID]->modify('+'.'1'.' minutes');
+							
 							
 							$command = Yii::app()->db->createCommand();
 							$command->select('tt.ID, tm.TIME as start_match, DATE_ADD(tm.TIME,INTERVAL  (tt.MATCH_LONG_TIME * 2) MINUTE) as end_match');
 							$command->from('tbl_match_game tm');
 							$command->join('tbl_tournament tt', 'tm.TOURNAMENT_ID = tt.ID');
-							$command->where('tt.ACTIVE = :tournamentStatus AND tm.TIME  BETWEEN :start_time AND :end_time OR DATE_ADD(tm.TIME, INTERVAL(tt.MATCH_LONG_TIME * 2) MINUTE) BETWEEN :start_time_1 AND :end_time', 
-							array(':tournamentStatus'=>1,':start_time'=>$start_time->format('Y-m-d H:i'),':end_time'=>$end_time->format('Y-m-d H:i'), ':start_time_1'=>$start_time_1->format('Y-m-d H:i'),));
+							$command->where('tm.PLAY_GROUND_ID =:play_id AND tt.ACTIVE = :tournamentStatus AND tm.TIME  BETWEEN :start_time AND :end_time OR DATE_ADD(tm.TIME, INTERVAL(tt.MATCH_LONG_TIME * 2) MINUTE) BETWEEN :start_time_1 AND :end_time', 
+							array(':play_id'=>$playGround->ID,':tournamentStatus'=>1,':start_time'=>$a_start_time[$playGround->ID]->format('Y-m-d H:i'),':end_time'=>$a_end_time[$playGround->ID]->format('Y-m-d H:i'), ':start_time_1'=>$a_start_time_1[$playGround->ID]->format('Y-m-d H:i'),));
 							$command->order('end_match desc');
 							$list = $command->queryAll();
 							
-							
-							
 							if(sizeof($list)){
 								
-								$start_time = new DateTime($list[0]['end_match']);								
-								$i= 0;
-								
+								$a_start_time[$playGround->ID] = new DateTime($list[0]['end_match']);								
 								
 							}else{
 								
-								if ($end_time <= $limit_time){
+								if ($a_end_time[$playGround->ID] <= $limit_time){
 
-									$foundSchedules[] = $start_time;
+									$foundSchedules[$playGround->ID] = $a_start_time[$playGround->ID]->format('d/m/Y H:i');
 									
 								}
 								
-								 
-								
-								$start_time = new DateTime($end_time->format('Y-m-d H:i'));
+								$a_start_time[$playGround->ID] = new DateTime($end_time->format('Y-m-d H:i'));
 								
 								$found =  sizeof($foundSchedules) == sizeof($matchs);
 							}
 							
-					}
+					}//while
+					
+					$j++;
+				}
 						
-					}
+				}
 					
-					/*
-					$list= Yii::app()->db->createCommand("select tt.ID, tm.TIME as start_match, DATE_ADD(tm.TIME,INTERVAL  (tt.MATCH_LONG_TIME * 2) MINUTE) as end_match from tbl_match_game tm  
-					inner join tbl_tournament tt on tm.TOURNAMENT_ID = tt.ID where tt.ID IN (SELECT ID from tbl_tournament where active = :tournamentStatus) AND tm.TIME  BETWEEN :start_time AND :end_time")->bindValue(
-					array(':tournamentStatus'=>1,
-							':start_time'=>$start_time,
-							':end_time'=>$end_time,
-					))->queryAll();*/
-
-				/*	
-					
-					$criteria = new CDbCriteria;
-					$criteria->select = 't.*';
-					$criteria->join ='INNER JOIN tbl_tournament ON tbl_tournament.ID = t.TOURNAMENT_ID';
-					$criteria->condition = 'tbl_tournament.active = :value AND  t.TIME BETWEEN :start_time AND :end_time AND t.STATUS > :matchStatus';
-					
-								
-					$criteria->params = array(':value' => '1',
-							':start_time'=>$start_time->format('Y-m-d H:i'),
-							':end_time'=>$end_time->format('Y-m-d H:i'),
-						//	':id_referee'=>3,// change this
-						//	':id_play_ground'=>5,//$playground
-							':matchStatus'=>2
-					);
-					
-					$scheduledMatchs = MatchGame::model()->findAll($criteria);
-					
-					*/
-					
-					
+						
 				}
 			
-				$i++;
 				
 		}
 	
+		echo CJSON::encode($foundSchedules);
+		
+		Yii::app()->end();
+		
 		
 		}
-			
+	}		
 	
 
 	/**
