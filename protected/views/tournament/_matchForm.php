@@ -223,10 +223,15 @@
 							var i  = 0;
             				for(var key in data){
            						
-								$("#MatchGame_"+i.toString()+"_TIME").val(data[key]);
-								i++;
 								
+								for(var key2 in data[key]){
+						
+								$("#MatchGame_"+i.toString()+"_TIME").val(data[key][key2]);
+								$("#MatchGame_"+i.toString()+"_PLAY_GROUND_ID").val(key2);
+								i++;
 								}
+							}
+								
             				}',
 				
 					),
