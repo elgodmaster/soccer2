@@ -152,7 +152,7 @@ class TournamentController extends Controller
 							$command->select('tt.ID, tm.TIME as start_match, DATE_ADD(tm.TIME,INTERVAL  (tt.MATCH_LONG_TIME * 2) MINUTE) as end_match');
 							$command->from('tbl_match_game tm');
 							$command->join('tbl_tournament tt', 'tm.TOURNAMENT_ID = tt.ID');
-							$command->where('tm.PLAY_GROUND_ID =:play_id AND tt.ACTIVE = :tournamentStatus AND tm.TIME  BETWEEN :start_time AND :end_time OR DATE_ADD(tm.TIME, INTERVAL(tt.MATCH_LONG_TIME * 2) MINUTE) BETWEEN :start_time_1 AND :end_time', 
+							$command->where('tm.PLAY_GROUND_ID = :play_id AND tt.ACTIVE = :tournamentStatus  AND (tm.TIME  BETWEEN :start_time AND :end_time OR DATE_ADD(tm.TIME, INTERVAL(tt.MATCH_LONG_TIME * 2) MINUTE) BETWEEN :start_time_1 AND :end_time)', 
 							array(':play_id'=>$playGround->ID,':tournamentStatus'=>1,':start_time'=>$a_start_time[$playGround->ID]->format('Y-m-d H:i'),':end_time'=>$a_end_time[$playGround->ID]->format('Y-m-d H:i'), ':start_time_1'=>$a_start_time_1[$playGround->ID]->format('Y-m-d H:i'),));
 							$command->order('end_match desc');
 							$list = $command->queryAll();
@@ -165,19 +165,34 @@ class TournamentController extends Controller
 								
 								if ($a_end_time[$playGround->ID] <= $limit_time){
 
-									$foundSchedules[$playGround->ID] = $a_start_time[$playGround->ID]->format('d/m/Y H:i');
+									$foundSchedules[][$playGround->ID] = $a_start_time[$playGround->ID]->format('d/m/Y H:i');
 									
 								}
 								
-								$a_start_time[$playGround->ID] = new DateTime($end_time->format('Y-m-d H:i'));
+								$a_start_time[$playGround->ID] = new DateTime($a_end_time[$playGround->ID]->format('Y-m-d H:i'));
 								
-								$found =  sizeof($foundSchedules) == sizeof($matchs);
+								$found =  sizeof($foundSchedules)  == (sizeof($matchs) * sizeof($grounds));
+								
+								if ($found) break 4;
 							}
 							
-					}//while
+							
+					}//foreach
+					
+					$i = 0;
+					
+					foreach ($a_end_time as $end_time_1){
+						
+						if ($end_time_1 <= $limit_time) break 1;
+
+						$i++;
+					}
+					
+					$all_limit = $i == sizeof($a_end_time);
+					
 					
 					$j++;
-				}
+				}//while
 						
 				}
 					
@@ -186,6 +201,8 @@ class TournamentController extends Controller
 			
 				
 		}
+		
+		sort($foundSchedules);
 	
 		echo CJSON::encode($foundSchedules);
 		
