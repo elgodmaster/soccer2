@@ -8,7 +8,7 @@ $this->pageTitle=Yii::app()->name;
     'heading'=>'Welcome to '.CHtml::encode(Yii::app()->name),
 )); ?>
 
-<p>Bienvenido a Soccer2 Manager</p>
+<p>Congratulations! You have successfully created your Yii application.</p>
 
 <?php $this->endWidget(); ?>
 
