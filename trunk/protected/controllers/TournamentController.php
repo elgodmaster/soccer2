@@ -164,8 +164,10 @@ class TournamentController extends Controller
 							}else{
 								
 								if ($a_end_time[$playGround->ID] <= $limit_time){
-
+									
+									
 									$foundSchedules[][$playGround->ID] = $a_start_time[$playGround->ID]->format('d/m/Y H:i');
+									
 									
 								}
 								
@@ -202,9 +204,78 @@ class TournamentController extends Controller
 				
 		}
 		
-		sort($foundSchedules);
+		usort($foundSchedules, array($this,"sortFunction"));
+			
+		$referees = Referee::model()->findAllByAttributes(array('ACTIVE'=>'1'));
+		
+		$finalSchedules = array();
+		
+		$auxSchedules = array();
+		
+		$k = 1;
+		
+		foreach ($foundSchedules as $foundSchedule) {
+						
+			foreach ($foundSchedule as $keySchedule=>$valueSchedule){
+				
+				foreach ($referees as $referee){
+					
+					$criteria = new CDbCriteria;
+					
+					$v_startTime = DateTime::createFromFormat('d/m/Y H:i',$valueSchedule);
+					
+					$v_endTime = DateTime::createFromFormat('d/m/Y H:i',$valueSchedule);
+					
+					$v_endTime->modify('+'.$time_of_match.' minutes');
+					
+					
+					//$criteria->addBetweenCondition('TIME', $v_startTime->format('Y-m-d H:i'), $v_endTime->format('Y-m-d H:i'), 'AND');
+				
+					$modelMatch  =  MatchGame::model()->find(array('condition'=>'ID_REFEREE=:idReferee AND TIME >= :startDate AND TIME <= :endDate','params'=>array(':idReferee'=>$referee->ID, ':startDate'=>$v_startTime->format('Y-m-d H:i'), ':endDate'=>$v_endTime->format('Y-m-d H:i')),));
+					
+					
+					if($modelMatch===null){
+						
+						
+						$in_array = array_search(array('TIME'=>$valueSchedule, 'REFEREE'=>$referee->ID), $auxSchedules);
+						
+						if (!$in_array){
+						
+							
+							$finalSchedules[$k]['PLAY_GROUND'] = $keySchedule;
+							$finalSchedules[$k]['TIME'] = $valueSchedule;
+							$finalSchedules[$k]['REFEREE'] = $referee->ID;
+							
+							$auxSchedules[$k]['TIME'] = $valueSchedule;
+							$auxSchedules[$k]['REFEREE'] =  $referee->ID;
+							
+							$k++;
+						
+						}else {
+							
+							
+						}
+						
+						
+					}
+					
+					/*$command = Yii::app()->db->createCommand();
+					$command->select('tt.ID, tm.TIME as start_match, DATE_ADD(tm.TIME,INTERVAL  (tt.MATCH_LONG_TIME * 2) MINUTE) as end_match');
+					$command->from('tbl_match_game tm');
+					$command->join('tbl_tournament tt', 'tm.TOURNAMENT_ID = tt.ID');
+					$command->where('tm.PLAY_GROUND_ID = :play_id AND tt.ACTIVE = :tournamentStatus  AND (tm.TIME  BETWEEN :start_time AND :end_time OR DATE_ADD(tm.TIME, INTERVAL(tt.MATCH_LONG_TIME * 2) MINUTE) BETWEEN :start_time_1 AND :end_time)',
+							array(':play_id'=>$playGround->ID,':tournamentStatus'=>1,':start_time'=>$a_start_time[$playGround->ID]->format('Y-m-d H:i'),':end_time'=>$a_end_time[$playGround->ID]->format('Y-m-d H:i'), ':start_time_1'=>$a_start_time_1[$playGround->ID]->format('Y-m-d H:i'),));
+					$command->order('end_match desc');
+					$list = $command->queryAll();*/
+				
+				}	
+				
+				
+			}
+			
+		}
 	
-		echo CJSON::encode($foundSchedules);
+		echo CJSON::encode($finalSchedules);
 		
 		Yii::app()->end();
 		
@@ -212,6 +283,28 @@ class TournamentController extends Controller
 		}
 	}		
 	
+	
+/**
+ * Sort by time
+ * @param unknown $a
+ * @param unknown $b
+ * @return number
+ */	
+public function sortFunction( $a, $b ) {
+	
+	foreach ($a as $i => $valuea) {}
+
+	foreach ($b as $i => $valueb) {}
+	
+	$valuea = DateTime::createFromFormat('d/m/Y H:i',$valuea);
+	$valueb = DateTime::createFromFormat('d/m/Y H:i',$valueb);
+	
+	if ($valuea == $valueb) {
+		return 0;
+	}
+	return ($valuea < $valueb) ?  -1 : 1;
+	
+}
 
 	/**
 	 * retrieves a total  matchs
