@@ -17,10 +17,13 @@ $this->notifications=array(
 		array('label'=>'<i class="icon-envelope icon-white"></i> Enviar notificación', 'url'=>'#', 'linkOptions'=>array('class'=>'btn btn-large btn-primary')),
 
 );
+
+
+$tournament_start = new DateTime($model->START_DATE);
 ?>
 
 <h1>
-	Torneo <small><?php echo strtoupper($model->NAME);?></small>	
+	Torneo <?php echo strtoupper($model->NAME);?><small> - Inicio</small>	
 
 </h1>
 
@@ -29,13 +32,60 @@ $this->notifications=array(
 <div class="row-fluid">
 
 <div class="span12">
+
+
+<table class="table table-bordered	">
+	<tbody>
+		<tr>
+			<td><strong>ID</strong> <?php echo $model->ID;?></td>
+			<td><strong>Categoría</strong> <?php echo $model->iDCATEGORY->NAME;?></td>
+			<td><strong>Fecha Inicio</strong> <?php echo $tournament_start->format('d/m/Y');?></td>
+			<td><strong>Tipo torneo</strong> <?php echo $model->getStringTournamentType();?></td>
+			<td><strong>Estatus</strong> <?php echo $model->aStatus[$model->STATUS];?></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+<div class="span12 muted">
+<h3><p class="text-info">Equipos</p></h3>
+	<?php 
+	$allTeams = '';
+	foreach ($model->teams as $team){
+		$allTeams ='<div class="span2">'. CHtml::image ( $team->iDTEAM->getLogo (), '', array (
+					"style" => "width:50px;height:50px;",
+					"class" => "img-polaroid" 
+			) ). '<br /><small>'.strtoupper($team->iDTEAM->NAME).'</small></div>'.$allTeams;
+	}?>
+
+	<?php echo $allTeams;?>
+</div>	
+
+<!-- 
+	
+<table class="table  table-condensed">
+	<tbody>
+		<tr>
+			<?php foreach ($model->teams as $team){?>
+			
+				<td><?php echo CHtml::image ( $team->iDTEAM->getLogo (), '', array ("style" => "width:50px;height:50px;","class" => "img-polaroid") );?>
+					<br /><small class="muted"> <?php echo  strtoupper($team->iDTEAM->NAME)  ?></small>
+				</td>
+				
+			<?php }?>
+		</tr>
+	</tbody>
+</table>
+
 	<?php 
 	$allTeams = '';
 	foreach ($model->teams as $team){
 		$allTeams ='<div class="span1 muted"><small>'. CHtml::image ( $team->iDTEAM->getLogo (), '', array (
 					"style" => "width:50px;height:50px;",
 					"class" => "img-polaroid" 
-			) ).strtoupper($team->iDTEAM->NAME).'</small></div>'.$allTeams;
+			) ). strtoupper($team->iDTEAM->NAME).'</small></div>'.$allTeams;
 	}?>
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
@@ -56,6 +106,7 @@ $this->notifications=array(
     ),
 )); ?>
 
+ -->
 		<?php if($model->STATUS == 3) {?>
 
 	<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -170,8 +221,4 @@ array('label'=>'Estadistícas por Jugadores', 'icon'=>'list-alt', 'url'=>array('
 </div>
 
 
-<div class="row-fluid">
-
-
-</div>
 

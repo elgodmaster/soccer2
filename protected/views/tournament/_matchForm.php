@@ -1,8 +1,22 @@
 
-<?php 
+<?php
+Yii::app()->clientScript->registerScript("search", '
+		
 
-//echo "<legend><h4>JORNADA ".$matchGames[0]->GROUP ."</h4></legend>";
+		
+		
+		$( "#suggestedButton" ).click(function(e) {
+		
+			//alert("hola");
+			 var $this = $(this);
+        $this.attr("disabled", "disabled").html("Buscando...");
+      
+		
+		
+		});
+			
 
+');
 ?>
 
 <?php //$this->widget('bootstrap.widgets.TbAlert', array(
@@ -202,7 +216,9 @@
 	
 	<div class="form-actions">
 		<div class="btn-toolbar">
-			<div class="btn-group">
+			
+			
+			
 		<?php if (!$readyToPublish){
 			
 			//$this->widget('bootstrap.widgets.TbButton',array('buttonType'=>'submit','type'=>'info','label'=>'Sugerir horarios', 'htmlOptions'=>array('name'=>'saveRound', 'class'=>'btn' )));
@@ -222,20 +238,22 @@
         						//iterate over data array and append option element to select html element.
 							var i  = 0;
             				for(var key in data){
-           						
-								
-								for(var key2 in data[key]){
 						
-								$("#MatchGame_"+i.toString()+"_TIME").val(data[key][key2]);
-								$("#MatchGame_"+i.toString()+"_PLAY_GROUND_ID").val(key2);
+								$("#MatchGame_"+i.toString()+"_TIME").val(data[key]["TIME"]);
+								$("#MatchGame_"+i.toString()+"_PLAY_GROUND_ID").val(data[key]["PLAY_GROUND"]);
+								$("#MatchGame_"+i.toString()+"_ID_REFEREE").val(data[key]["REFEREE"]);
 								i++;
-								}
-							}
 								
+							}
+
+								$("#suggestedButton").removeAttr("disabled").html("Sugerir horarios");
+					
             				}',
 				
 					),
-array('class'=>'btn')
+					array('class'=>'btn btn-info', 
+							'data-loading-text'=>'Loading...',
+							'id'=>'suggestedButton')
 			
 			);
 			
@@ -258,7 +276,7 @@ array('class'=>'btn')
 	}
 	?>
 	
-			</div>
+			
 		</div>
 	</div>
 

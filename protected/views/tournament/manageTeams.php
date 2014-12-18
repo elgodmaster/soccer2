@@ -20,19 +20,16 @@ $this->menu=array(
 ?>
 
 
-<h1>Torneo <small><?php echo strtoupper($model->NAME); ?></small></h1>
+<h1>Torneo <?php echo strtoupper($model->NAME); ?><small> - Equipos </small> </h1>
 
 
 
-<legend>Equipos participantes</legend>
+
 
 
 <div class="span12">
 
-	<div class="form-actions">
-		<a class="btn btn-small" href="#"><i class="icon-comment"></i> Enviar invitación</a>
-		<a class="btn btn-small" href="#"><i class="icon-list-alt"></i> Enviar estatus</a>
-	</div>
+	
 
 <?php if($model->STATUS < $CERRADO_CONFIGURANDO_JORNADAS ){ ?> 
 
