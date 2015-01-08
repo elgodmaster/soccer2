@@ -16,6 +16,10 @@ Yii::app()->clientScript->registerScript("search", '
 		});
 			
 
+		
+	
+			
+		
 ');
 ?>
 
@@ -30,6 +34,10 @@ Yii::app()->clientScript->registerScript("search", '
 	Los campos con: <span class="required">*</span> son requeridos.
 </p>
 <div class="view">
+
+
+
+
 
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
 			'type'=>'striped bordered condensed',
@@ -210,7 +218,8 @@ Yii::app()->clientScript->registerScript("search", '
 	
 
 
-
+<div id="notifications" class="row">
+</div>
 
 <!-- form -->	
 	
@@ -247,6 +256,7 @@ Yii::app()->clientScript->registerScript("search", '
 							}
 
 								$("#suggestedButton").removeAttr("disabled").html("Sugerir horarios");
+								$( "#notifications" ).append( "<a class=\\"close alert in fade alert-success\\" data-dismiss=\\"alert\\" href=\\"#\\">&times;&nbsp;<strong>Sugerido correntamente</strong></a>" );
 					
             				}',
 				
